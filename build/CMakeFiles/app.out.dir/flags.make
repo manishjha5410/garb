@@ -4,7 +4,13 @@
 # compile CXX with /usr/bin/g++
 CXX_DEFINES = -DCROW_FANCY_LOG -DCROW_USE_LOCALTIMEZONE
 
+<<<<<<< HEAD
 CXX_INCLUDES = -I/usr/local/include/mongocxx/v_noabi -I/usr/local/include/libmongoc-1.0 -I/usr/local/include/bsoncxx/v_noabi -I/usr/local/include/libbson-1.0 -I/usr/local/include/bsoncxx/v_noabi/bsoncxx/third_party/mnmlstc -I/home/manish/Music/Dolat-Hackathon/boost_1_81_0 -I/home/manish/Music/Dolat-Hackathon/crow/include -I/home/manish/Music/Dolat-Hackathon/BACKEND/Helper -I/home/manish/Music/Dolat-Hackathon/BACKEND/Module/Billing -I/home/manish/Music/Dolat-Hackathon/BACKEND/Module/Request -I/home/manish/Music/Dolat-Hackathon/BACKEND/User
 
 CXX_FLAGS = -g -std=c++17
+=======
+CXX_INCLUDES = -I/usr/local/include/mongocxx/v_noabi -I/usr/local/include/libmongoc-1.0 -I/usr/local/include/bsoncxx/v_noabi -I/usr/local/include/libbson-1.0 -I/usr/local/include/bsoncxx/v_noabi/bsoncxx/third_party/mnmlstc -I/root/Desktop/Project/boost_1_81_0 -I/root/Desktop/Project/crow/include -I/root/Desktop/Project/BACKEND/Helper -I/root/Desktop/Project/BACKEND/Module/Billing -I/root/Desktop/Project/BACKEND/Module/Request -I/root/Desktop/Project/BACKEND/User
+
+CXX_FLAGS = -std=c++17
+>>>>>>> 61521a6861d8f608bbef29e46db4fd144f165312
 

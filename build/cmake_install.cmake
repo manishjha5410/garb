@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Install script for directory: /home/manish/Music/Dolat-Hackathon
+=======
+# Install script for directory: /root/Desktop/Project
+>>>>>>> 61521a6861d8f608bbef29e46db4fd144f165312
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -12,7 +16,11 @@ if(NOT DEFINED CMAKE_INSTALL_CONFIG_NAME)
     string(REGEX REPLACE "^[^A-Za-z0-9_]+" ""
            CMAKE_INSTALL_CONFIG_NAME "${BUILD_TYPE}")
   else()
+<<<<<<< HEAD
     set(CMAKE_INSTALL_CONFIG_NAME "Debug")
+=======
+    set(CMAKE_INSTALL_CONFIG_NAME "")
+>>>>>>> 61521a6861d8f608bbef29e46db4fd144f165312
   endif()
   message(STATUS "Install configuration: \"${CMAKE_INSTALL_CONFIG_NAME}\"")
 endif()
@@ -50,5 +58,9 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
+<<<<<<< HEAD
 file(WRITE "/home/manish/Music/Dolat-Hackathon/build/${CMAKE_INSTALL_MANIFEST}"
+=======
+file(WRITE "/root/Desktop/Project/build/${CMAKE_INSTALL_MANIFEST}"
+>>>>>>> 61521a6861d8f608bbef29e46db4fd144f165312
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

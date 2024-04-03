@@ -17,8 +17,8 @@
 
 class User {
     public:
-        crow::App<crow::CORSHandler> &app;
-        mongocxx::database &db;
+        crow::App<crow::CORSHandler> *app;
+        mongocxx::database *db;
 
         User();
         void createRoutes();

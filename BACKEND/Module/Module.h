@@ -16,12 +16,12 @@ class Module
     public:
         void createRoutes(){
             // Billing
-            Billing billing();
+            Billing billing;
             billing.BillingView();
             billing.BillingAdd();
 
             // Request
-            RequestManagement request();
+            RequestManagement request;
             request.RequestManagementAdd();
             request.RequestManagementView();
             request.RequestManagementAccept();

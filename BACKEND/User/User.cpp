@@ -45,9 +45,9 @@ void User::createRoutes(){
 
 void User::UserSignUp(){
 
-    mongocxx::database& db_ref = db;
+    mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE(app, "/api/signup")
+    CROW_ROUTE((*app), "/api/signup")
         .methods("POST"_method)([db_ref](const crow::request &req) {
             try {
                 crow::json::rvalue reqj = crow::json::load(req.body);
@@ -106,9 +106,9 @@ void User::UserSignUp(){
 
 void User::UserDelete(){
 
-    mongocxx::database& db_ref = db;
+    mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE(app, "/api/user/delete/<int>")
+    CROW_ROUTE((*app), "/api/user/delete/<int>")
         .methods("DELETE"_method)([db_ref](const int& id) {
             try{
                 bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
@@ -136,9 +136,9 @@ void User::UserDelete(){
 
 void User::UserView(){
 
-    mongocxx::database& db_ref = db;
+    mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE(app, "/api/user/view")
+    CROW_ROUTE((*app), "/api/user/view")
     ([db_ref]() {
         try{
             mongocxx::collection collection = db_ref["user"];
@@ -168,9 +168,9 @@ void User::UserView(){
 
 void User::UserViewOne(){
 
-    mongocxx::database& db_ref = db;
+    mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE(app, "/api/user/view/<int>")
+    CROW_ROUTE((*app), "/api/user/view/<int>")
         .methods("GET"_method)([db_ref](const int& id) {
             try {
 

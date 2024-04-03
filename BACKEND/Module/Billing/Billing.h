@@ -21,7 +21,7 @@ class Billing {
         int quantity;
 
         std::string convertString();
-        Billing(crow::App<crow::CORSHandler> *, mongocxx::database *);
+        Billing();
         void BillingAdd();
         void BillingView();
 };
