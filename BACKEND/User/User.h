@@ -27,6 +27,7 @@ class User {
         void UserDelete();
         void UserView();
         void UserViewOne();
+        void UserSignin();
 };
 
 #endif

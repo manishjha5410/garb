@@ -18,6 +18,11 @@ public:
     crow::App<crow::CORSHandler> *app;
     mongocxx::database *db;
 
+    struct User {
+        std::string username;
+        std::string role;
+    };
+
     static Server& getInstance() {
         static Server instance;
         return instance;

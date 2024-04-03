@@ -41,6 +41,7 @@ void User::createRoutes(){
     UserDelete();
     UserViewOne();
     UserView();
+    UserSignin();
 }
 
 void User::UserSignUp(){
@@ -60,10 +61,18 @@ void User::UserSignUp(){
                 if(!check.second)
                     return crow::response(crow::status::BAD_REQUEST, check.first);
 
+                mongocxx::collection collection = db_ref["user"];
+
                 bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
                 auto finalizer = bsoncxx::builder::stream::finalize;
 
-                mongocxx::collection collection = db_ref["user"];
+                if(reqj["role"].s() == "admin")
+                {
+                    bsoncxx::document::value admin_present = builder<<"role"<<"admin"<<finalizer;
+                    std::int64_t count = collection.count_documents(admin_present.view());
+                    if(count >= 0) return crow::response(crow::status::CONFLICT, "Admin is already present");
+                }
+
                 std::string input = std::to_string(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::_V2::system_clock::now().time_since_epoch()).count());
                 int id = adler_hash(input);
 
@@ -189,6 +198,55 @@ void User::UserViewOne(){
                 std::string json_str = bsoncxx::to_json(finder_str);
 
                 return crow::response(crow::status::OK,json_str);
+            } catch (const std::exception& e) {
+                return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
+            }
+        });
+}
+
+void User::UserSignin(){
+
+    mongocxx::database& db_ref = *db;
+
+    CROW_ROUTE((*app), "/api/login")
+        .methods("POST"_method)([db_ref](const crow::request &req) {
+            try {
+                crow::json::rvalue reqj = crow::json::load(req.body);
+                auto userSchema = crow::json::load(wUserSchema.dump());
+                std::pair<std::string, bool> check = JsonValid(reqj, userSchema, 2); 
+
+                if (!reqj)
+                    return crow::response(crow::status::BAD_REQUEST);
+
+                if(!check.second)
+                    return crow::response(crow::status::BAD_REQUEST, check.first);
+
+                mongocxx::collection collection = db_ref["user"];
+
+                bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
+                auto finalizer = bsoncxx::builder::stream::finalize;
+
+                bsoncxx::document::value projection = builder << "email" << 1<<"password"<<1<<finalizer;
+                bsoncxx::document::value filter = builder<<"email"<<std::string(reqj["email"].s())<<finalizer;
+
+                bsoncxx::stdx::optional<bsoncxx::document::value> finder = collection.find_one(filter.view(), mongocxx::options::find{}.projection(projection.view()));
+                if(!finder)
+                    throw std::runtime_error("Unable to find document");
+
+                const bsoncxx::document::value& finder_str = *finder;
+
+                bsoncxx::document::view::const_iterator it = finder_str.find("password");
+                std::string pass_hash = it->get_string().value.to_string();
+
+                std::string hashed_now = md5(reqj["password"].s());
+
+                std::cout<<"HASHED "<<hashed_now<<" "<<pass_hash<<std::endl;
+
+                if(pass_hash != hashed_now)
+                    return crow::response(crow::status::UNAUTHORIZED,"Incorrect Password");
+
+                std::string json_str = bsoncxx::to_json(finder_str);
+                return crow::response(crow::status::ACCEPTED,json_str);
             } catch (const std::exception& e) {
                 return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
             }

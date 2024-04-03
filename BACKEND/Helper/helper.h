@@ -25,8 +25,12 @@ inline bool isDouble(const std::string& str) {
     return *endptr == '\0' && isdot;
 }
 
-
-inline std::pair<std::string,bool> JsonValid(crow::json::rvalue &res,crow::json::rvalue &schema,bool update = false){
+/**
+ * @param res req body.
+ * @param schema Schema of the body.
+ * @param operation as int @note{0} for put @note{1} for update @note{2} for nothing.
+ */
+inline std::pair<std::string,bool> JsonValid(crow::json::rvalue &res,crow::json::rvalue &schema,int operation = 0){
 
     std::string msg="";
     bool valid = true;
@@ -38,17 +42,17 @@ inline std::pair<std::string,bool> JsonValid(crow::json::rvalue &res,crow::json:
 
         keyValid[key] = true;
 
-        if((update && val.has("update") && boost::iequals(val["update"].s(),"NO")) || (val.has("insert") && boost::iequals(val["insert"].s(),"NO")))
+        if((operation==1 && val.has("update") && boost::iequals(val["update"].s(),"NO")) || (val.has("insert") && boost::iequals(val["insert"].s(),"NO")))
                 if(res.has(key))
                 {
-                    msg = key + " should not be present";
+                    msg = key + " should not be present in body";
                     valid = valid && false;
                     break;
                 }
                 else continue;
 
         if(!res.has(key)){
-            if(update) continue;
+            if(operation==1 || operation==2) continue;
             if(boost::iequals(val["required"].s(),"NO")) continue;
             msg = key + " is not present in the message";
             valid = valid && false;

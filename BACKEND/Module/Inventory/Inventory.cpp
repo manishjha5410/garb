@@ -120,7 +120,7 @@ void Inventory::InventoryEdit(){
             if (!reqj)
                 return crow::response(crow::status::BAD_REQUEST);
 
-            std::pair<std::string, bool> check = JsonValid(reqj, inventorySchema, true); 
+            std::pair<std::string, bool> check = JsonValid(reqj, inventorySchema, 1); 
 
             if(!check.second)
                 return crow::response(crow::status::BAD_REQUEST, check.first);
