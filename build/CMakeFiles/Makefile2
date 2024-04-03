@@ -54,17 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-<<<<<<< HEAD
 CMAKE_SOURCE_DIR = /home/manish/Music/Dolat-Hackathon
 
 # The top-level build directory on which CMake was run.
 CMAKE_BINARY_DIR = /home/manish/Music/Dolat-Hackathon/build
-=======
-CMAKE_SOURCE_DIR = /root/Desktop/Project
-
-# The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /root/Desktop/Project/build
->>>>>>> 61521a6861d8f608bbef29e46db4fd144f165312
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -88,24 +81,14 @@ clean: CMakeFiles/app.out.dir/clean
 CMakeFiles/app.out.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.out.dir/build.make CMakeFiles/app.out.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.out.dir/build.make CMakeFiles/app.out.dir/build
-<<<<<<< HEAD
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/manish/Music/Dolat-Hackathon/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target app.out"
-=======
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/root/Desktop/Project/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target app.out"
->>>>>>> 61521a6861d8f608bbef29e46db4fd144f165312
 .PHONY : CMakeFiles/app.out.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/app.out.dir/rule: cmake_check_build_system
-<<<<<<< HEAD
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/manish/Music/Dolat-Hackathon/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/app.out.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/manish/Music/Dolat-Hackathon/build/CMakeFiles 0
-=======
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/Desktop/Project/build/CMakeFiles 6
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/app.out.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /root/Desktop/Project/build/CMakeFiles 0
->>>>>>> 61521a6861d8f608bbef29e46db4fd144f165312
 .PHONY : CMakeFiles/app.out.dir/rule
 
 # Convenience name for target.
