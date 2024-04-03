@@ -1,0 +1,28 @@
+{
+    "configurations": [
+        {
+            "name": "Linux",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${env:HOME}/Music/Dolat-Hackathon/crow",
+                "${env:HOME}/Music/Dolat-Hackathon/crow/**",
+                "${env:HOME}/Music/Dolat-Hackathon/boost_1_81_0",
+                "${env:HOME}/Music/Dolat-Hackathon/boost_1_81_0/**",
+                "${env:HOME}/Music/Dolat-Hackathon/**",
+                "/usr/local/include/mongocxx/v_noabi",
+                "/usr/local/include/mongocxx/v_noabi/**",
+                "/usr/local/include/bsoncxx/v_noabi",
+                "/usr/local/include/bsoncxx/v_noabi/**",
+                "/usr/local/include/bsoncxx/v_noabi/bsoncxx/third_party/mnmlstc",
+                "/usr/local/include/bsoncxx/v_noabi/bsoncxx/third_party/mnmlstc/**"
+            ],
+            "defines": ["-DCROW_USE_LOCALTIMEZONE","-DCROW_FANCY_LOG"],
+            "compilerPath": "/usr/bin/gcc",
+            "cStandard": "c17",
+            "cppStandard": "gnu++17",
+            "intelliSenseMode": "linux-gcc-x64",
+            "configurationProvider": "ms-vscode.cmake-tools"
+        }
+    ],
+    "version": 4
+}
