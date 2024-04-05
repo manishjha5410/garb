@@ -54,10 +54,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/manish/Music/Dolat-Hackathon
+CMAKE_SOURCE_DIR = /home/manish/Desktop/Project
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/manish/Music/Dolat-Hackathon/build
+CMAKE_BINARY_DIR = /home/manish/Desktop/Project/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -81,14 +81,14 @@ clean: CMakeFiles/app.out.dir/clean
 CMakeFiles/app.out.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.out.dir/build.make CMakeFiles/app.out.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/app.out.dir/build.make CMakeFiles/app.out.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/manish/Music/Dolat-Hackathon/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target app.out"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/manish/Desktop/Project/build/CMakeFiles --progress-num=1,2,3,4,5,6 "Built target app.out"
 .PHONY : CMakeFiles/app.out.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/app.out.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/manish/Music/Dolat-Hackathon/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/manish/Desktop/Project/build/CMakeFiles 6
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/app.out.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/manish/Music/Dolat-Hackathon/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/manish/Desktop/Project/build/CMakeFiles 0
 .PHONY : CMakeFiles/app.out.dir/rule
 
 # Convenience name for target.
