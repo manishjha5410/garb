@@ -1,3 +1,0 @@
-/home/manish/Desktop/Project/build/CMakeFiles/app.out.dir
-/home/manish/Desktop/Project/build/CMakeFiles/edit_cache.dir
-/home/manish/Desktop/Project/build/CMakeFiles/rebuild_cache.dir
