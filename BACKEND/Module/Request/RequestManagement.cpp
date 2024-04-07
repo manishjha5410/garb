@@ -1,7 +1,5 @@
 #include "RequestManagement.h"
 
-#include "../../server.h"
-
 RequestManagement::RequestManagement() {
     Server& s = Server::getInstance();
     app = s.app;

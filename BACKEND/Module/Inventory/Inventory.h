@@ -3,6 +3,7 @@
 
 #include "crow.h"
 #include "crow/middlewares/cors.h"
+#include "../../server.h"
 #include "unordered_set"
 #include "vector"
 
@@ -16,7 +17,7 @@
 
 class Inventory {
     public:
-        crow::App<crow::CORSHandler> *app;
+        crow::App<crow::CORSHandler,UserMiddleware> *app;
         mongocxx::database *db;
 
         Inventory();

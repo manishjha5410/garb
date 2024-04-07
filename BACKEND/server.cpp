@@ -40,38 +40,29 @@ struct Request {
     }
 };
 
-
-void LiveHandlerModule(crow::App<crow::CORSHandler> *server, mongocxx::database *db_loc, std::unordered_set<crow::websocket::connection *> *request_list_users, std::unordered_set<crow::websocket::connection *> *inventory_list_users) {
-    crow::App<crow::CORSHandler> &app = *server;
+void LiveHandlerModule(crow::App<crow::CORSHandler,UserMiddleware> *server, mongocxx::database *db_loc, std::unordered_set<crow::websocket::connection *> *request_list_users, std::unordered_set<crow::websocket::connection *> *inventory_list_users) {
+    crow::App<crow::CORSHandler,UserMiddleware> &app = *server;
     mongocxx::database &db = *db_loc;
 
     std::mutex mtx;
     std::unordered_set<crow::websocket::connection *> &iusers = *inventory_list_users;
     std::unordered_set<crow::websocket::connection *> &rusers = *request_list_users;
 
-    CROW_ROUTE(app, "/api/list/view/live")
-        .websocket()
-        .onopen([&](crow::websocket::connection &conn) {
-            CROW_LOG_INFO << "new websocket connection from " << conn.get_remote_ip();
-            std::lock_guard<std::mutex> _(mtx);
-            iusers.insert(&conn);
-        })
-        .onclose([&](crow::websocket::connection &conn, const std::string &reason) {
-            CROW_LOG_INFO << "websocket connection closed: " << reason;
-            std::lock_guard<std::mutex> _(mtx);
-            iusers.erase(&conn);
-        })
-        .onmessage([&](crow::websocket::connection &conn, const std::string &data, bool is_binary) {
-            std::lock_guard<std::mutex> _(mtx);
-            for (auto u : iusers)
-                if (is_binary)
-                    u->send_binary(data);
-                else
-                    u->send_text(data);
-        });
+        CROW_WEBSOCKET_ROUTE(app, "/api/list/view/live")
+      .onopen([&](crow::websocket::connection& conn) {
+          CROW_LOG_INFO << "new websocket connection from " << conn.get_remote_ip();
+          std::lock_guard<std::mutex> _(mtx);
+      })
+      .onclose([&](crow::websocket::connection& conn, const std::string& reason) {
+          CROW_LOG_INFO << "websocket connection closed: " << reason;
+          std::lock_guard<std::mutex> _(mtx);
+      })
+      .onmessage([&](crow::websocket::connection& /*conn*/, const std::string& data, bool is_binary) {
+          std::lock_guard<std::mutex> _(mtx);
+      });
 }
 
-void createRoutes(crow::App<crow::CORSHandler> *server, mongocxx::database *db_loc, std::unordered_set<crow::websocket::connection *> *inventory_list_users){
+void createRoutes(){
 
     // Module
     Module _module;
@@ -83,7 +74,9 @@ void createRoutes(crow::App<crow::CORSHandler> *server, mongocxx::database *db_l
 }
 
 int main() {
-    crow::App<crow::CORSHandler> app;
+
+
+    crow::App<crow::CORSHandler,UserMiddleware> app;
 
     // Customize CORS
     auto &cors = app.get_middleware<crow::CORSHandler>();
@@ -114,7 +107,7 @@ int main() {
         return "<h1>IMS Status OK 4</h1>";
     });
 
-    createRoutes(&app, &db, &inventory_list_users);
+    createRoutes();
 
     LiveHandlerModule(&app, &db, &request_list_users, &inventory_list_users);
 

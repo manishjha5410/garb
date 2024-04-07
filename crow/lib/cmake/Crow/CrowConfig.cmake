@@ -25,14 +25,24 @@ endmacro()
 ####################################################################################
 
 include(CMakeFindDependencyMacro)
-find_dependency(Boost 1.64 COMPONENTS system date_time)
-find_dependency(Threads)
 
-if(CROW_ENABLE_COMPRESSION)
+get_filename_component(CROW_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+
+list(APPEND CMAKE_MODULE_PATH ${CROW_CMAKE_DIR})
+find_dependency(asio)
+list(REMOVE_AT CMAKE_MODULE_PATH -1)
+
+set(CROW_INSTALLED_FEATURES "OFF")
+
+if(NOT DEFINED CROW_FEATURES)
+  set(CROW_FEATURES ${CROW_INSTALLED_FEATURES})
+endif()
+
+if("compression" IN_LIST CROW_FEATURES)
   find_dependency(ZLIB)
 endif()
 
-if(CROW_ENABLE_SSL)
+if("ssl" IN_LIST CROW_FEATURES)
   find_dependency(OpenSSL)
 endif()
 
@@ -45,12 +55,12 @@ get_target_property(_CROW_ICD Crow::Crow INTERFACE_COMPILE_DEFINITIONS)
 list(REMOVE_ITEM _CROW_ILL "ZLIB::ZLIB" "OpenSSL::SSL")
 list(REMOVE_ITEM _CROW_ICD "CROW_ENABLE_SSL" "CROW_ENABLE_COMPRESSION")
 
-if(CROW_ENABLE_COMPRESSION)
+if("compression" IN_LIST CROW_FEATURES)
   list(APPEND _CROW_ILL "ZLIB::ZLIB")
   list(APPEND _CROW_ICD "CROW_ENABLE_COMPRESSION")
 endif()
 
-if(CROW_ENABLE_SSL)
+if("ssl" IN_LIST CROW_FEATURES)
   list(APPEND _CROW_ILL "OpenSSL::SSL")
   list(APPEND _CROW_ICD "CROW_ENABLE_SSL")
 endif()

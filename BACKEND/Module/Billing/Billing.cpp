@@ -1,5 +1,4 @@
 #include "Billing.h"
-#include "../../server.h"
 
 Billing::Billing() {
     Server& s = Server::getInstance();

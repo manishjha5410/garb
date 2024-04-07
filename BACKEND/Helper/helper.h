@@ -4,6 +4,8 @@
 #include "crow.h"
 #include "regex"
 #include <unordered_map>
+#include <variant>
+#include <boost/algorithm/string/predicate.hpp>
 
 //adelr hash
 inline uint32_t adler_hash(const std::string& data) {

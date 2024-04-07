@@ -95,3 +95,6 @@ int main() {
 
     return 0;
 }
+
+// https://crowcpp.org/master/guides/auth/#:~:text=%3A%3Aresponse%20res)-,Basic%20Auth,Authorization%20header%20of%20the%20request.
+// https://github.com/CrowCpp/Crow/issues/144#issuecomment-860384771

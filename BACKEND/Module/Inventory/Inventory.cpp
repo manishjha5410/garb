@@ -1,6 +1,5 @@
 #include "Inventory.h"
 #include "../../Helper/helper.h"
-#include "../../server.h"
 
 Inventory::Inventory() {
     Server& s = Server::getInstance();

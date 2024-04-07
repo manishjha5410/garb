@@ -5,6 +5,7 @@
 #include "crow/middlewares/cors.h"
 #include "unordered_set"
 #include "vector"
+#include "../server.h"
 
 #include <mongocxx/client.hpp>
 #include <mongocxx/uri.hpp>
@@ -17,7 +18,7 @@
 
 class User {
     public:
-        crow::App<crow::CORSHandler> *app;
+        crow::App<crow::CORSHandler,UserMiddleware> *app;
         mongocxx::database *db;
 
         User();

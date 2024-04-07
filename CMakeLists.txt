@@ -28,8 +28,9 @@ set(INCLUDE_DIRS
     /usr/local/include/bsoncxx/v_noabi
     /usr/local/include/libbson-1.0
     /usr/local/include/bsoncxx/v_noabi/bsoncxx/third_party/mnmlstc
-    boost_1_81_0 
+    boost/include
     crow/include
+    jwt/
     BACKEND/Helper/
     BACKEND/Module/Billing/
     BACKEND/Module/Request/
@@ -50,7 +51,7 @@ add_definitions(-DCROW_USE_LOCALTIMEZONE -DCROW_FANCY_LOG)
 target_include_directories(app.out PRIVATE ${INCLUDE_DIRS})
 
 # Link libraries
-target_link_libraries(app.out PRIVATE mongocxx bsoncxx pthread boost_system)
+target_link_libraries(app.out PRIVATE mongocxx bsoncxx pthread boost_system ssl crypto)
 
 
 # c++ --std=c++11 combined/server.cpp -I/usr/local/include/mongocxx/v_noabi -I/usr/local/include/libmongoc-1.0 -I/usr/local/include/bsoncxx/v_noabi -I/usr/local/include/libbson-1.0 -L/usr/local/lib -lmongocxx -lbsoncxx -lpthread -lboost_system -o app.out

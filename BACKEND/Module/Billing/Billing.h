@@ -3,7 +3,7 @@
 
 #include "crow.h"
 #include "crow/middlewares/cors.h"
-
+#include "../../server.h"
 #include <mongocxx/client.hpp>
 #include <mongocxx/uri.hpp>
 
@@ -14,7 +14,7 @@
 
 class Billing {
     public:
-        crow::App<crow::CORSHandler> *app;
+        crow::App<crow::CORSHandler,UserMiddleware> *app;
         mongocxx::database *db;
 
         int price;

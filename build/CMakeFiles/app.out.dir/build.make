@@ -73,71 +73,71 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: CMakeFiles/app.out.dir/flags.make
 CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp
 CMakeFiles/app.out.dir/BACKEND/server.cpp.o: CMakeFiles/app.out.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manish/Music/Dolat-Hackathon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/app.out.dir/BACKEND/server.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.out.dir/BACKEND/server.cpp.o -MF CMakeFiles/app.out.dir/BACKEND/server.cpp.o.d -o CMakeFiles/app.out.dir/BACKEND/server.cpp.o -c /home/manish/Music/Dolat-Hackathon/BACKEND/server.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.out.dir/BACKEND/server.cpp.o -MF CMakeFiles/app.out.dir/BACKEND/server.cpp.o.d -o CMakeFiles/app.out.dir/BACKEND/server.cpp.o -c /home/manish/Music/Dolat-Hackathon/BACKEND/server.cpp
 
 CMakeFiles/app.out.dir/BACKEND/server.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.out.dir/BACKEND/server.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manish/Music/Dolat-Hackathon/BACKEND/server.cpp > CMakeFiles/app.out.dir/BACKEND/server.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manish/Music/Dolat-Hackathon/BACKEND/server.cpp > CMakeFiles/app.out.dir/BACKEND/server.cpp.i
 
 CMakeFiles/app.out.dir/BACKEND/server.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.out.dir/BACKEND/server.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manish/Music/Dolat-Hackathon/BACKEND/server.cpp -o CMakeFiles/app.out.dir/BACKEND/server.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manish/Music/Dolat-Hackathon/BACKEND/server.cpp -o CMakeFiles/app.out.dir/BACKEND/server.cpp.s
 
 CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.o: CMakeFiles/app.out.dir/flags.make
 CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.o: ../BACKEND/Module/Billing/Billing.cpp
 CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.o: CMakeFiles/app.out.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manish/Music/Dolat-Hackathon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.o -MF CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.o.d -o CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.o -c /home/manish/Music/Dolat-Hackathon/BACKEND/Module/Billing/Billing.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.o -MF CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.o.d -o CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.o -c /home/manish/Music/Dolat-Hackathon/BACKEND/Module/Billing/Billing.cpp
 
 CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manish/Music/Dolat-Hackathon/BACKEND/Module/Billing/Billing.cpp > CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manish/Music/Dolat-Hackathon/BACKEND/Module/Billing/Billing.cpp > CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.i
 
 CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manish/Music/Dolat-Hackathon/BACKEND/Module/Billing/Billing.cpp -o CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manish/Music/Dolat-Hackathon/BACKEND/Module/Billing/Billing.cpp -o CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.s
 
 CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.o: CMakeFiles/app.out.dir/flags.make
 CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.o: ../BACKEND/Module/Request/RequestManagement.cpp
 CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.o: CMakeFiles/app.out.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manish/Music/Dolat-Hackathon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.o -MF CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.o.d -o CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.o -c /home/manish/Music/Dolat-Hackathon/BACKEND/Module/Request/RequestManagement.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.o -MF CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.o.d -o CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.o -c /home/manish/Music/Dolat-Hackathon/BACKEND/Module/Request/RequestManagement.cpp
 
 CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manish/Music/Dolat-Hackathon/BACKEND/Module/Request/RequestManagement.cpp > CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manish/Music/Dolat-Hackathon/BACKEND/Module/Request/RequestManagement.cpp > CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.i
 
 CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manish/Music/Dolat-Hackathon/BACKEND/Module/Request/RequestManagement.cpp -o CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manish/Music/Dolat-Hackathon/BACKEND/Module/Request/RequestManagement.cpp -o CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.s
 
 CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.o: CMakeFiles/app.out.dir/flags.make
 CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.o: ../BACKEND/Module/Inventory/Inventory.cpp
 CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.o: CMakeFiles/app.out.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manish/Music/Dolat-Hackathon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.o -MF CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.o.d -o CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.o -c /home/manish/Music/Dolat-Hackathon/BACKEND/Module/Inventory/Inventory.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.o -MF CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.o.d -o CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.o -c /home/manish/Music/Dolat-Hackathon/BACKEND/Module/Inventory/Inventory.cpp
 
 CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manish/Music/Dolat-Hackathon/BACKEND/Module/Inventory/Inventory.cpp > CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manish/Music/Dolat-Hackathon/BACKEND/Module/Inventory/Inventory.cpp > CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.i
 
 CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manish/Music/Dolat-Hackathon/BACKEND/Module/Inventory/Inventory.cpp -o CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manish/Music/Dolat-Hackathon/BACKEND/Module/Inventory/Inventory.cpp -o CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.s
 
 CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o: CMakeFiles/app.out.dir/flags.make
 CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o: ../BACKEND/User/User.cpp
 CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o: CMakeFiles/app.out.dir/compiler_depend.ts
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/manish/Music/Dolat-Hackathon/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o -MF CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o.d -o CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o -c /home/manish/Music/Dolat-Hackathon/BACKEND/User/User.cpp
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o -MF CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o.d -o CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o -c /home/manish/Music/Dolat-Hackathon/BACKEND/User/User.cpp
 
 CMakeFiles/app.out.dir/BACKEND/User/User.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/app.out.dir/BACKEND/User/User.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manish/Music/Dolat-Hackathon/BACKEND/User/User.cpp > CMakeFiles/app.out.dir/BACKEND/User/User.cpp.i
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/manish/Music/Dolat-Hackathon/BACKEND/User/User.cpp > CMakeFiles/app.out.dir/BACKEND/User/User.cpp.i
 
 CMakeFiles/app.out.dir/BACKEND/User/User.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/app.out.dir/BACKEND/User/User.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manish/Music/Dolat-Hackathon/BACKEND/User/User.cpp -o CMakeFiles/app.out.dir/BACKEND/User/User.cpp.s
+	/usr/bin/g++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/manish/Music/Dolat-Hackathon/BACKEND/User/User.cpp -o CMakeFiles/app.out.dir/BACKEND/User/User.cpp.s
 
 # Object files for target app.out
 app_out_OBJECTS = \

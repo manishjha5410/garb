@@ -13,9 +13,28 @@
 #include <mongocxx/client.hpp>
 #include <mongocxx/uri.hpp>
 
+struct UserMiddleware: crow::ILocalMiddleware
+{
+    struct context
+    {
+        std::string username;
+        std::string role;
+    };
+
+    void before_handle(crow::request& req, crow::response& res, context& ctx)
+    {
+        std::cout<<"Data is "<<req.url<<" "<<req.remote_ip_address<<" PORT is "<<req.get_header_value("Authorization")<<std::endl;
+    }
+
+
+    void after_handle(crow::request& req, crow::response& res, context& ctx)
+    {
+    }
+};
+
 class Server {
 public:
-    crow::App<crow::CORSHandler> *app;
+    crow::App<crow::CORSHandler,UserMiddleware> *app;
     mongocxx::database *db;
 
     struct User {
@@ -28,7 +47,7 @@ public:
         return instance;
     }
 
-    void setServerData(crow::App<crow::CORSHandler> *server, mongocxx::database *db_loc) {
+    void setServerData(crow::App<crow::CORSHandler,UserMiddleware> *server, mongocxx::database *db_loc) {
         app = server;
         db = db_loc;
     }
