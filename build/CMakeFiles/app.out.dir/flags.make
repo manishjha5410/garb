@@ -4,7 +4,7 @@
 # compile CXX with /usr/bin/g++
 CXX_DEFINES = -DCROW_FANCY_LOG -DCROW_USE_LOCALTIMEZONE
 
-CXX_INCLUDES = -I/usr/local/include/mongocxx/v_noabi -I/usr/local/include/libmongoc-1.0 -I/usr/local/include/bsoncxx/v_noabi -I/usr/local/include/libbson-1.0 -I/usr/local/include/bsoncxx/v_noabi/bsoncxx/third_party/mnmlstc -I/home/manish/Music/Dolat-Hackathon/boost/include -I/home/manish/Music/Dolat-Hackathon/crow/include -I/home/manish/Music/Dolat-Hackathon/jwt -I/home/manish/Music/Dolat-Hackathon/BACKEND/Helper -I/home/manish/Music/Dolat-Hackathon/BACKEND/Module/Billing -I/home/manish/Music/Dolat-Hackathon/BACKEND/Module/Request -I/home/manish/Music/Dolat-Hackathon/BACKEND/User
+CXX_INCLUDES = -I/usr/local/include/mongocxx/v_noabi -I/usr/local/include/libmongoc-1.0 -I/usr/local/include/bsoncxx/v_noabi -I/usr/local/include/libbson-1.0 -I/usr/local/include/bsoncxx/v_noabi/bsoncxx/third_party/mnmlstc -I/home/manish/Desktop/Project/boost/include -I/home/manish/Desktop/Project/crow/include -I/home/manish/Desktop/Project/jwt -I/home/manish/Desktop/Project/BACKEND/Helper -I/home/manish/Desktop/Project/BACKEND/Module/Billing -I/home/manish/Desktop/Project/BACKEND/Module/Request -I/home/manish/Desktop/Project/BACKEND/User
 
-CXX_FLAGS = -g -std=c++17
+CXX_FLAGS = -std=c++17
 

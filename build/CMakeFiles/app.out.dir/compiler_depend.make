@@ -1189,6 +1189,169 @@ CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.o: ../BACKEND/Module/B
   ../BACKEND/server.h \
   /usr/include/c++/11/unordered_set \
   /usr/include/c++/11/bits/unordered_set.h \
+  ../boost/include/boost/json.hpp \
+  ../boost/include/boost/json/detail/config.hpp \
+  ../boost/include/boost/config/auto_link.hpp \
+  ../boost/include/boost/json/array.hpp \
+  ../boost/include/boost/json/kind.hpp \
+  ../boost/include/boost/json/string_view.hpp \
+  ../boost/include/boost/core/detail/string_view.hpp \
+  ../boost/include/boost/core/detail/is_same.hpp \
+  ../boost/include/boost/json/pilfer.hpp \
+  ../boost/include/boost/json/storage_ptr.hpp \
+  ../boost/include/boost/json/memory_resource.hpp \
+  ../boost/include/boost/container/pmr/memory_resource.hpp \
+  ../boost/include/boost/container/detail/config_begin.hpp \
+  ../boost/include/boost/container/detail/workaround.hpp \
+  ../boost/include/boost/container/container_fwd.hpp \
+  ../boost/include/boost/container/detail/std_fwd.hpp \
+  ../boost/include/boost/move/detail/std_ns_begin.hpp \
+  ../boost/include/boost/move/detail/std_ns_end.hpp \
+  ../boost/include/boost/move/detail/type_traits.hpp \
+  ../boost/include/boost/move/detail/config_begin.hpp \
+  ../boost/include/boost/move/detail/workaround.hpp \
+  ../boost/include/boost/move/detail/meta_utils.hpp \
+  ../boost/include/boost/move/detail/meta_utils_core.hpp \
+  ../boost/include/boost/move/detail/addressof.hpp \
+  ../boost/include/boost/move/detail/config_end.hpp \
+  ../boost/include/boost/container/detail/placement_new.hpp \
+  ../boost/include/boost/container/detail/config_end.hpp \
+  ../boost/include/boost/container/pmr/polymorphic_allocator.hpp \
+  ../boost/include/boost/move/utility_core.hpp \
+  ../boost/include/boost/move/core.hpp \
+  ../boost/include/boost/container/detail/dispatch_uses_allocator.hpp \
+  ../boost/include/boost/container/allocator_traits.hpp \
+  ../boost/include/boost/container/detail/mpl.hpp \
+  ../boost/include/boost/intrusive/detail/mpl.hpp \
+  ../boost/include/boost/intrusive/detail/config_begin.hpp \
+  ../boost/include/boost/intrusive/detail/config_end.hpp \
+  ../boost/include/boost/container/detail/type_traits.hpp \
+  ../boost/include/boost/intrusive/pointer_traits.hpp \
+  ../boost/include/boost/intrusive/detail/workaround.hpp \
+  ../boost/include/boost/intrusive/pointer_rebind.hpp \
+  ../boost/include/boost/move/detail/pointer_element.hpp \
+  ../boost/include/boost/intrusive/detail/has_member_function_callable_with.hpp \
+  ../boost/include/boost/move/detail/fwd_macros.hpp \
+  ../boost/include/boost/container/uses_allocator.hpp \
+  ../boost/include/boost/container/uses_allocator_fwd.hpp \
+  ../boost/include/boost/container/detail/addressof.hpp \
+  ../boost/include/boost/container/detail/is_pair.hpp \
+  ../boost/include/boost/container/detail/variadic_templates_tools.hpp \
+  ../boost/include/boost/container/new_allocator.hpp \
+  ../boost/include/boost/container/throw_exception.hpp \
+  ../boost/include/boost/container/pmr/global_resource.hpp \
+  ../boost/include/boost/container/detail/auto_link.hpp \
+  ../boost/include/boost/json/detail/shared_resource.hpp \
+  ../boost/include/boost/json/detail/default_resource.hpp \
+  ../boost/include/boost/json/detail/array.hpp \
+  ../boost/include/boost/json/value.hpp \
+  ../boost/include/boost/json/object.hpp \
+  ../boost/include/boost/json/detail/object.hpp \
+  ../boost/include/boost/json/detail/value.hpp \
+  ../boost/include/boost/json/set_pointer_options.hpp \
+  ../boost/include/boost/json/string.hpp \
+  ../boost/include/boost/json/detail/digest.hpp \
+  ../boost/include/boost/json/detail/except.hpp \
+  ../boost/include/boost/json/error.hpp \
+  ../boost/include/boost/json/system_error.hpp \
+  ../boost/include/boost/json/fwd.hpp \
+  ../boost/include/boost/system/result.hpp \
+  ../boost/include/boost/variant2/variant.hpp \
+  ../boost/include/boost/mp11.hpp \
+  ../boost/include/boost/mp11/list.hpp \
+  ../boost/include/boost/mp11/integral.hpp \
+  ../boost/include/boost/mp11/version.hpp \
+  ../boost/include/boost/mp11/detail/mp_value.hpp \
+  ../boost/include/boost/mp11/detail/config.hpp \
+  ../boost/include/boost/mp11/detail/mp_list.hpp \
+  ../boost/include/boost/mp11/detail/mp_list_v.hpp \
+  ../boost/include/boost/mp11/detail/mp_is_list.hpp \
+  ../boost/include/boost/mp11/detail/mp_is_value_list.hpp \
+  ../boost/include/boost/mp11/detail/mp_front.hpp \
+  ../boost/include/boost/mp11/detail/mp_rename.hpp \
+  ../boost/include/boost/mp11/detail/mp_defer.hpp \
+  ../boost/include/boost/mp11/detail/mp_append.hpp \
+  ../boost/include/boost/mp11/detail/mp_count.hpp \
+  ../boost/include/boost/mp11/detail/mp_plus.hpp \
+  ../boost/include/boost/mp11/utility.hpp \
+  ../boost/include/boost/mp11/detail/mp_fold.hpp \
+  ../boost/include/boost/mp11/algorithm.hpp \
+  ../boost/include/boost/mp11/set.hpp \
+  ../boost/include/boost/mp11/function.hpp \
+  ../boost/include/boost/mp11/detail/mp_min_element.hpp \
+  ../boost/include/boost/mp11/detail/mp_void.hpp \
+  ../boost/include/boost/mp11/detail/mp_copy_if.hpp \
+  ../boost/include/boost/mp11/detail/mp_remove_if.hpp \
+  ../boost/include/boost/mp11/detail/mp_map_find.hpp \
+  ../boost/include/boost/mp11/detail/mp_with_index.hpp \
+  ../boost/include/boost/mp11/integer_sequence.hpp \
+  ../boost/include/boost/mp11/map.hpp \
+  ../boost/include/boost/mp11/bind.hpp \
+  ../boost/include/boost/mp11/tuple.hpp \
+  /usr/include/c++/11/typeindex \
+  ../boost/include/boost/json/impl/error.hpp \
+  ../boost/include/boost/json/detail/string_impl.hpp \
+  ../boost/include/boost/json/impl/string.hpp \
+  ../boost/include/boost/json/value_ref.hpp \
+  ../boost/include/boost/json/detail/impl/array.hpp \
+  ../boost/include/boost/json/impl/array.hpp \
+  ../boost/include/boost/json/impl/object.hpp \
+  ../boost/include/boost/json/impl/value.hpp \
+  ../boost/include/boost/json/impl/value_ref.hpp \
+  ../boost/include/boost/json/basic_parser.hpp \
+  ../boost/include/boost/json/parse_options.hpp \
+  ../boost/include/boost/json/detail/stack.hpp \
+  ../boost/include/boost/json/detail/stream.hpp \
+  ../boost/include/boost/json/detail/utf8.hpp \
+  ../boost/include/boost/json/detail/sbo_buffer.hpp \
+  ../boost/include/boost/json/conversion.hpp \
+  ../boost/include/boost/json/impl/conversion.hpp \
+  ../boost/include/boost/describe/enumerators.hpp \
+  ../boost/include/boost/describe/detail/void_t.hpp \
+  ../boost/include/boost/describe/detail/config.hpp \
+  ../boost/include/boost/describe/members.hpp \
+  ../boost/include/boost/describe/modifiers.hpp \
+  ../boost/include/boost/describe/bases.hpp \
+  ../boost/include/boost/describe/detail/cx_streq.hpp \
+  /usr/include/c++/11/variant \
+  ../boost/include/boost/json/monotonic_resource.hpp \
+  ../boost/include/boost/json/null_resource.hpp \
+  ../boost/include/boost/json/parse.hpp \
+  ../boost/include/boost/json/parse_into.hpp \
+  ../boost/include/boost/json/detail/parse_into.hpp \
+  ../boost/include/boost/describe/enum_from_string.hpp \
+  ../boost/include/boost/json/impl/parse_into.hpp \
+  ../boost/include/boost/json/basic_parser_impl.hpp \
+  ../boost/include/boost/json/detail/buffer.hpp \
+  ../boost/include/boost/json/detail/charconv/from_chars.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/config.hpp \
+  /usr/include/c++/11/cfloat \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
+  ../boost/include/boost/json/detail/charconv/detail/from_chars_result.hpp \
+  ../boost/include/boost/json/detail/charconv/chars_format.hpp \
+  ../boost/include/boost/json/detail/sse2.hpp \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
+  /usr/include/c++/11/stdlib.h \
+  ../boost/include/boost/json/parser.hpp \
+  ../boost/include/boost/json/detail/handler.hpp \
+  ../boost/include/boost/json/value_stack.hpp \
+  ../boost/include/boost/json/serialize.hpp \
+  ../boost/include/boost/json/serialize_options.hpp \
+  ../boost/include/boost/json/serializer.hpp \
+  ../boost/include/boost/json/detail/format.hpp \
+  ../boost/include/boost/json/static_resource.hpp \
+  ../boost/include/boost/json/stream_parser.hpp \
+  ../boost/include/boost/json/value_from.hpp \
+  ../boost/include/boost/json/detail/value_from.hpp \
+  ../boost/include/boost/describe/enum_to_string.hpp \
+  /usr/include/c++/11/optional \
+  ../boost/include/boost/json/value_to.hpp \
+  ../boost/include/boost/json/detail/value_to.hpp \
+  ../boost/include/boost/json/visit.hpp \
+  ../boost/include/boost/json/impl/visit.hpp \
   /usr/local/include/mongocxx/v_noabi/mongocxx/client.hpp \
   /usr/local/include/mongocxx/v_noabi/mongocxx/client-fwd.hpp \
   /usr/local/include/mongocxx/v_noabi/mongocxx/config/prelude.hpp \
@@ -2621,6 +2784,169 @@ CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.o: ../BACKEND/Modu
   ../BACKEND/server.h \
   /usr/include/c++/11/unordered_set \
   /usr/include/c++/11/bits/unordered_set.h \
+  ../boost/include/boost/json.hpp \
+  ../boost/include/boost/json/detail/config.hpp \
+  ../boost/include/boost/config/auto_link.hpp \
+  ../boost/include/boost/json/array.hpp \
+  ../boost/include/boost/json/kind.hpp \
+  ../boost/include/boost/json/string_view.hpp \
+  ../boost/include/boost/core/detail/string_view.hpp \
+  ../boost/include/boost/core/detail/is_same.hpp \
+  ../boost/include/boost/json/pilfer.hpp \
+  ../boost/include/boost/json/storage_ptr.hpp \
+  ../boost/include/boost/json/memory_resource.hpp \
+  ../boost/include/boost/container/pmr/memory_resource.hpp \
+  ../boost/include/boost/container/detail/config_begin.hpp \
+  ../boost/include/boost/container/detail/workaround.hpp \
+  ../boost/include/boost/container/container_fwd.hpp \
+  ../boost/include/boost/container/detail/std_fwd.hpp \
+  ../boost/include/boost/move/detail/std_ns_begin.hpp \
+  ../boost/include/boost/move/detail/std_ns_end.hpp \
+  ../boost/include/boost/move/detail/type_traits.hpp \
+  ../boost/include/boost/move/detail/config_begin.hpp \
+  ../boost/include/boost/move/detail/workaround.hpp \
+  ../boost/include/boost/move/detail/meta_utils.hpp \
+  ../boost/include/boost/move/detail/meta_utils_core.hpp \
+  ../boost/include/boost/move/detail/addressof.hpp \
+  ../boost/include/boost/move/detail/config_end.hpp \
+  ../boost/include/boost/container/detail/placement_new.hpp \
+  ../boost/include/boost/container/detail/config_end.hpp \
+  ../boost/include/boost/container/pmr/polymorphic_allocator.hpp \
+  ../boost/include/boost/move/utility_core.hpp \
+  ../boost/include/boost/move/core.hpp \
+  ../boost/include/boost/container/detail/dispatch_uses_allocator.hpp \
+  ../boost/include/boost/container/allocator_traits.hpp \
+  ../boost/include/boost/container/detail/mpl.hpp \
+  ../boost/include/boost/intrusive/detail/mpl.hpp \
+  ../boost/include/boost/intrusive/detail/config_begin.hpp \
+  ../boost/include/boost/intrusive/detail/config_end.hpp \
+  ../boost/include/boost/container/detail/type_traits.hpp \
+  ../boost/include/boost/intrusive/pointer_traits.hpp \
+  ../boost/include/boost/intrusive/detail/workaround.hpp \
+  ../boost/include/boost/intrusive/pointer_rebind.hpp \
+  ../boost/include/boost/move/detail/pointer_element.hpp \
+  ../boost/include/boost/intrusive/detail/has_member_function_callable_with.hpp \
+  ../boost/include/boost/move/detail/fwd_macros.hpp \
+  ../boost/include/boost/container/uses_allocator.hpp \
+  ../boost/include/boost/container/uses_allocator_fwd.hpp \
+  ../boost/include/boost/container/detail/addressof.hpp \
+  ../boost/include/boost/container/detail/is_pair.hpp \
+  ../boost/include/boost/container/detail/variadic_templates_tools.hpp \
+  ../boost/include/boost/container/new_allocator.hpp \
+  ../boost/include/boost/container/throw_exception.hpp \
+  ../boost/include/boost/container/pmr/global_resource.hpp \
+  ../boost/include/boost/container/detail/auto_link.hpp \
+  ../boost/include/boost/json/detail/shared_resource.hpp \
+  ../boost/include/boost/json/detail/default_resource.hpp \
+  ../boost/include/boost/json/detail/array.hpp \
+  ../boost/include/boost/json/value.hpp \
+  ../boost/include/boost/json/object.hpp \
+  ../boost/include/boost/json/detail/object.hpp \
+  ../boost/include/boost/json/detail/value.hpp \
+  ../boost/include/boost/json/set_pointer_options.hpp \
+  ../boost/include/boost/json/string.hpp \
+  ../boost/include/boost/json/detail/digest.hpp \
+  ../boost/include/boost/json/detail/except.hpp \
+  ../boost/include/boost/json/error.hpp \
+  ../boost/include/boost/json/system_error.hpp \
+  ../boost/include/boost/json/fwd.hpp \
+  ../boost/include/boost/system/result.hpp \
+  ../boost/include/boost/variant2/variant.hpp \
+  ../boost/include/boost/mp11.hpp \
+  ../boost/include/boost/mp11/list.hpp \
+  ../boost/include/boost/mp11/integral.hpp \
+  ../boost/include/boost/mp11/version.hpp \
+  ../boost/include/boost/mp11/detail/mp_value.hpp \
+  ../boost/include/boost/mp11/detail/config.hpp \
+  ../boost/include/boost/mp11/detail/mp_list.hpp \
+  ../boost/include/boost/mp11/detail/mp_list_v.hpp \
+  ../boost/include/boost/mp11/detail/mp_is_list.hpp \
+  ../boost/include/boost/mp11/detail/mp_is_value_list.hpp \
+  ../boost/include/boost/mp11/detail/mp_front.hpp \
+  ../boost/include/boost/mp11/detail/mp_rename.hpp \
+  ../boost/include/boost/mp11/detail/mp_defer.hpp \
+  ../boost/include/boost/mp11/detail/mp_append.hpp \
+  ../boost/include/boost/mp11/detail/mp_count.hpp \
+  ../boost/include/boost/mp11/detail/mp_plus.hpp \
+  ../boost/include/boost/mp11/utility.hpp \
+  ../boost/include/boost/mp11/detail/mp_fold.hpp \
+  ../boost/include/boost/mp11/algorithm.hpp \
+  ../boost/include/boost/mp11/set.hpp \
+  ../boost/include/boost/mp11/function.hpp \
+  ../boost/include/boost/mp11/detail/mp_min_element.hpp \
+  ../boost/include/boost/mp11/detail/mp_void.hpp \
+  ../boost/include/boost/mp11/detail/mp_copy_if.hpp \
+  ../boost/include/boost/mp11/detail/mp_remove_if.hpp \
+  ../boost/include/boost/mp11/detail/mp_map_find.hpp \
+  ../boost/include/boost/mp11/detail/mp_with_index.hpp \
+  ../boost/include/boost/mp11/integer_sequence.hpp \
+  ../boost/include/boost/mp11/map.hpp \
+  ../boost/include/boost/mp11/bind.hpp \
+  ../boost/include/boost/mp11/tuple.hpp \
+  /usr/include/c++/11/typeindex \
+  ../boost/include/boost/json/impl/error.hpp \
+  ../boost/include/boost/json/detail/string_impl.hpp \
+  ../boost/include/boost/json/impl/string.hpp \
+  ../boost/include/boost/json/value_ref.hpp \
+  ../boost/include/boost/json/detail/impl/array.hpp \
+  ../boost/include/boost/json/impl/array.hpp \
+  ../boost/include/boost/json/impl/object.hpp \
+  ../boost/include/boost/json/impl/value.hpp \
+  ../boost/include/boost/json/impl/value_ref.hpp \
+  ../boost/include/boost/json/basic_parser.hpp \
+  ../boost/include/boost/json/parse_options.hpp \
+  ../boost/include/boost/json/detail/stack.hpp \
+  ../boost/include/boost/json/detail/stream.hpp \
+  ../boost/include/boost/json/detail/utf8.hpp \
+  ../boost/include/boost/json/detail/sbo_buffer.hpp \
+  ../boost/include/boost/json/conversion.hpp \
+  ../boost/include/boost/json/impl/conversion.hpp \
+  ../boost/include/boost/describe/enumerators.hpp \
+  ../boost/include/boost/describe/detail/void_t.hpp \
+  ../boost/include/boost/describe/detail/config.hpp \
+  ../boost/include/boost/describe/members.hpp \
+  ../boost/include/boost/describe/modifiers.hpp \
+  ../boost/include/boost/describe/bases.hpp \
+  ../boost/include/boost/describe/detail/cx_streq.hpp \
+  /usr/include/c++/11/variant \
+  ../boost/include/boost/json/monotonic_resource.hpp \
+  ../boost/include/boost/json/null_resource.hpp \
+  ../boost/include/boost/json/parse.hpp \
+  ../boost/include/boost/json/parse_into.hpp \
+  ../boost/include/boost/json/detail/parse_into.hpp \
+  ../boost/include/boost/describe/enum_from_string.hpp \
+  ../boost/include/boost/json/impl/parse_into.hpp \
+  ../boost/include/boost/json/basic_parser_impl.hpp \
+  ../boost/include/boost/json/detail/buffer.hpp \
+  ../boost/include/boost/json/detail/charconv/from_chars.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/config.hpp \
+  /usr/include/c++/11/cfloat \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
+  ../boost/include/boost/json/detail/charconv/detail/from_chars_result.hpp \
+  ../boost/include/boost/json/detail/charconv/chars_format.hpp \
+  ../boost/include/boost/json/detail/sse2.hpp \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
+  /usr/include/c++/11/stdlib.h \
+  ../boost/include/boost/json/parser.hpp \
+  ../boost/include/boost/json/detail/handler.hpp \
+  ../boost/include/boost/json/value_stack.hpp \
+  ../boost/include/boost/json/serialize.hpp \
+  ../boost/include/boost/json/serialize_options.hpp \
+  ../boost/include/boost/json/serializer.hpp \
+  ../boost/include/boost/json/detail/format.hpp \
+  ../boost/include/boost/json/static_resource.hpp \
+  ../boost/include/boost/json/stream_parser.hpp \
+  ../boost/include/boost/json/value_from.hpp \
+  ../boost/include/boost/json/detail/value_from.hpp \
+  ../boost/include/boost/describe/enum_to_string.hpp \
+  /usr/include/c++/11/optional \
+  ../boost/include/boost/json/value_to.hpp \
+  ../boost/include/boost/json/detail/value_to.hpp \
+  ../boost/include/boost/json/visit.hpp \
+  ../boost/include/boost/json/impl/visit.hpp \
   /usr/local/include/mongocxx/v_noabi/mongocxx/client.hpp \
   /usr/local/include/mongocxx/v_noabi/mongocxx/client-fwd.hpp \
   /usr/local/include/mongocxx/v_noabi/mongocxx/config/prelude.hpp \
@@ -2884,7 +3210,6 @@ CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.o: ../BACKEND/Modu
   /usr/include/c++/11/bits/regex.tcc \
   /usr/include/c++/11/bits/regex_executor.h \
   /usr/include/c++/11/bits/regex_executor.tcc \
-  /usr/include/c++/11/variant \
   ../boost/include/boost/algorithm/string/predicate.hpp \
   ../boost/include/boost/algorithm/string/config.hpp \
   ../boost/include/boost/range/begin.hpp \
@@ -4250,6 +4575,169 @@ CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.o: ../BACKEN
   ../BACKEND/server.h \
   /usr/include/c++/11/unordered_set \
   /usr/include/c++/11/bits/unordered_set.h \
+  ../boost/include/boost/json.hpp \
+  ../boost/include/boost/json/detail/config.hpp \
+  ../boost/include/boost/config/auto_link.hpp \
+  ../boost/include/boost/json/array.hpp \
+  ../boost/include/boost/json/kind.hpp \
+  ../boost/include/boost/json/string_view.hpp \
+  ../boost/include/boost/core/detail/string_view.hpp \
+  ../boost/include/boost/core/detail/is_same.hpp \
+  ../boost/include/boost/json/pilfer.hpp \
+  ../boost/include/boost/json/storage_ptr.hpp \
+  ../boost/include/boost/json/memory_resource.hpp \
+  ../boost/include/boost/container/pmr/memory_resource.hpp \
+  ../boost/include/boost/container/detail/config_begin.hpp \
+  ../boost/include/boost/container/detail/workaround.hpp \
+  ../boost/include/boost/container/container_fwd.hpp \
+  ../boost/include/boost/container/detail/std_fwd.hpp \
+  ../boost/include/boost/move/detail/std_ns_begin.hpp \
+  ../boost/include/boost/move/detail/std_ns_end.hpp \
+  ../boost/include/boost/move/detail/type_traits.hpp \
+  ../boost/include/boost/move/detail/config_begin.hpp \
+  ../boost/include/boost/move/detail/workaround.hpp \
+  ../boost/include/boost/move/detail/meta_utils.hpp \
+  ../boost/include/boost/move/detail/meta_utils_core.hpp \
+  ../boost/include/boost/move/detail/addressof.hpp \
+  ../boost/include/boost/move/detail/config_end.hpp \
+  ../boost/include/boost/container/detail/placement_new.hpp \
+  ../boost/include/boost/container/detail/config_end.hpp \
+  ../boost/include/boost/container/pmr/polymorphic_allocator.hpp \
+  ../boost/include/boost/move/utility_core.hpp \
+  ../boost/include/boost/move/core.hpp \
+  ../boost/include/boost/container/detail/dispatch_uses_allocator.hpp \
+  ../boost/include/boost/container/allocator_traits.hpp \
+  ../boost/include/boost/container/detail/mpl.hpp \
+  ../boost/include/boost/intrusive/detail/mpl.hpp \
+  ../boost/include/boost/intrusive/detail/config_begin.hpp \
+  ../boost/include/boost/intrusive/detail/config_end.hpp \
+  ../boost/include/boost/container/detail/type_traits.hpp \
+  ../boost/include/boost/intrusive/pointer_traits.hpp \
+  ../boost/include/boost/intrusive/detail/workaround.hpp \
+  ../boost/include/boost/intrusive/pointer_rebind.hpp \
+  ../boost/include/boost/move/detail/pointer_element.hpp \
+  ../boost/include/boost/intrusive/detail/has_member_function_callable_with.hpp \
+  ../boost/include/boost/move/detail/fwd_macros.hpp \
+  ../boost/include/boost/container/uses_allocator.hpp \
+  ../boost/include/boost/container/uses_allocator_fwd.hpp \
+  ../boost/include/boost/container/detail/addressof.hpp \
+  ../boost/include/boost/container/detail/is_pair.hpp \
+  ../boost/include/boost/container/detail/variadic_templates_tools.hpp \
+  ../boost/include/boost/container/new_allocator.hpp \
+  ../boost/include/boost/container/throw_exception.hpp \
+  ../boost/include/boost/container/pmr/global_resource.hpp \
+  ../boost/include/boost/container/detail/auto_link.hpp \
+  ../boost/include/boost/json/detail/shared_resource.hpp \
+  ../boost/include/boost/json/detail/default_resource.hpp \
+  ../boost/include/boost/json/detail/array.hpp \
+  ../boost/include/boost/json/value.hpp \
+  ../boost/include/boost/json/object.hpp \
+  ../boost/include/boost/json/detail/object.hpp \
+  ../boost/include/boost/json/detail/value.hpp \
+  ../boost/include/boost/json/set_pointer_options.hpp \
+  ../boost/include/boost/json/string.hpp \
+  ../boost/include/boost/json/detail/digest.hpp \
+  ../boost/include/boost/json/detail/except.hpp \
+  ../boost/include/boost/json/error.hpp \
+  ../boost/include/boost/json/system_error.hpp \
+  ../boost/include/boost/json/fwd.hpp \
+  ../boost/include/boost/system/result.hpp \
+  ../boost/include/boost/variant2/variant.hpp \
+  ../boost/include/boost/mp11.hpp \
+  ../boost/include/boost/mp11/list.hpp \
+  ../boost/include/boost/mp11/integral.hpp \
+  ../boost/include/boost/mp11/version.hpp \
+  ../boost/include/boost/mp11/detail/mp_value.hpp \
+  ../boost/include/boost/mp11/detail/config.hpp \
+  ../boost/include/boost/mp11/detail/mp_list.hpp \
+  ../boost/include/boost/mp11/detail/mp_list_v.hpp \
+  ../boost/include/boost/mp11/detail/mp_is_list.hpp \
+  ../boost/include/boost/mp11/detail/mp_is_value_list.hpp \
+  ../boost/include/boost/mp11/detail/mp_front.hpp \
+  ../boost/include/boost/mp11/detail/mp_rename.hpp \
+  ../boost/include/boost/mp11/detail/mp_defer.hpp \
+  ../boost/include/boost/mp11/detail/mp_append.hpp \
+  ../boost/include/boost/mp11/detail/mp_count.hpp \
+  ../boost/include/boost/mp11/detail/mp_plus.hpp \
+  ../boost/include/boost/mp11/utility.hpp \
+  ../boost/include/boost/mp11/detail/mp_fold.hpp \
+  ../boost/include/boost/mp11/algorithm.hpp \
+  ../boost/include/boost/mp11/set.hpp \
+  ../boost/include/boost/mp11/function.hpp \
+  ../boost/include/boost/mp11/detail/mp_min_element.hpp \
+  ../boost/include/boost/mp11/detail/mp_void.hpp \
+  ../boost/include/boost/mp11/detail/mp_copy_if.hpp \
+  ../boost/include/boost/mp11/detail/mp_remove_if.hpp \
+  ../boost/include/boost/mp11/detail/mp_map_find.hpp \
+  ../boost/include/boost/mp11/detail/mp_with_index.hpp \
+  ../boost/include/boost/mp11/integer_sequence.hpp \
+  ../boost/include/boost/mp11/map.hpp \
+  ../boost/include/boost/mp11/bind.hpp \
+  ../boost/include/boost/mp11/tuple.hpp \
+  /usr/include/c++/11/typeindex \
+  ../boost/include/boost/json/impl/error.hpp \
+  ../boost/include/boost/json/detail/string_impl.hpp \
+  ../boost/include/boost/json/impl/string.hpp \
+  ../boost/include/boost/json/value_ref.hpp \
+  ../boost/include/boost/json/detail/impl/array.hpp \
+  ../boost/include/boost/json/impl/array.hpp \
+  ../boost/include/boost/json/impl/object.hpp \
+  ../boost/include/boost/json/impl/value.hpp \
+  ../boost/include/boost/json/impl/value_ref.hpp \
+  ../boost/include/boost/json/basic_parser.hpp \
+  ../boost/include/boost/json/parse_options.hpp \
+  ../boost/include/boost/json/detail/stack.hpp \
+  ../boost/include/boost/json/detail/stream.hpp \
+  ../boost/include/boost/json/detail/utf8.hpp \
+  ../boost/include/boost/json/detail/sbo_buffer.hpp \
+  ../boost/include/boost/json/conversion.hpp \
+  ../boost/include/boost/json/impl/conversion.hpp \
+  ../boost/include/boost/describe/enumerators.hpp \
+  ../boost/include/boost/describe/detail/void_t.hpp \
+  ../boost/include/boost/describe/detail/config.hpp \
+  ../boost/include/boost/describe/members.hpp \
+  ../boost/include/boost/describe/modifiers.hpp \
+  ../boost/include/boost/describe/bases.hpp \
+  ../boost/include/boost/describe/detail/cx_streq.hpp \
+  /usr/include/c++/11/variant \
+  ../boost/include/boost/json/monotonic_resource.hpp \
+  ../boost/include/boost/json/null_resource.hpp \
+  ../boost/include/boost/json/parse.hpp \
+  ../boost/include/boost/json/parse_into.hpp \
+  ../boost/include/boost/json/detail/parse_into.hpp \
+  ../boost/include/boost/describe/enum_from_string.hpp \
+  ../boost/include/boost/json/impl/parse_into.hpp \
+  ../boost/include/boost/json/basic_parser_impl.hpp \
+  ../boost/include/boost/json/detail/buffer.hpp \
+  ../boost/include/boost/json/detail/charconv/from_chars.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/config.hpp \
+  /usr/include/c++/11/cfloat \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
+  ../boost/include/boost/json/detail/charconv/detail/from_chars_result.hpp \
+  ../boost/include/boost/json/detail/charconv/chars_format.hpp \
+  ../boost/include/boost/json/detail/sse2.hpp \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
+  /usr/include/c++/11/stdlib.h \
+  ../boost/include/boost/json/parser.hpp \
+  ../boost/include/boost/json/detail/handler.hpp \
+  ../boost/include/boost/json/value_stack.hpp \
+  ../boost/include/boost/json/serialize.hpp \
+  ../boost/include/boost/json/serialize_options.hpp \
+  ../boost/include/boost/json/serializer.hpp \
+  ../boost/include/boost/json/detail/format.hpp \
+  ../boost/include/boost/json/static_resource.hpp \
+  ../boost/include/boost/json/stream_parser.hpp \
+  ../boost/include/boost/json/value_from.hpp \
+  ../boost/include/boost/json/detail/value_from.hpp \
+  ../boost/include/boost/describe/enum_to_string.hpp \
+  /usr/include/c++/11/optional \
+  ../boost/include/boost/json/value_to.hpp \
+  ../boost/include/boost/json/detail/value_to.hpp \
+  ../boost/include/boost/json/visit.hpp \
+  ../boost/include/boost/json/impl/visit.hpp \
   /usr/local/include/mongocxx/v_noabi/mongocxx/client.hpp \
   /usr/local/include/mongocxx/v_noabi/mongocxx/client-fwd.hpp \
   /usr/local/include/mongocxx/v_noabi/mongocxx/config/prelude.hpp \
@@ -5682,6 +6170,169 @@ CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o: ../BACKEND/User/User.cpp \
   /usr/include/c++/11/unordered_set \
   /usr/include/c++/11/bits/unordered_set.h \
   ../BACKEND/server.h \
+  ../boost/include/boost/json.hpp \
+  ../boost/include/boost/json/detail/config.hpp \
+  ../boost/include/boost/config/auto_link.hpp \
+  ../boost/include/boost/json/array.hpp \
+  ../boost/include/boost/json/kind.hpp \
+  ../boost/include/boost/json/string_view.hpp \
+  ../boost/include/boost/core/detail/string_view.hpp \
+  ../boost/include/boost/core/detail/is_same.hpp \
+  ../boost/include/boost/json/pilfer.hpp \
+  ../boost/include/boost/json/storage_ptr.hpp \
+  ../boost/include/boost/json/memory_resource.hpp \
+  ../boost/include/boost/container/pmr/memory_resource.hpp \
+  ../boost/include/boost/container/detail/config_begin.hpp \
+  ../boost/include/boost/container/detail/workaround.hpp \
+  ../boost/include/boost/container/container_fwd.hpp \
+  ../boost/include/boost/container/detail/std_fwd.hpp \
+  ../boost/include/boost/move/detail/std_ns_begin.hpp \
+  ../boost/include/boost/move/detail/std_ns_end.hpp \
+  ../boost/include/boost/move/detail/type_traits.hpp \
+  ../boost/include/boost/move/detail/config_begin.hpp \
+  ../boost/include/boost/move/detail/workaround.hpp \
+  ../boost/include/boost/move/detail/meta_utils.hpp \
+  ../boost/include/boost/move/detail/meta_utils_core.hpp \
+  ../boost/include/boost/move/detail/addressof.hpp \
+  ../boost/include/boost/move/detail/config_end.hpp \
+  ../boost/include/boost/container/detail/placement_new.hpp \
+  ../boost/include/boost/container/detail/config_end.hpp \
+  ../boost/include/boost/container/pmr/polymorphic_allocator.hpp \
+  ../boost/include/boost/move/utility_core.hpp \
+  ../boost/include/boost/move/core.hpp \
+  ../boost/include/boost/container/detail/dispatch_uses_allocator.hpp \
+  ../boost/include/boost/container/allocator_traits.hpp \
+  ../boost/include/boost/container/detail/mpl.hpp \
+  ../boost/include/boost/intrusive/detail/mpl.hpp \
+  ../boost/include/boost/intrusive/detail/config_begin.hpp \
+  ../boost/include/boost/intrusive/detail/config_end.hpp \
+  ../boost/include/boost/container/detail/type_traits.hpp \
+  ../boost/include/boost/intrusive/pointer_traits.hpp \
+  ../boost/include/boost/intrusive/detail/workaround.hpp \
+  ../boost/include/boost/intrusive/pointer_rebind.hpp \
+  ../boost/include/boost/move/detail/pointer_element.hpp \
+  ../boost/include/boost/intrusive/detail/has_member_function_callable_with.hpp \
+  ../boost/include/boost/move/detail/fwd_macros.hpp \
+  ../boost/include/boost/container/uses_allocator.hpp \
+  ../boost/include/boost/container/uses_allocator_fwd.hpp \
+  ../boost/include/boost/container/detail/addressof.hpp \
+  ../boost/include/boost/container/detail/is_pair.hpp \
+  ../boost/include/boost/container/detail/variadic_templates_tools.hpp \
+  ../boost/include/boost/container/new_allocator.hpp \
+  ../boost/include/boost/container/throw_exception.hpp \
+  ../boost/include/boost/container/pmr/global_resource.hpp \
+  ../boost/include/boost/container/detail/auto_link.hpp \
+  ../boost/include/boost/json/detail/shared_resource.hpp \
+  ../boost/include/boost/json/detail/default_resource.hpp \
+  ../boost/include/boost/json/detail/array.hpp \
+  ../boost/include/boost/json/value.hpp \
+  ../boost/include/boost/json/object.hpp \
+  ../boost/include/boost/json/detail/object.hpp \
+  ../boost/include/boost/json/detail/value.hpp \
+  ../boost/include/boost/json/set_pointer_options.hpp \
+  ../boost/include/boost/json/string.hpp \
+  ../boost/include/boost/json/detail/digest.hpp \
+  ../boost/include/boost/json/detail/except.hpp \
+  ../boost/include/boost/json/error.hpp \
+  ../boost/include/boost/json/system_error.hpp \
+  ../boost/include/boost/json/fwd.hpp \
+  ../boost/include/boost/system/result.hpp \
+  ../boost/include/boost/variant2/variant.hpp \
+  ../boost/include/boost/mp11.hpp \
+  ../boost/include/boost/mp11/list.hpp \
+  ../boost/include/boost/mp11/integral.hpp \
+  ../boost/include/boost/mp11/version.hpp \
+  ../boost/include/boost/mp11/detail/mp_value.hpp \
+  ../boost/include/boost/mp11/detail/config.hpp \
+  ../boost/include/boost/mp11/detail/mp_list.hpp \
+  ../boost/include/boost/mp11/detail/mp_list_v.hpp \
+  ../boost/include/boost/mp11/detail/mp_is_list.hpp \
+  ../boost/include/boost/mp11/detail/mp_is_value_list.hpp \
+  ../boost/include/boost/mp11/detail/mp_front.hpp \
+  ../boost/include/boost/mp11/detail/mp_rename.hpp \
+  ../boost/include/boost/mp11/detail/mp_defer.hpp \
+  ../boost/include/boost/mp11/detail/mp_append.hpp \
+  ../boost/include/boost/mp11/detail/mp_count.hpp \
+  ../boost/include/boost/mp11/detail/mp_plus.hpp \
+  ../boost/include/boost/mp11/utility.hpp \
+  ../boost/include/boost/mp11/detail/mp_fold.hpp \
+  ../boost/include/boost/mp11/algorithm.hpp \
+  ../boost/include/boost/mp11/set.hpp \
+  ../boost/include/boost/mp11/function.hpp \
+  ../boost/include/boost/mp11/detail/mp_min_element.hpp \
+  ../boost/include/boost/mp11/detail/mp_void.hpp \
+  ../boost/include/boost/mp11/detail/mp_copy_if.hpp \
+  ../boost/include/boost/mp11/detail/mp_remove_if.hpp \
+  ../boost/include/boost/mp11/detail/mp_map_find.hpp \
+  ../boost/include/boost/mp11/detail/mp_with_index.hpp \
+  ../boost/include/boost/mp11/integer_sequence.hpp \
+  ../boost/include/boost/mp11/map.hpp \
+  ../boost/include/boost/mp11/bind.hpp \
+  ../boost/include/boost/mp11/tuple.hpp \
+  /usr/include/c++/11/typeindex \
+  ../boost/include/boost/json/impl/error.hpp \
+  ../boost/include/boost/json/detail/string_impl.hpp \
+  ../boost/include/boost/json/impl/string.hpp \
+  ../boost/include/boost/json/value_ref.hpp \
+  ../boost/include/boost/json/detail/impl/array.hpp \
+  ../boost/include/boost/json/impl/array.hpp \
+  ../boost/include/boost/json/impl/object.hpp \
+  ../boost/include/boost/json/impl/value.hpp \
+  ../boost/include/boost/json/impl/value_ref.hpp \
+  ../boost/include/boost/json/basic_parser.hpp \
+  ../boost/include/boost/json/parse_options.hpp \
+  ../boost/include/boost/json/detail/stack.hpp \
+  ../boost/include/boost/json/detail/stream.hpp \
+  ../boost/include/boost/json/detail/utf8.hpp \
+  ../boost/include/boost/json/detail/sbo_buffer.hpp \
+  ../boost/include/boost/json/conversion.hpp \
+  ../boost/include/boost/json/impl/conversion.hpp \
+  ../boost/include/boost/describe/enumerators.hpp \
+  ../boost/include/boost/describe/detail/void_t.hpp \
+  ../boost/include/boost/describe/detail/config.hpp \
+  ../boost/include/boost/describe/members.hpp \
+  ../boost/include/boost/describe/modifiers.hpp \
+  ../boost/include/boost/describe/bases.hpp \
+  ../boost/include/boost/describe/detail/cx_streq.hpp \
+  /usr/include/c++/11/variant \
+  ../boost/include/boost/json/monotonic_resource.hpp \
+  ../boost/include/boost/json/null_resource.hpp \
+  ../boost/include/boost/json/parse.hpp \
+  ../boost/include/boost/json/parse_into.hpp \
+  ../boost/include/boost/json/detail/parse_into.hpp \
+  ../boost/include/boost/describe/enum_from_string.hpp \
+  ../boost/include/boost/json/impl/parse_into.hpp \
+  ../boost/include/boost/json/basic_parser_impl.hpp \
+  ../boost/include/boost/json/detail/buffer.hpp \
+  ../boost/include/boost/json/detail/charconv/from_chars.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/config.hpp \
+  /usr/include/c++/11/cfloat \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
+  ../boost/include/boost/json/detail/charconv/detail/from_chars_result.hpp \
+  ../boost/include/boost/json/detail/charconv/chars_format.hpp \
+  ../boost/include/boost/json/detail/sse2.hpp \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
+  /usr/include/c++/11/stdlib.h \
+  ../boost/include/boost/json/parser.hpp \
+  ../boost/include/boost/json/detail/handler.hpp \
+  ../boost/include/boost/json/value_stack.hpp \
+  ../boost/include/boost/json/serialize.hpp \
+  ../boost/include/boost/json/serialize_options.hpp \
+  ../boost/include/boost/json/serializer.hpp \
+  ../boost/include/boost/json/detail/format.hpp \
+  ../boost/include/boost/json/static_resource.hpp \
+  ../boost/include/boost/json/stream_parser.hpp \
+  ../boost/include/boost/json/value_from.hpp \
+  ../boost/include/boost/json/detail/value_from.hpp \
+  ../boost/include/boost/describe/enum_to_string.hpp \
+  /usr/include/c++/11/optional \
+  ../boost/include/boost/json/value_to.hpp \
+  ../boost/include/boost/json/detail/value_to.hpp \
+  ../boost/include/boost/json/visit.hpp \
+  ../boost/include/boost/json/impl/visit.hpp \
   /usr/local/include/mongocxx/v_noabi/mongocxx/client.hpp \
   /usr/local/include/mongocxx/v_noabi/mongocxx/client-fwd.hpp \
   /usr/local/include/mongocxx/v_noabi/mongocxx/config/prelude.hpp \
@@ -5945,7 +6596,6 @@ CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o: ../BACKEND/User/User.cpp \
   /usr/include/c++/11/bits/regex.tcc \
   /usr/include/c++/11/bits/regex_executor.h \
   /usr/include/c++/11/bits/regex_executor.tcc \
-  /usr/include/c++/11/variant \
   ../boost/include/boost/algorithm/string/predicate.hpp \
   ../boost/include/boost/algorithm/string/config.hpp \
   ../boost/include/boost/range/begin.hpp \
@@ -6123,8 +6773,8 @@ CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o: ../BACKEND/User/User.cpp \
   ../boost/include/boost/algorithm/string/detail/finder.hpp \
   ../boost/include/boost/algorithm/string/detail/predicate.hpp \
   ../BACKEND/Helper/md5.h \
-  ../jwt-cpp-0.7.0/include/jwt-cpp/jwt.h \
-  ../jwt-cpp-0.7.0/include/jwt-cpp/base.h \
+  ../jwt/jwt.h \
+  ../jwt/base.h \
   /usr/include/openssl/ec.h \
   /usr/include/openssl/macros.h \
   /usr/include/x86_64-linux-gnu/openssl/opensslconf.h \
@@ -6137,7 +6787,6 @@ CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o: ../BACKEND/User/User.cpp \
   /usr/include/openssl/asn1.h \
   /usr/include/openssl/bio.h \
   /usr/include/openssl/crypto.h \
-  /usr/include/c++/11/stdlib.h \
   /usr/include/openssl/cryptoerr.h \
   /usr/include/openssl/symhacks.h \
   /usr/include/openssl/cryptoerr_legacy.h \
@@ -6202,170 +6851,10 @@ CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o: ../BACKEND/User/User.cpp \
   /usr/include/c++/11/bits/stl_multiset.h \
   /usr/include/c++/11/experimental/type_traits \
   /usr/include/c++/11/experimental/bits/lfts_config.h \
-  ../jwt-cpp-0.7.0/include/jwt-cpp/defaults.h \
-  ../jwt-cpp-0.7.0/include/jwt-cpp/traits.h \
+  ../jwt/defaults.h \
+  ../jwt/traits.h \
+  ../jwt/jwt.h \
   ../boost/include/boost/json/src.hpp \
-  ../boost/include/boost/json.hpp \
-  ../boost/include/boost/json/detail/config.hpp \
-  ../boost/include/boost/json/array.hpp \
-  ../boost/include/boost/json/kind.hpp \
-  ../boost/include/boost/json/string_view.hpp \
-  ../boost/include/boost/core/detail/string_view.hpp \
-  ../boost/include/boost/core/detail/is_same.hpp \
-  ../boost/include/boost/json/pilfer.hpp \
-  ../boost/include/boost/json/storage_ptr.hpp \
-  ../boost/include/boost/json/memory_resource.hpp \
-  ../boost/include/boost/container/pmr/memory_resource.hpp \
-  ../boost/include/boost/container/detail/config_begin.hpp \
-  ../boost/include/boost/container/detail/workaround.hpp \
-  ../boost/include/boost/container/container_fwd.hpp \
-  ../boost/include/boost/container/detail/std_fwd.hpp \
-  ../boost/include/boost/move/detail/std_ns_begin.hpp \
-  ../boost/include/boost/move/detail/std_ns_end.hpp \
-  ../boost/include/boost/move/detail/type_traits.hpp \
-  ../boost/include/boost/move/detail/config_begin.hpp \
-  ../boost/include/boost/move/detail/workaround.hpp \
-  ../boost/include/boost/move/detail/meta_utils.hpp \
-  ../boost/include/boost/move/detail/meta_utils_core.hpp \
-  ../boost/include/boost/move/detail/addressof.hpp \
-  ../boost/include/boost/move/detail/config_end.hpp \
-  ../boost/include/boost/container/detail/placement_new.hpp \
-  ../boost/include/boost/container/detail/config_end.hpp \
-  ../boost/include/boost/container/pmr/polymorphic_allocator.hpp \
-  ../boost/include/boost/move/utility_core.hpp \
-  ../boost/include/boost/move/core.hpp \
-  ../boost/include/boost/container/detail/dispatch_uses_allocator.hpp \
-  ../boost/include/boost/container/allocator_traits.hpp \
-  ../boost/include/boost/container/detail/mpl.hpp \
-  ../boost/include/boost/intrusive/detail/mpl.hpp \
-  ../boost/include/boost/intrusive/detail/config_begin.hpp \
-  ../boost/include/boost/intrusive/detail/config_end.hpp \
-  ../boost/include/boost/container/detail/type_traits.hpp \
-  ../boost/include/boost/intrusive/pointer_traits.hpp \
-  ../boost/include/boost/intrusive/detail/workaround.hpp \
-  ../boost/include/boost/intrusive/pointer_rebind.hpp \
-  ../boost/include/boost/move/detail/pointer_element.hpp \
-  ../boost/include/boost/intrusive/detail/has_member_function_callable_with.hpp \
-  ../boost/include/boost/move/detail/fwd_macros.hpp \
-  ../boost/include/boost/container/uses_allocator.hpp \
-  ../boost/include/boost/container/uses_allocator_fwd.hpp \
-  ../boost/include/boost/container/detail/addressof.hpp \
-  ../boost/include/boost/container/detail/is_pair.hpp \
-  ../boost/include/boost/container/detail/variadic_templates_tools.hpp \
-  ../boost/include/boost/container/new_allocator.hpp \
-  ../boost/include/boost/container/throw_exception.hpp \
-  ../boost/include/boost/container/pmr/global_resource.hpp \
-  ../boost/include/boost/container/detail/auto_link.hpp \
-  ../boost/include/boost/config/auto_link.hpp \
-  ../boost/include/boost/json/detail/shared_resource.hpp \
-  ../boost/include/boost/json/detail/default_resource.hpp \
-  ../boost/include/boost/json/detail/array.hpp \
-  ../boost/include/boost/json/value.hpp \
-  ../boost/include/boost/json/object.hpp \
-  ../boost/include/boost/json/detail/object.hpp \
-  ../boost/include/boost/json/detail/value.hpp \
-  ../boost/include/boost/json/set_pointer_options.hpp \
-  ../boost/include/boost/json/string.hpp \
-  ../boost/include/boost/json/detail/digest.hpp \
-  ../boost/include/boost/json/detail/except.hpp \
-  ../boost/include/boost/json/error.hpp \
-  ../boost/include/boost/json/system_error.hpp \
-  ../boost/include/boost/json/fwd.hpp \
-  ../boost/include/boost/system/result.hpp \
-  ../boost/include/boost/variant2/variant.hpp \
-  ../boost/include/boost/mp11.hpp \
-  ../boost/include/boost/mp11/list.hpp \
-  ../boost/include/boost/mp11/integral.hpp \
-  ../boost/include/boost/mp11/version.hpp \
-  ../boost/include/boost/mp11/detail/mp_value.hpp \
-  ../boost/include/boost/mp11/detail/config.hpp \
-  ../boost/include/boost/mp11/detail/mp_list.hpp \
-  ../boost/include/boost/mp11/detail/mp_list_v.hpp \
-  ../boost/include/boost/mp11/detail/mp_is_list.hpp \
-  ../boost/include/boost/mp11/detail/mp_is_value_list.hpp \
-  ../boost/include/boost/mp11/detail/mp_front.hpp \
-  ../boost/include/boost/mp11/detail/mp_rename.hpp \
-  ../boost/include/boost/mp11/detail/mp_defer.hpp \
-  ../boost/include/boost/mp11/detail/mp_append.hpp \
-  ../boost/include/boost/mp11/detail/mp_count.hpp \
-  ../boost/include/boost/mp11/detail/mp_plus.hpp \
-  ../boost/include/boost/mp11/utility.hpp \
-  ../boost/include/boost/mp11/detail/mp_fold.hpp \
-  ../boost/include/boost/mp11/algorithm.hpp \
-  ../boost/include/boost/mp11/set.hpp \
-  ../boost/include/boost/mp11/function.hpp \
-  ../boost/include/boost/mp11/detail/mp_min_element.hpp \
-  ../boost/include/boost/mp11/detail/mp_void.hpp \
-  ../boost/include/boost/mp11/detail/mp_copy_if.hpp \
-  ../boost/include/boost/mp11/detail/mp_remove_if.hpp \
-  ../boost/include/boost/mp11/detail/mp_map_find.hpp \
-  ../boost/include/boost/mp11/detail/mp_with_index.hpp \
-  ../boost/include/boost/mp11/integer_sequence.hpp \
-  ../boost/include/boost/mp11/map.hpp \
-  ../boost/include/boost/mp11/bind.hpp \
-  ../boost/include/boost/mp11/tuple.hpp \
-  /usr/include/c++/11/typeindex \
-  ../boost/include/boost/json/impl/error.hpp \
-  ../boost/include/boost/json/detail/string_impl.hpp \
-  ../boost/include/boost/json/impl/string.hpp \
-  ../boost/include/boost/json/value_ref.hpp \
-  ../boost/include/boost/json/detail/impl/array.hpp \
-  ../boost/include/boost/json/impl/array.hpp \
-  ../boost/include/boost/json/impl/object.hpp \
-  ../boost/include/boost/json/impl/value.hpp \
-  ../boost/include/boost/json/impl/value_ref.hpp \
-  ../boost/include/boost/json/basic_parser.hpp \
-  ../boost/include/boost/json/parse_options.hpp \
-  ../boost/include/boost/json/detail/stack.hpp \
-  ../boost/include/boost/json/detail/stream.hpp \
-  ../boost/include/boost/json/detail/utf8.hpp \
-  ../boost/include/boost/json/detail/sbo_buffer.hpp \
-  ../boost/include/boost/json/conversion.hpp \
-  ../boost/include/boost/json/impl/conversion.hpp \
-  ../boost/include/boost/describe/enumerators.hpp \
-  ../boost/include/boost/describe/detail/void_t.hpp \
-  ../boost/include/boost/describe/detail/config.hpp \
-  ../boost/include/boost/describe/members.hpp \
-  ../boost/include/boost/describe/modifiers.hpp \
-  ../boost/include/boost/describe/bases.hpp \
-  ../boost/include/boost/describe/detail/cx_streq.hpp \
-  ../boost/include/boost/json/monotonic_resource.hpp \
-  ../boost/include/boost/json/null_resource.hpp \
-  ../boost/include/boost/json/parse.hpp \
-  ../boost/include/boost/json/parse_into.hpp \
-  ../boost/include/boost/json/detail/parse_into.hpp \
-  ../boost/include/boost/describe/enum_from_string.hpp \
-  ../boost/include/boost/json/impl/parse_into.hpp \
-  ../boost/include/boost/json/basic_parser_impl.hpp \
-  ../boost/include/boost/json/detail/buffer.hpp \
-  ../boost/include/boost/json/detail/charconv/from_chars.hpp \
-  ../boost/include/boost/json/detail/charconv/detail/config.hpp \
-  /usr/include/c++/11/cfloat \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
-  ../boost/include/boost/json/detail/charconv/detail/from_chars_result.hpp \
-  ../boost/include/boost/json/detail/charconv/chars_format.hpp \
-  ../boost/include/boost/json/detail/sse2.hpp \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
-  /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
-  ../boost/include/boost/json/parser.hpp \
-  ../boost/include/boost/json/detail/handler.hpp \
-  ../boost/include/boost/json/value_stack.hpp \
-  ../boost/include/boost/json/serialize.hpp \
-  ../boost/include/boost/json/serialize_options.hpp \
-  ../boost/include/boost/json/serializer.hpp \
-  ../boost/include/boost/json/detail/format.hpp \
-  ../boost/include/boost/json/static_resource.hpp \
-  ../boost/include/boost/json/stream_parser.hpp \
-  ../boost/include/boost/json/value_from.hpp \
-  ../boost/include/boost/json/detail/value_from.hpp \
-  ../boost/include/boost/describe/enum_to_string.hpp \
-  /usr/include/c++/11/optional \
-  ../boost/include/boost/json/value_to.hpp \
-  ../boost/include/boost/json/detail/value_to.hpp \
-  ../boost/include/boost/json/visit.hpp \
-  ../boost/include/boost/json/impl/visit.hpp \
   ../boost/include/boost/json/impl/array.ipp \
   ../boost/include/boost/container_hash/hash.hpp \
   ../boost/include/boost/container_hash/hash_fwd.hpp \
@@ -7872,6 +8361,169 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
   ../BACKEND/Module/Module.h \
   ../BACKEND/Module/Billing/Billing.h \
   ../BACKEND/server.h \
+  ../boost/include/boost/json.hpp \
+  ../boost/include/boost/json/detail/config.hpp \
+  ../boost/include/boost/config/auto_link.hpp \
+  ../boost/include/boost/json/array.hpp \
+  ../boost/include/boost/json/kind.hpp \
+  ../boost/include/boost/json/string_view.hpp \
+  ../boost/include/boost/core/detail/string_view.hpp \
+  ../boost/include/boost/core/detail/is_same.hpp \
+  ../boost/include/boost/json/pilfer.hpp \
+  ../boost/include/boost/json/storage_ptr.hpp \
+  ../boost/include/boost/json/memory_resource.hpp \
+  ../boost/include/boost/container/pmr/memory_resource.hpp \
+  ../boost/include/boost/container/detail/config_begin.hpp \
+  ../boost/include/boost/container/detail/workaround.hpp \
+  ../boost/include/boost/container/container_fwd.hpp \
+  ../boost/include/boost/container/detail/std_fwd.hpp \
+  ../boost/include/boost/move/detail/std_ns_begin.hpp \
+  ../boost/include/boost/move/detail/std_ns_end.hpp \
+  ../boost/include/boost/move/detail/type_traits.hpp \
+  ../boost/include/boost/move/detail/config_begin.hpp \
+  ../boost/include/boost/move/detail/workaround.hpp \
+  ../boost/include/boost/move/detail/meta_utils.hpp \
+  ../boost/include/boost/move/detail/meta_utils_core.hpp \
+  ../boost/include/boost/move/detail/addressof.hpp \
+  ../boost/include/boost/move/detail/config_end.hpp \
+  ../boost/include/boost/container/detail/placement_new.hpp \
+  ../boost/include/boost/container/detail/config_end.hpp \
+  ../boost/include/boost/container/pmr/polymorphic_allocator.hpp \
+  ../boost/include/boost/move/utility_core.hpp \
+  ../boost/include/boost/move/core.hpp \
+  ../boost/include/boost/container/detail/dispatch_uses_allocator.hpp \
+  ../boost/include/boost/container/allocator_traits.hpp \
+  ../boost/include/boost/container/detail/mpl.hpp \
+  ../boost/include/boost/intrusive/detail/mpl.hpp \
+  ../boost/include/boost/intrusive/detail/config_begin.hpp \
+  ../boost/include/boost/intrusive/detail/config_end.hpp \
+  ../boost/include/boost/container/detail/type_traits.hpp \
+  ../boost/include/boost/intrusive/pointer_traits.hpp \
+  ../boost/include/boost/intrusive/detail/workaround.hpp \
+  ../boost/include/boost/intrusive/pointer_rebind.hpp \
+  ../boost/include/boost/move/detail/pointer_element.hpp \
+  ../boost/include/boost/intrusive/detail/has_member_function_callable_with.hpp \
+  ../boost/include/boost/move/detail/fwd_macros.hpp \
+  ../boost/include/boost/container/uses_allocator.hpp \
+  ../boost/include/boost/container/uses_allocator_fwd.hpp \
+  ../boost/include/boost/container/detail/addressof.hpp \
+  ../boost/include/boost/container/detail/is_pair.hpp \
+  ../boost/include/boost/container/detail/variadic_templates_tools.hpp \
+  ../boost/include/boost/container/new_allocator.hpp \
+  ../boost/include/boost/container/throw_exception.hpp \
+  ../boost/include/boost/container/pmr/global_resource.hpp \
+  ../boost/include/boost/container/detail/auto_link.hpp \
+  ../boost/include/boost/json/detail/shared_resource.hpp \
+  ../boost/include/boost/json/detail/default_resource.hpp \
+  ../boost/include/boost/json/detail/array.hpp \
+  ../boost/include/boost/json/value.hpp \
+  ../boost/include/boost/json/object.hpp \
+  ../boost/include/boost/json/detail/object.hpp \
+  ../boost/include/boost/json/detail/value.hpp \
+  ../boost/include/boost/json/set_pointer_options.hpp \
+  ../boost/include/boost/json/string.hpp \
+  ../boost/include/boost/json/detail/digest.hpp \
+  ../boost/include/boost/json/detail/except.hpp \
+  ../boost/include/boost/json/error.hpp \
+  ../boost/include/boost/json/system_error.hpp \
+  ../boost/include/boost/json/fwd.hpp \
+  ../boost/include/boost/system/result.hpp \
+  ../boost/include/boost/variant2/variant.hpp \
+  ../boost/include/boost/mp11.hpp \
+  ../boost/include/boost/mp11/list.hpp \
+  ../boost/include/boost/mp11/integral.hpp \
+  ../boost/include/boost/mp11/version.hpp \
+  ../boost/include/boost/mp11/detail/mp_value.hpp \
+  ../boost/include/boost/mp11/detail/config.hpp \
+  ../boost/include/boost/mp11/detail/mp_list.hpp \
+  ../boost/include/boost/mp11/detail/mp_list_v.hpp \
+  ../boost/include/boost/mp11/detail/mp_is_list.hpp \
+  ../boost/include/boost/mp11/detail/mp_is_value_list.hpp \
+  ../boost/include/boost/mp11/detail/mp_front.hpp \
+  ../boost/include/boost/mp11/detail/mp_rename.hpp \
+  ../boost/include/boost/mp11/detail/mp_defer.hpp \
+  ../boost/include/boost/mp11/detail/mp_append.hpp \
+  ../boost/include/boost/mp11/detail/mp_count.hpp \
+  ../boost/include/boost/mp11/detail/mp_plus.hpp \
+  ../boost/include/boost/mp11/utility.hpp \
+  ../boost/include/boost/mp11/detail/mp_fold.hpp \
+  ../boost/include/boost/mp11/algorithm.hpp \
+  ../boost/include/boost/mp11/set.hpp \
+  ../boost/include/boost/mp11/function.hpp \
+  ../boost/include/boost/mp11/detail/mp_min_element.hpp \
+  ../boost/include/boost/mp11/detail/mp_void.hpp \
+  ../boost/include/boost/mp11/detail/mp_copy_if.hpp \
+  ../boost/include/boost/mp11/detail/mp_remove_if.hpp \
+  ../boost/include/boost/mp11/detail/mp_map_find.hpp \
+  ../boost/include/boost/mp11/detail/mp_with_index.hpp \
+  ../boost/include/boost/mp11/integer_sequence.hpp \
+  ../boost/include/boost/mp11/map.hpp \
+  ../boost/include/boost/mp11/bind.hpp \
+  ../boost/include/boost/mp11/tuple.hpp \
+  /usr/include/c++/11/typeindex \
+  ../boost/include/boost/json/impl/error.hpp \
+  ../boost/include/boost/json/detail/string_impl.hpp \
+  ../boost/include/boost/json/impl/string.hpp \
+  ../boost/include/boost/json/value_ref.hpp \
+  ../boost/include/boost/json/detail/impl/array.hpp \
+  ../boost/include/boost/json/impl/array.hpp \
+  ../boost/include/boost/json/impl/object.hpp \
+  ../boost/include/boost/json/impl/value.hpp \
+  ../boost/include/boost/json/impl/value_ref.hpp \
+  ../boost/include/boost/json/basic_parser.hpp \
+  ../boost/include/boost/json/parse_options.hpp \
+  ../boost/include/boost/json/detail/stack.hpp \
+  ../boost/include/boost/json/detail/stream.hpp \
+  ../boost/include/boost/json/detail/utf8.hpp \
+  ../boost/include/boost/json/detail/sbo_buffer.hpp \
+  ../boost/include/boost/json/conversion.hpp \
+  ../boost/include/boost/json/impl/conversion.hpp \
+  ../boost/include/boost/describe/enumerators.hpp \
+  ../boost/include/boost/describe/detail/void_t.hpp \
+  ../boost/include/boost/describe/detail/config.hpp \
+  ../boost/include/boost/describe/members.hpp \
+  ../boost/include/boost/describe/modifiers.hpp \
+  ../boost/include/boost/describe/bases.hpp \
+  ../boost/include/boost/describe/detail/cx_streq.hpp \
+  /usr/include/c++/11/variant \
+  ../boost/include/boost/json/monotonic_resource.hpp \
+  ../boost/include/boost/json/null_resource.hpp \
+  ../boost/include/boost/json/parse.hpp \
+  ../boost/include/boost/json/parse_into.hpp \
+  ../boost/include/boost/json/detail/parse_into.hpp \
+  ../boost/include/boost/describe/enum_from_string.hpp \
+  ../boost/include/boost/json/impl/parse_into.hpp \
+  ../boost/include/boost/json/basic_parser_impl.hpp \
+  ../boost/include/boost/json/detail/buffer.hpp \
+  ../boost/include/boost/json/detail/charconv/from_chars.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/config.hpp \
+  /usr/include/c++/11/cfloat \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/float.h \
+  ../boost/include/boost/json/detail/charconv/detail/from_chars_result.hpp \
+  ../boost/include/boost/json/detail/charconv/chars_format.hpp \
+  ../boost/include/boost/json/detail/sse2.hpp \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
+  /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
+  /usr/include/c++/11/stdlib.h \
+  ../boost/include/boost/json/parser.hpp \
+  ../boost/include/boost/json/detail/handler.hpp \
+  ../boost/include/boost/json/value_stack.hpp \
+  ../boost/include/boost/json/serialize.hpp \
+  ../boost/include/boost/json/serialize_options.hpp \
+  ../boost/include/boost/json/serializer.hpp \
+  ../boost/include/boost/json/detail/format.hpp \
+  ../boost/include/boost/json/static_resource.hpp \
+  ../boost/include/boost/json/stream_parser.hpp \
+  ../boost/include/boost/json/value_from.hpp \
+  ../boost/include/boost/json/detail/value_from.hpp \
+  ../boost/include/boost/describe/enum_to_string.hpp \
+  /usr/include/c++/11/optional \
+  ../boost/include/boost/json/value_to.hpp \
+  ../boost/include/boost/json/detail/value_to.hpp \
+  ../boost/include/boost/json/visit.hpp \
+  ../boost/include/boost/json/impl/visit.hpp \
   ../BACKEND/Module/Request/RequestManagement.h \
   ../BACKEND/server.h \
   ../BACKEND/Module/Inventory/Inventory.h \
@@ -7945,185 +8597,9 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/container_hash/is_contiguous_range.hpp:
 
-../boost/include/boost/json/visit.hpp:
+../jwt/traits.h:
 
-../boost/include/boost/json/detail/value_to.hpp:
-
-../boost/include/boost/json/value_to.hpp:
-
-/usr/include/c++/11/optional:
-
-../boost/include/boost/describe/enum_to_string.hpp:
-
-../boost/include/boost/json/detail/value_from.hpp:
-
-../boost/include/boost/json/stream_parser.hpp:
-
-../boost/include/boost/json/serialize.hpp:
-
-../boost/include/boost/json/detail/handler.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h:
-
-../boost/include/boost/json/detail/charconv/detail/from_chars_result.hpp:
-
-/usr/include/c++/11/cfloat:
-
-../boost/include/boost/json/detail/charconv/detail/config.hpp:
-
-../boost/include/boost/json/detail/charconv/from_chars.hpp:
-
-../boost/include/boost/json/impl/parse_into.hpp:
-
-../boost/include/boost/describe/detail/cx_streq.hpp:
-
-../boost/include/boost/describe/bases.hpp:
-
-../boost/include/boost/describe/modifiers.hpp:
-
-../boost/include/boost/describe/detail/config.hpp:
-
-../boost/include/boost/json/conversion.hpp:
-
-../boost/include/boost/json/detail/utf8.hpp:
-
-../boost/include/boost/json/detail/stream.hpp:
-
-../boost/include/boost/json/parse_options.hpp:
-
-../boost/include/boost/json/impl/value.hpp:
-
-../boost/include/boost/json/value_ref.hpp:
-
-../boost/include/boost/json/impl/string.hpp:
-
-../boost/include/boost/json/impl/error.hpp:
-
-../boost/include/boost/mp11/map.hpp:
-
-../boost/include/boost/mp11/integer_sequence.hpp:
-
-../boost/include/boost/mp11/detail/mp_with_index.hpp:
-
-../boost/include/boost/mp11/detail/mp_map_find.hpp:
-
-../boost/include/boost/mp11/detail/mp_remove_if.hpp:
-
-../boost/include/boost/mp11/detail/mp_void.hpp:
-
-../boost/include/boost/mp11/detail/mp_min_element.hpp:
-
-../boost/include/boost/mp11/detail/mp_fold.hpp:
-
-../boost/include/boost/mp11/detail/mp_append.hpp:
-
-../boost/include/boost/mp11/detail/mp_front.hpp:
-
-../boost/include/boost/mp11/detail/mp_is_list.hpp:
-
-../boost/include/boost/mp11/detail/mp_list_v.hpp:
-
-../boost/include/boost/mp11/detail/mp_list.hpp:
-
-../boost/include/boost/mp11/detail/mp_value.hpp:
-
-../boost/include/boost/mp11/version.hpp:
-
-../boost/include/boost/mp11/integral.hpp:
-
-../boost/include/boost/mp11/list.hpp:
-
-../boost/include/boost/variant2/variant.hpp:
-
-../boost/include/boost/system/result.hpp:
-
-../boost/include/boost/json/fwd.hpp:
-
-../boost/include/boost/json/detail/digest.hpp:
-
-../boost/include/boost/json/string.hpp:
-
-../boost/include/boost/json/set_pointer_options.hpp:
-
-../boost/include/boost/json/detail/object.hpp:
-
-../boost/include/boost/json/object.hpp:
-
-../boost/include/boost/json/detail/default_resource.hpp:
-
-../boost/include/boost/json/detail/shared_resource.hpp:
-
-../boost/include/boost/container/pmr/global_resource.hpp:
-
-../boost/include/boost/json/detail/array.hpp:
-
-../boost/include/boost/container/new_allocator.hpp:
-
-../boost/include/boost/container/detail/variadic_templates_tools.hpp:
-
-../boost/include/boost/container/detail/is_pair.hpp:
-
-../boost/include/boost/container/uses_allocator.hpp:
-
-../boost/include/boost/intrusive/detail/has_member_function_callable_with.hpp:
-
-../boost/include/boost/move/detail/pointer_element.hpp:
-
-../boost/include/boost/intrusive/pointer_rebind.hpp:
-
-../boost/include/boost/intrusive/pointer_traits.hpp:
-
-../boost/include/boost/json/detail/impl/array.hpp:
-
-../boost/include/boost/intrusive/detail/config_begin.hpp:
-
-../boost/include/boost/container/detail/dispatch_uses_allocator.hpp:
-
-../boost/include/boost/move/core.hpp:
-
-../boost/include/boost/container/pmr/polymorphic_allocator.hpp:
-
-../boost/include/boost/container/detail/config_end.hpp:
-
-../boost/include/boost/move/detail/addressof.hpp:
-
-../boost/include/boost/move/detail/meta_utils_core.hpp:
-
-../boost/include/boost/move/detail/meta_utils.hpp:
-
-../boost/include/boost/move/detail/config_begin.hpp:
-
-../boost/include/boost/move/detail/std_ns_end.hpp:
-
-../boost/include/boost/move/detail/std_ns_begin.hpp:
-
-/usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h:
-
-../boost/include/boost/container/detail/std_fwd.hpp:
-
-../boost/include/boost/container/detail/workaround.hpp:
-
-../boost/include/boost/container/detail/config_begin.hpp:
-
-../boost/include/boost/json/memory_resource.hpp:
-
-../boost/include/boost/json/pilfer.hpp:
-
-../boost/include/boost/core/detail/is_same.hpp:
-
-../boost/include/boost/core/detail/string_view.hpp:
-
-../boost/include/boost/json/string_view.hpp:
-
-../boost/include/boost/json/kind.hpp:
-
-../boost/include/boost/json/array.hpp:
-
-../boost/include/boost/json/detail/config.hpp:
-
-../jwt-cpp-0.7.0/include/jwt-cpp/defaults.h:
+../jwt/defaults.h:
 
 /usr/include/c++/11/experimental/bits/lfts_config.h:
 
@@ -8134,10 +8610,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 /usr/include/openssl/dtls1.h:
 
 /usr/include/openssl/ssl3.h:
-
-../boost/include/boost/json/detail/value.hpp:
-
-/usr/include/openssl/ct.h:
 
 /usr/include/openssl/comperr.h:
 
@@ -8161,8 +8633,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 /usr/include/openssl/rsa.h:
 
-/usr/include/openssl/buffererr.h:
-
 ../boost/include/boost/core/bit.hpp:
 
 /usr/include/openssl/objects.h:
@@ -8185,13 +8655,7 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 /usr/include/openssl/cryptoerr.h:
 
-/usr/include/c++/11/stdlib.h:
-
 /usr/include/openssl/safestack.h:
-
-../boost/include/boost/mp11/detail/mp_plus.hpp:
-
-/usr/include/openssl/e_os2.h:
 
 /usr/include/openssl/types.h:
 
@@ -8199,11 +8663,9 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 /usr/include/openssl/ec.h:
 
-../jwt-cpp-0.7.0/include/jwt-cpp/base.h:
+/usr/include/openssl/buffererr.h:
 
-../boost/include/boost/container/uses_allocator_fwd.hpp:
-
-../BACKEND/Helper/md5.h:
+../jwt/base.h:
 
 ../BACKEND/User/User.cpp:
 
@@ -8217,10 +8679,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/algorithm/string/finder.hpp:
 
-../boost/include/boost/json/detail/charconv/chars_format.hpp:
-
-../boost/include/boost/algorithm/string/compare.hpp:
-
 ../boost/include/boost/range/iterator_range_io.hpp:
 
 ../boost/include/boost/type_traits/negation.hpp:
@@ -8231,27 +8689,13 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/type_traits/detail/has_binary_operator.hpp:
 
-../boost/include/boost/describe/detail/void_t.hpp:
-
-../boost/include/boost/type_traits/has_plus.hpp:
-
 ../boost/include/boost/next_prior.hpp:
 
 ../boost/include/boost/range/detail/safe_bool.hpp:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/float.h:
-
-../boost/include/boost/container/detail/auto_link.hpp:
-
-../boost/include/boost/range/algorithm/equal.hpp:
-
 /usr/include/openssl/bnerr.h:
 
 ../boost/include/boost/range/rend.hpp:
-
-../boost/include/boost/config/auto_link.hpp:
-
-../boost/include/boost/iterator/iterator_adaptor.hpp:
 
 ../boost/include/boost/range/rbegin.hpp:
 
@@ -8307,10 +8751,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/range/has_range_iterator.hpp:
 
-../boost/include/boost/json/impl/object.hpp:
-
-../boost/include/boost/range/functions.hpp:
-
 ../boost/include/boost/mpl/aux_/preprocessed/gcc/apply.hpp:
 
 ../boost/include/boost/mpl/aux_/preprocessed/gcc/full_lambda.hpp:
@@ -8359,10 +8799,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/type_traits/add_reference.hpp:
 
-../boost/include/boost/json/detail/except.hpp:
-
-../boost/include/boost/type_traits/add_rvalue_reference.hpp:
-
 ../boost/include/boost/type_traits/declval.hpp:
 
 ../boost/include/boost/type_traits/is_convertible.hpp:
@@ -8374,10 +8810,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 ../boost/include/boost/concept/detail/backward_compatibility.hpp:
 
 ../boost/include/boost/iterator/iterator_facade.hpp:
-
-../boost/include/boost/container/detail/type_traits.hpp:
-
-../boost/include/boost/range/iterator_range_core.hpp:
 
 ../boost/include/boost/range/as_literal.hpp:
 
@@ -8405,19 +8837,11 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/range/detail/extract_optional_type.hpp:
 
-../boost/include/boost/json/value_from.hpp:
-
-/usr/include/openssl/ssl2.h:
-
-../boost/include/boost/range/mutable_iterator.hpp:
-
 ../boost/include/boost/range/iterator.hpp:
 
 ../boost/include/boost/range/config.hpp:
 
 ../boost/include/boost/range/begin.hpp:
-
-/usr/include/c++/11/variant:
 
 /usr/include/c++/11/bits/regex_executor.tcc:
 
@@ -8525,10 +8949,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/events/command_succeeded_event.hpp:
 
-/usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/events/command_failed_event-fwd.hpp:
-
 /usr/local/include/mongocxx/v_noabi/mongocxx/events/command_failed_event.hpp:
 
 ../boost/include/boost/json/impl/string.ipp:
@@ -8553,17 +8973,9 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/result/update-fwd.hpp:
 
-../boost/include/boost/json/error.hpp:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/result/update.hpp:
-
 /usr/local/include/mongocxx/v_noabi/mongocxx/result/insert_many-fwd.hpp:
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/result/delete-fwd.hpp:
-
-../boost/include/boost/mp11/detail/mp_rename.hpp:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/result/delete.hpp:
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/options/update-fwd.hpp:
 
@@ -8585,12 +8997,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/options/find_one_and_replace.hpp:
 
-../boost/include/boost/container/container_fwd.hpp:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/options/find_one_and_delete.hpp:
-
-../jwt-cpp-0.7.0/include/jwt-cpp/jwt.h:
-
 /usr/local/include/mongocxx/v_noabi/mongocxx/options/find-fwd.hpp:
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/options/estimated_document_count-fwd.hpp:
@@ -8601,15 +9007,7 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/options/delete-fwd.hpp:
 
-../boost/include/boost/json/detail/stack.hpp:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/options/count-fwd.hpp:
-
 /usr/local/include/mongocxx/v_noabi/mongocxx/options/change_stream-fwd.hpp:
-
-../boost/include/boost/container/detail/mpl.hpp:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/options/change_stream.hpp:
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/events/topology_description-fwd.hpp:
 
@@ -8620,10 +9018,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 ../boost/include/boost/type_traits/is_lvalue_reference.hpp:
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/options/index-fwd.hpp:
-
-../boost/include/boost/move/detail/type_traits.hpp:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/options/index.hpp:
 
 ../boost/include/boost/preprocessor/seq/limits/elem_256.hpp:
 
@@ -8641,17 +9035,7 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/pipeline.hpp:
 
-../boost/include/boost/json/detail/sse2.hpp:
-
-../boost/include/boost/intrusive/detail/workaround.hpp:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/model/update_many-fwd.hpp:
-
 /usr/local/include/mongocxx/v_noabi/mongocxx/model/update_many.hpp:
-
-../boost/include/boost/json/detail/format.hpp:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/model/replace_one-fwd.hpp:
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/model/replace_one.hpp:
 
@@ -8660,10 +9044,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 /usr/local/include/mongocxx/v_noabi/mongocxx/model/delete_one-fwd.hpp:
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/model/delete_one.hpp:
-
-../boost/include/boost/move/detail/fwd_macros.hpp:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/hint-fwd.hpp:
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/hint.hpp:
 
@@ -8713,10 +9093,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/view_or_value-fwd.hpp:
 
-../boost/include/boost/mp11.hpp:
-
-/usr/local/include/bsoncxx/v_noabi/bsoncxx/array/element.hpp:
-
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/array/view-fwd.hpp:
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/document/value-fwd.hpp:
@@ -8728,10 +9104,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/document/view_or_value.hpp:
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/database.hpp:
-
-../boost/include/boost/mp11/detail/mp_count.hpp:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/stdx.hpp:
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/options/index_view-fwd.hpp:
 
@@ -8749,12 +9121,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/options/transaction.hpp:
 
-../boost/include/boost/json/detail/charconv/detail/integer_search_trees.hpp:
-
-../boost/include/boost/json/detail/string_impl.hpp:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/options/client_session-fwd.hpp:
-
 /usr/include/openssl/buffer.h:
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/options/client_session.hpp:
@@ -8768,10 +9134,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/third_party/mnmlstc/core/functional.hpp:
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/third_party/mnmlstc/core/type_traits.hpp:
-
-../boost/include/boost/json/basic_parser.hpp:
-
-/usr/local/include/bsoncxx/v_noabi/bsoncxx/third_party/mnmlstc/core/optional.hpp:
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/types/bson_value/view-fwd.hpp:
 
@@ -8821,13 +9183,305 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/config/compiler.hpp:
 
-../boost/include/boost/json/parse_into.hpp:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/client-fwd.hpp:
-
 ../boost/include/boost/algorithm/string/find.hpp:
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/client.hpp:
+
+../boost/include/boost/json/visit.hpp:
+
+../boost/include/boost/json/detail/value_to.hpp:
+
+../boost/include/boost/json/value_to.hpp:
+
+/usr/include/c++/11/optional:
+
+../boost/include/boost/describe/enum_to_string.hpp:
+
+../boost/include/boost/json/detail/value_from.hpp:
+
+/usr/include/openssl/ssl2.h:
+
+../boost/include/boost/range/mutable_iterator.hpp:
+
+../boost/include/boost/json/value_from.hpp:
+
+../boost/include/boost/json/stream_parser.hpp:
+
+/usr/local/include/mongocxx/v_noabi/mongocxx/model/replace_one-fwd.hpp:
+
+../boost/include/boost/json/detail/format.hpp:
+
+../boost/include/boost/json/serialize.hpp:
+
+../boost/include/boost/json/detail/handler.hpp:
+
+/usr/include/c++/11/stdlib.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h:
+
+/usr/local/include/mongocxx/v_noabi/mongocxx/events/command_failed_event-fwd.hpp:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/emmintrin.h:
+
+../boost/include/boost/algorithm/string/compare.hpp:
+
+../boost/include/boost/json/detail/charconv/chars_format.hpp:
+
+../boost/include/boost/json/detail/charconv/detail/from_chars_result.hpp:
+
+/usr/include/c++/11/cfloat:
+
+../boost/include/boost/json/detail/charconv/detail/config.hpp:
+
+../boost/include/boost/json/detail/charconv/from_chars.hpp:
+
+../boost/include/boost/json/impl/parse_into.hpp:
+
+/usr/local/include/mongocxx/v_noabi/mongocxx/client-fwd.hpp:
+
+../boost/include/boost/json/parse_into.hpp:
+
+/usr/include/c++/11/variant:
+
+../boost/include/boost/describe/detail/cx_streq.hpp:
+
+../boost/include/boost/describe/bases.hpp:
+
+../boost/include/boost/describe/modifiers.hpp:
+
+../boost/include/boost/describe/detail/config.hpp:
+
+../boost/include/boost/type_traits/has_plus.hpp:
+
+../boost/include/boost/describe/detail/void_t.hpp:
+
+../boost/include/boost/json/conversion.hpp:
+
+../boost/include/boost/json/detail/utf8.hpp:
+
+../boost/include/boost/json/detail/stream.hpp:
+
+/usr/local/include/mongocxx/v_noabi/mongocxx/options/count-fwd.hpp:
+
+../boost/include/boost/json/detail/stack.hpp:
+
+../boost/include/boost/json/parse_options.hpp:
+
+/usr/local/include/bsoncxx/v_noabi/bsoncxx/third_party/mnmlstc/core/optional.hpp:
+
+../boost/include/boost/json/basic_parser.hpp:
+
+../boost/include/boost/json/impl/value.hpp:
+
+../boost/include/boost/range/functions.hpp:
+
+../boost/include/boost/json/impl/object.hpp:
+
+../boost/include/boost/json/value_ref.hpp:
+
+../boost/include/boost/json/impl/string.hpp:
+
+../boost/include/boost/json/detail/charconv/detail/integer_search_trees.hpp:
+
+/usr/local/include/mongocxx/v_noabi/mongocxx/options/client_session-fwd.hpp:
+
+../boost/include/boost/json/detail/string_impl.hpp:
+
+../boost/include/boost/json/impl/error.hpp:
+
+../boost/include/boost/mp11/map.hpp:
+
+../boost/include/boost/mp11/integer_sequence.hpp:
+
+../boost/include/boost/mp11/detail/mp_with_index.hpp:
+
+../boost/include/boost/mp11/detail/mp_map_find.hpp:
+
+../boost/include/boost/mp11/detail/mp_remove_if.hpp:
+
+../boost/include/boost/mp11/detail/mp_void.hpp:
+
+../boost/include/boost/mp11/detail/mp_min_element.hpp:
+
+../boost/include/boost/mp11/detail/mp_fold.hpp:
+
+/usr/include/openssl/e_os2.h:
+
+../boost/include/boost/mp11/detail/mp_plus.hpp:
+
+/usr/local/include/mongocxx/v_noabi/mongocxx/stdx.hpp:
+
+../boost/include/boost/mp11/detail/mp_count.hpp:
+
+../boost/include/boost/mp11/detail/mp_append.hpp:
+
+/usr/local/include/mongocxx/v_noabi/mongocxx/result/delete.hpp:
+
+../boost/include/boost/mp11/detail/mp_rename.hpp:
+
+../boost/include/boost/mp11/detail/mp_front.hpp:
+
+../boost/include/boost/mp11/detail/mp_is_list.hpp:
+
+../boost/include/boost/mp11/detail/mp_list_v.hpp:
+
+../boost/include/boost/mp11/detail/mp_list.hpp:
+
+../boost/include/boost/mp11/detail/mp_value.hpp:
+
+../boost/include/boost/mp11/version.hpp:
+
+../boost/include/boost/mp11/integral.hpp:
+
+../boost/include/boost/mp11/list.hpp:
+
+/usr/local/include/bsoncxx/v_noabi/bsoncxx/array/element.hpp:
+
+../boost/include/boost/mp11.hpp:
+
+../jwt/jwt.h:
+
+../boost/include/boost/variant2/variant.hpp:
+
+../boost/include/boost/system/result.hpp:
+
+../boost/include/boost/json/fwd.hpp:
+
+/usr/local/include/mongocxx/v_noabi/mongocxx/result/update.hpp:
+
+../boost/include/boost/json/error.hpp:
+
+../boost/include/boost/type_traits/add_rvalue_reference.hpp:
+
+../boost/include/boost/json/detail/except.hpp:
+
+../boost/include/boost/json/detail/digest.hpp:
+
+../boost/include/boost/json/string.hpp:
+
+../boost/include/boost/json/set_pointer_options.hpp:
+
+/usr/include/openssl/ct.h:
+
+../boost/include/boost/json/detail/value.hpp:
+
+../boost/include/boost/json/detail/object.hpp:
+
+../boost/include/boost/json/object.hpp:
+
+../boost/include/boost/json/detail/default_resource.hpp:
+
+../boost/include/boost/json/detail/shared_resource.hpp:
+
+../boost/include/boost/range/algorithm/equal.hpp:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/float.h:
+
+../boost/include/boost/container/detail/auto_link.hpp:
+
+../boost/include/boost/container/pmr/global_resource.hpp:
+
+../boost/include/boost/json/detail/array.hpp:
+
+../boost/include/boost/container/new_allocator.hpp:
+
+../boost/include/boost/container/detail/variadic_templates_tools.hpp:
+
+../boost/include/boost/container/detail/is_pair.hpp:
+
+../BACKEND/Helper/md5.h:
+
+../boost/include/boost/container/uses_allocator_fwd.hpp:
+
+../boost/include/boost/container/uses_allocator.hpp:
+
+/usr/local/include/mongocxx/v_noabi/mongocxx/hint-fwd.hpp:
+
+../boost/include/boost/move/detail/fwd_macros.hpp:
+
+../boost/include/boost/intrusive/detail/has_member_function_callable_with.hpp:
+
+../boost/include/boost/move/detail/pointer_element.hpp:
+
+../boost/include/boost/intrusive/pointer_rebind.hpp:
+
+/usr/local/include/mongocxx/v_noabi/mongocxx/model/update_many-fwd.hpp:
+
+../boost/include/boost/json/detail/sse2.hpp:
+
+../boost/include/boost/intrusive/detail/workaround.hpp:
+
+../boost/include/boost/intrusive/pointer_traits.hpp:
+
+../boost/include/boost/range/iterator_range_core.hpp:
+
+../boost/include/boost/container/detail/type_traits.hpp:
+
+../boost/include/boost/json/detail/impl/array.hpp:
+
+../boost/include/boost/intrusive/detail/config_begin.hpp:
+
+/usr/local/include/mongocxx/v_noabi/mongocxx/options/change_stream.hpp:
+
+../boost/include/boost/container/detail/mpl.hpp:
+
+../boost/include/boost/container/detail/dispatch_uses_allocator.hpp:
+
+../boost/include/boost/move/core.hpp:
+
+../boost/include/boost/container/pmr/polymorphic_allocator.hpp:
+
+../boost/include/boost/container/detail/config_end.hpp:
+
+../boost/include/boost/move/detail/addressof.hpp:
+
+../boost/include/boost/move/detail/meta_utils_core.hpp:
+
+../boost/include/boost/move/detail/meta_utils.hpp:
+
+../boost/include/boost/move/detail/config_begin.hpp:
+
+/usr/local/include/mongocxx/v_noabi/mongocxx/options/index.hpp:
+
+../boost/include/boost/move/detail/type_traits.hpp:
+
+../boost/include/boost/move/detail/std_ns_end.hpp:
+
+../boost/include/boost/move/detail/std_ns_begin.hpp:
+
+/usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h:
+
+../boost/include/boost/container/detail/std_fwd.hpp:
+
+/usr/local/include/mongocxx/v_noabi/mongocxx/options/find_one_and_delete.hpp:
+
+../boost/include/boost/container/container_fwd.hpp:
+
+../boost/include/boost/container/detail/workaround.hpp:
+
+../boost/include/boost/container/detail/config_begin.hpp:
+
+../boost/include/boost/json/memory_resource.hpp:
+
+../boost/include/boost/json/pilfer.hpp:
+
+../boost/include/boost/core/detail/is_same.hpp:
+
+../boost/include/boost/core/detail/string_view.hpp:
+
+../boost/include/boost/json/string_view.hpp:
+
+../boost/include/boost/json/kind.hpp:
+
+../boost/include/boost/json/array.hpp:
+
+../boost/include/boost/iterator/iterator_adaptor.hpp:
+
+../boost/include/boost/config/auto_link.hpp:
+
+../boost/include/boost/json/detail/config.hpp:
 
 /usr/include/openssl/hmac.h:
 
@@ -9093,9 +9747,9 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/asio/detail/executor_op.hpp:
 
-../boost/include/boost/json/impl/visit.hpp:
-
 ../boost/include/boost/type_traits/is_member_function_pointer.hpp:
+
+../boost/include/boost/json/impl/visit.hpp:
 
 ../boost/include/boost/asio/detail/is_executor.hpp:
 
@@ -9123,11 +9777,11 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/json/detail/impl/handler.ipp:
 
+/usr/local/include/mongocxx/v_noabi/mongocxx/gridfs/downloader.hpp:
+
 ../boost/include/boost/describe/enum_from_string.hpp:
 
 ../boost/include/boost/container/throw_exception.hpp:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/gridfs/downloader.hpp:
 
 ../boost/include/boost/asio/async_result.hpp:
 
@@ -9181,17 +9835,15 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 /usr/include/x86_64-linux-gnu/sys/ioctl.h:
 
-../boost/include/boost/json/storage_ptr.hpp:
-
 /usr/include/openssl/x509err.h:
 
 ../boost/include/boost/type_traits/conjunction.hpp:
 
 ../boost/include/boost/utility/binary.hpp:
 
-/usr/include/x86_64-linux-gnu/asm/posix_types.h:
+../boost/include/boost/json/storage_ptr.hpp:
 
-../jwt-cpp-0.7.0/include/jwt-cpp/traits.h:
+/usr/include/x86_64-linux-gnu/asm/posix_types.h:
 
 ../boost/include/boost/asio/impl/execution_context.ipp:
 
@@ -9555,9 +10207,9 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/mpl/has_xxx.hpp:
 
-../boost/include/boost/mp11/set.hpp:
-
 /usr/local/include/mongocxx/v_noabi/mongocxx/client_encryption-fwd.hpp:
+
+../boost/include/boost/mp11/set.hpp:
 
 ../boost/include/boost/asio/detail/handler_tracking.hpp:
 
@@ -9969,9 +10621,9 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/mpl/aux_/lambda_support.hpp:
 
-../boost/include/boost/move/utility_core.hpp:
-
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/config/util.hpp:
+
+../boost/include/boost/move/utility_core.hpp:
 
 /usr/include/wchar.h:
 
@@ -10269,9 +10921,9 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/preprocessor/control/if.hpp:
 
-../boost/include/boost/json/detail/buffer.hpp:
-
 ../boost/include/boost/mpl/apply.hpp:
+
+../boost/include/boost/json/detail/buffer.hpp:
 
 /usr/include/c++/11/bits/functional_hash.h:
 
@@ -10279,9 +10931,9 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/mpl/aux_/numeric_cast_utils.hpp:
 
-../boost/include/boost/json/value_stack.hpp:
-
 /usr/local/include/mongocxx/v_noabi/mongocxx/options/gridfs/upload.hpp:
+
+../boost/include/boost/json/value_stack.hpp:
 
 ../boost/include/boost/asio/detail/consuming_buffers.hpp:
 
@@ -10347,9 +10999,9 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/system/detail/throws.hpp:
 
-../boost/include/boost/json/serializer.hpp:
-
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/decimal128.hpp:
+
+../boost/include/boost/json/serializer.hpp:
 
 /usr/include/x86_64-linux-gnu/bits/errno.h:
 
@@ -11089,9 +11741,9 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/date_time/time_resolution_traits.hpp:
 
-../boost/include/boost/json/parse.hpp:
-
 ../BACKEND/Module/Inventory/Inventory.h:
+
+../boost/include/boost/json/parse.hpp:
 
 ../boost/include/boost/preprocessor/list/detail/fold_left.hpp:
 

@@ -256,8 +256,8 @@ void User::UserSignin(){
                 std::string hashed_now = md5(reqj["password"].s());
                 std::string json_str = bsoncxx::to_json(finder_str);
 
-                if(pass_hash != hashed_now)
-                    return crow::response(crow::status::UNAUTHORIZED,"Incorrect Password");
+                // if(pass_hash != hashed_now)
+                //     return crow::response(crow::status::UNAUTHORIZED,"Incorrect Password");
 
 
                 const int arraySize = 24;
@@ -269,8 +269,6 @@ void User::UserSignin(){
 
                 std::generate(charArray, charArray + arraySize, [&]() { return static_cast<char>(dis(gen)); });
 
-                // unsigned char nonce[24];
-                // RAND_bytes(nonce, sizeof(nonce));
                 std::string jti =
                     jwt::base::encode<jwt::alphabet::base64url>(std::string{reinterpret_cast<const char*>(charArray), sizeof(charArray)});
 

@@ -10,6 +10,9 @@
 #include "unordered_set"
 #include "vector"
 
+#include <boost/json.hpp>
+// #include "Helper/Authorization.h"
+
 #include <mongocxx/client.hpp>
 #include <mongocxx/uri.hpp>
 
@@ -23,12 +26,14 @@ struct UserMiddleware: crow::ILocalMiddleware
 
     void before_handle(crow::request& req, crow::response& res, context& ctx)
     {
-        std::cout<<"Data is "<<req.url<<" "<<req.remote_ip_address<<" PORT is "<<req.get_header_value("Authorization")<<std::endl;
     }
 
 
     void after_handle(crow::request& req, crow::response& res, context& ctx)
     {
+        std::cout<<"Data is "<<req.url<<" "<<req.remote_ip_address<<" PORT is "<<res.body<<std::endl;
+        boost::json::object data = boost::json::parse(res.body).as_object();
+        std::cout<<"Now is "<<data["email"];
     }
 };
 

@@ -88,7 +88,7 @@ enum class error
  *  \param e Error code.
  *  \ingroup any
  */
-auto make_error_code(error e) -> system::error_code;
+inline auto make_error_code(error e) -> system::error_code;
 
 } // boost::redis
 
