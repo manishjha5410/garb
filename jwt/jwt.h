@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef JWT_CPP_JWT_H
 #define JWT_CPP_JWT_H
 

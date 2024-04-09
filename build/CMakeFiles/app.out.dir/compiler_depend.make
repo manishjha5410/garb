@@ -1189,6 +1189,88 @@ CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.o: ../BACKEND/Module/B
   ../BACKEND/server.h \
   /usr/include/c++/11/unordered_set \
   /usr/include/c++/11/bits/unordered_set.h \
+  ../BACKEND/Helper/Authorization.h \
+  ../jwt/jwt.h \
+  ../jwt/base.h \
+  /usr/include/openssl/ec.h \
+  /usr/include/openssl/macros.h \
+  /usr/include/x86_64-linux-gnu/openssl/opensslconf.h \
+  /usr/include/x86_64-linux-gnu/openssl/configuration.h \
+  /usr/include/openssl/opensslv.h \
+  /usr/include/openssl/types.h \
+  /usr/include/openssl/e_os2.h \
+  /usr/include/openssl/safestack.h \
+  /usr/include/openssl/stack.h \
+  /usr/include/openssl/asn1.h \
+  /usr/include/openssl/bio.h \
+  /usr/include/openssl/crypto.h \
+  /usr/include/c++/11/stdlib.h \
+  /usr/include/openssl/cryptoerr.h \
+  /usr/include/openssl/symhacks.h \
+  /usr/include/openssl/cryptoerr_legacy.h \
+  /usr/include/openssl/core.h \
+  /usr/include/openssl/bioerr.h \
+  /usr/include/openssl/asn1err.h \
+  /usr/include/openssl/bn.h \
+  /usr/include/openssl/bnerr.h \
+  /usr/include/openssl/ecerr.h \
+  /usr/include/openssl/params.h \
+  /usr/include/openssl/ecdsa.h \
+  /usr/include/openssl/err.h \
+  /usr/include/openssl/lhash.h \
+  /usr/include/openssl/evp.h \
+  /usr/include/openssl/core_dispatch.h \
+  /usr/include/openssl/evperr.h \
+  /usr/include/openssl/objects.h \
+  /usr/include/openssl/obj_mac.h \
+  /usr/include/openssl/objectserr.h \
+  /usr/include/openssl/hmac.h \
+  /usr/include/openssl/pem.h \
+  /usr/include/openssl/x509.h \
+  /usr/include/openssl/buffer.h \
+  /usr/include/openssl/buffererr.h \
+  /usr/include/openssl/rsa.h \
+  /usr/include/openssl/rsaerr.h \
+  /usr/include/openssl/dsa.h \
+  /usr/include/openssl/dh.h \
+  /usr/include/openssl/dherr.h \
+  /usr/include/openssl/dsaerr.h \
+  /usr/include/openssl/sha.h \
+  /usr/include/openssl/x509err.h \
+  /usr/include/openssl/x509_vfy.h \
+  /usr/include/openssl/pkcs7.h \
+  /usr/include/openssl/pkcs7err.h \
+  /usr/include/openssl/ocsp.h \
+  /usr/include/openssl/http.h \
+  /usr/include/openssl/conf.h \
+  /usr/include/openssl/conferr.h \
+  /usr/include/openssl/conftypes.h \
+  /usr/include/openssl/x509v3.h \
+  /usr/include/openssl/x509v3err.h \
+  /usr/include/openssl/ocsperr.h \
+  /usr/include/openssl/pemerr.h \
+  /usr/include/openssl/ssl.h \
+  /usr/include/openssl/comp.h \
+  /usr/include/openssl/comperr.h \
+  /usr/include/openssl/async.h \
+  /usr/include/openssl/asyncerr.h \
+  /usr/include/openssl/ct.h \
+  /usr/include/openssl/cterr.h \
+  /usr/include/openssl/sslerr.h \
+  /usr/include/openssl/sslerr_legacy.h \
+  /usr/include/openssl/prov_ssl.h \
+  /usr/include/openssl/ssl2.h \
+  /usr/include/openssl/ssl3.h \
+  /usr/include/openssl/tls1.h \
+  /usr/include/openssl/dtls1.h \
+  /usr/include/openssl/srtp.h \
+  /usr/include/c++/11/set \
+  /usr/include/c++/11/bits/stl_set.h \
+  /usr/include/c++/11/bits/stl_multiset.h \
+  /usr/include/c++/11/experimental/type_traits \
+  /usr/include/c++/11/experimental/bits/lfts_config.h \
+  ../jwt/defaults.h \
+  ../jwt/traits.h \
   ../boost/include/boost/json.hpp \
   ../boost/include/boost/json/detail/config.hpp \
   ../boost/include/boost/config/auto_link.hpp \
@@ -1334,7 +1416,6 @@ CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.o: ../BACKEND/Module/B
   /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
-  /usr/include/c++/11/stdlib.h \
   ../boost/include/boost/json/parser.hpp \
   ../boost/include/boost/json/detail/handler.hpp \
   ../boost/include/boost/json/value_stack.hpp \
@@ -2784,6 +2865,88 @@ CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.o: ../BACKEND/Modu
   ../BACKEND/server.h \
   /usr/include/c++/11/unordered_set \
   /usr/include/c++/11/bits/unordered_set.h \
+  ../BACKEND/Helper/Authorization.h \
+  ../jwt/jwt.h \
+  ../jwt/base.h \
+  /usr/include/openssl/ec.h \
+  /usr/include/openssl/macros.h \
+  /usr/include/x86_64-linux-gnu/openssl/opensslconf.h \
+  /usr/include/x86_64-linux-gnu/openssl/configuration.h \
+  /usr/include/openssl/opensslv.h \
+  /usr/include/openssl/types.h \
+  /usr/include/openssl/e_os2.h \
+  /usr/include/openssl/safestack.h \
+  /usr/include/openssl/stack.h \
+  /usr/include/openssl/asn1.h \
+  /usr/include/openssl/bio.h \
+  /usr/include/openssl/crypto.h \
+  /usr/include/c++/11/stdlib.h \
+  /usr/include/openssl/cryptoerr.h \
+  /usr/include/openssl/symhacks.h \
+  /usr/include/openssl/cryptoerr_legacy.h \
+  /usr/include/openssl/core.h \
+  /usr/include/openssl/bioerr.h \
+  /usr/include/openssl/asn1err.h \
+  /usr/include/openssl/bn.h \
+  /usr/include/openssl/bnerr.h \
+  /usr/include/openssl/ecerr.h \
+  /usr/include/openssl/params.h \
+  /usr/include/openssl/ecdsa.h \
+  /usr/include/openssl/err.h \
+  /usr/include/openssl/lhash.h \
+  /usr/include/openssl/evp.h \
+  /usr/include/openssl/core_dispatch.h \
+  /usr/include/openssl/evperr.h \
+  /usr/include/openssl/objects.h \
+  /usr/include/openssl/obj_mac.h \
+  /usr/include/openssl/objectserr.h \
+  /usr/include/openssl/hmac.h \
+  /usr/include/openssl/pem.h \
+  /usr/include/openssl/x509.h \
+  /usr/include/openssl/buffer.h \
+  /usr/include/openssl/buffererr.h \
+  /usr/include/openssl/rsa.h \
+  /usr/include/openssl/rsaerr.h \
+  /usr/include/openssl/dsa.h \
+  /usr/include/openssl/dh.h \
+  /usr/include/openssl/dherr.h \
+  /usr/include/openssl/dsaerr.h \
+  /usr/include/openssl/sha.h \
+  /usr/include/openssl/x509err.h \
+  /usr/include/openssl/x509_vfy.h \
+  /usr/include/openssl/pkcs7.h \
+  /usr/include/openssl/pkcs7err.h \
+  /usr/include/openssl/ocsp.h \
+  /usr/include/openssl/http.h \
+  /usr/include/openssl/conf.h \
+  /usr/include/openssl/conferr.h \
+  /usr/include/openssl/conftypes.h \
+  /usr/include/openssl/x509v3.h \
+  /usr/include/openssl/x509v3err.h \
+  /usr/include/openssl/ocsperr.h \
+  /usr/include/openssl/pemerr.h \
+  /usr/include/openssl/ssl.h \
+  /usr/include/openssl/comp.h \
+  /usr/include/openssl/comperr.h \
+  /usr/include/openssl/async.h \
+  /usr/include/openssl/asyncerr.h \
+  /usr/include/openssl/ct.h \
+  /usr/include/openssl/cterr.h \
+  /usr/include/openssl/sslerr.h \
+  /usr/include/openssl/sslerr_legacy.h \
+  /usr/include/openssl/prov_ssl.h \
+  /usr/include/openssl/ssl2.h \
+  /usr/include/openssl/ssl3.h \
+  /usr/include/openssl/tls1.h \
+  /usr/include/openssl/dtls1.h \
+  /usr/include/openssl/srtp.h \
+  /usr/include/c++/11/set \
+  /usr/include/c++/11/bits/stl_set.h \
+  /usr/include/c++/11/bits/stl_multiset.h \
+  /usr/include/c++/11/experimental/type_traits \
+  /usr/include/c++/11/experimental/bits/lfts_config.h \
+  ../jwt/defaults.h \
+  ../jwt/traits.h \
   ../boost/include/boost/json.hpp \
   ../boost/include/boost/json/detail/config.hpp \
   ../boost/include/boost/config/auto_link.hpp \
@@ -2929,7 +3092,6 @@ CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.o: ../BACKEND/Modu
   /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
-  /usr/include/c++/11/stdlib.h \
   ../boost/include/boost/json/parser.hpp \
   ../boost/include/boost/json/detail/handler.hpp \
   ../boost/include/boost/json/value_stack.hpp \
@@ -4575,6 +4737,88 @@ CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.o: ../BACKEN
   ../BACKEND/server.h \
   /usr/include/c++/11/unordered_set \
   /usr/include/c++/11/bits/unordered_set.h \
+  ../BACKEND/Helper/Authorization.h \
+  ../jwt/jwt.h \
+  ../jwt/base.h \
+  /usr/include/openssl/ec.h \
+  /usr/include/openssl/macros.h \
+  /usr/include/x86_64-linux-gnu/openssl/opensslconf.h \
+  /usr/include/x86_64-linux-gnu/openssl/configuration.h \
+  /usr/include/openssl/opensslv.h \
+  /usr/include/openssl/types.h \
+  /usr/include/openssl/e_os2.h \
+  /usr/include/openssl/safestack.h \
+  /usr/include/openssl/stack.h \
+  /usr/include/openssl/asn1.h \
+  /usr/include/openssl/bio.h \
+  /usr/include/openssl/crypto.h \
+  /usr/include/c++/11/stdlib.h \
+  /usr/include/openssl/cryptoerr.h \
+  /usr/include/openssl/symhacks.h \
+  /usr/include/openssl/cryptoerr_legacy.h \
+  /usr/include/openssl/core.h \
+  /usr/include/openssl/bioerr.h \
+  /usr/include/openssl/asn1err.h \
+  /usr/include/openssl/bn.h \
+  /usr/include/openssl/bnerr.h \
+  /usr/include/openssl/ecerr.h \
+  /usr/include/openssl/params.h \
+  /usr/include/openssl/ecdsa.h \
+  /usr/include/openssl/err.h \
+  /usr/include/openssl/lhash.h \
+  /usr/include/openssl/evp.h \
+  /usr/include/openssl/core_dispatch.h \
+  /usr/include/openssl/evperr.h \
+  /usr/include/openssl/objects.h \
+  /usr/include/openssl/obj_mac.h \
+  /usr/include/openssl/objectserr.h \
+  /usr/include/openssl/hmac.h \
+  /usr/include/openssl/pem.h \
+  /usr/include/openssl/x509.h \
+  /usr/include/openssl/buffer.h \
+  /usr/include/openssl/buffererr.h \
+  /usr/include/openssl/rsa.h \
+  /usr/include/openssl/rsaerr.h \
+  /usr/include/openssl/dsa.h \
+  /usr/include/openssl/dh.h \
+  /usr/include/openssl/dherr.h \
+  /usr/include/openssl/dsaerr.h \
+  /usr/include/openssl/sha.h \
+  /usr/include/openssl/x509err.h \
+  /usr/include/openssl/x509_vfy.h \
+  /usr/include/openssl/pkcs7.h \
+  /usr/include/openssl/pkcs7err.h \
+  /usr/include/openssl/ocsp.h \
+  /usr/include/openssl/http.h \
+  /usr/include/openssl/conf.h \
+  /usr/include/openssl/conferr.h \
+  /usr/include/openssl/conftypes.h \
+  /usr/include/openssl/x509v3.h \
+  /usr/include/openssl/x509v3err.h \
+  /usr/include/openssl/ocsperr.h \
+  /usr/include/openssl/pemerr.h \
+  /usr/include/openssl/ssl.h \
+  /usr/include/openssl/comp.h \
+  /usr/include/openssl/comperr.h \
+  /usr/include/openssl/async.h \
+  /usr/include/openssl/asyncerr.h \
+  /usr/include/openssl/ct.h \
+  /usr/include/openssl/cterr.h \
+  /usr/include/openssl/sslerr.h \
+  /usr/include/openssl/sslerr_legacy.h \
+  /usr/include/openssl/prov_ssl.h \
+  /usr/include/openssl/ssl2.h \
+  /usr/include/openssl/ssl3.h \
+  /usr/include/openssl/tls1.h \
+  /usr/include/openssl/dtls1.h \
+  /usr/include/openssl/srtp.h \
+  /usr/include/c++/11/set \
+  /usr/include/c++/11/bits/stl_set.h \
+  /usr/include/c++/11/bits/stl_multiset.h \
+  /usr/include/c++/11/experimental/type_traits \
+  /usr/include/c++/11/experimental/bits/lfts_config.h \
+  ../jwt/defaults.h \
+  ../jwt/traits.h \
   ../boost/include/boost/json.hpp \
   ../boost/include/boost/json/detail/config.hpp \
   ../boost/include/boost/config/auto_link.hpp \
@@ -4720,7 +4964,6 @@ CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.o: ../BACKEN
   /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
-  /usr/include/c++/11/stdlib.h \
   ../boost/include/boost/json/parser.hpp \
   ../boost/include/boost/json/detail/handler.hpp \
   ../boost/include/boost/json/value_stack.hpp \
@@ -6170,6 +6413,88 @@ CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o: ../BACKEND/User/User.cpp \
   /usr/include/c++/11/unordered_set \
   /usr/include/c++/11/bits/unordered_set.h \
   ../BACKEND/server.h \
+  ../BACKEND/Helper/Authorization.h \
+  ../jwt/jwt.h \
+  ../jwt/base.h \
+  /usr/include/openssl/ec.h \
+  /usr/include/openssl/macros.h \
+  /usr/include/x86_64-linux-gnu/openssl/opensslconf.h \
+  /usr/include/x86_64-linux-gnu/openssl/configuration.h \
+  /usr/include/openssl/opensslv.h \
+  /usr/include/openssl/types.h \
+  /usr/include/openssl/e_os2.h \
+  /usr/include/openssl/safestack.h \
+  /usr/include/openssl/stack.h \
+  /usr/include/openssl/asn1.h \
+  /usr/include/openssl/bio.h \
+  /usr/include/openssl/crypto.h \
+  /usr/include/c++/11/stdlib.h \
+  /usr/include/openssl/cryptoerr.h \
+  /usr/include/openssl/symhacks.h \
+  /usr/include/openssl/cryptoerr_legacy.h \
+  /usr/include/openssl/core.h \
+  /usr/include/openssl/bioerr.h \
+  /usr/include/openssl/asn1err.h \
+  /usr/include/openssl/bn.h \
+  /usr/include/openssl/bnerr.h \
+  /usr/include/openssl/ecerr.h \
+  /usr/include/openssl/params.h \
+  /usr/include/openssl/ecdsa.h \
+  /usr/include/openssl/err.h \
+  /usr/include/openssl/lhash.h \
+  /usr/include/openssl/evp.h \
+  /usr/include/openssl/core_dispatch.h \
+  /usr/include/openssl/evperr.h \
+  /usr/include/openssl/objects.h \
+  /usr/include/openssl/obj_mac.h \
+  /usr/include/openssl/objectserr.h \
+  /usr/include/openssl/hmac.h \
+  /usr/include/openssl/pem.h \
+  /usr/include/openssl/x509.h \
+  /usr/include/openssl/buffer.h \
+  /usr/include/openssl/buffererr.h \
+  /usr/include/openssl/rsa.h \
+  /usr/include/openssl/rsaerr.h \
+  /usr/include/openssl/dsa.h \
+  /usr/include/openssl/dh.h \
+  /usr/include/openssl/dherr.h \
+  /usr/include/openssl/dsaerr.h \
+  /usr/include/openssl/sha.h \
+  /usr/include/openssl/x509err.h \
+  /usr/include/openssl/x509_vfy.h \
+  /usr/include/openssl/pkcs7.h \
+  /usr/include/openssl/pkcs7err.h \
+  /usr/include/openssl/ocsp.h \
+  /usr/include/openssl/http.h \
+  /usr/include/openssl/conf.h \
+  /usr/include/openssl/conferr.h \
+  /usr/include/openssl/conftypes.h \
+  /usr/include/openssl/x509v3.h \
+  /usr/include/openssl/x509v3err.h \
+  /usr/include/openssl/ocsperr.h \
+  /usr/include/openssl/pemerr.h \
+  /usr/include/openssl/ssl.h \
+  /usr/include/openssl/comp.h \
+  /usr/include/openssl/comperr.h \
+  /usr/include/openssl/async.h \
+  /usr/include/openssl/asyncerr.h \
+  /usr/include/openssl/ct.h \
+  /usr/include/openssl/cterr.h \
+  /usr/include/openssl/sslerr.h \
+  /usr/include/openssl/sslerr_legacy.h \
+  /usr/include/openssl/prov_ssl.h \
+  /usr/include/openssl/ssl2.h \
+  /usr/include/openssl/ssl3.h \
+  /usr/include/openssl/tls1.h \
+  /usr/include/openssl/dtls1.h \
+  /usr/include/openssl/srtp.h \
+  /usr/include/c++/11/set \
+  /usr/include/c++/11/bits/stl_set.h \
+  /usr/include/c++/11/bits/stl_multiset.h \
+  /usr/include/c++/11/experimental/type_traits \
+  /usr/include/c++/11/experimental/bits/lfts_config.h \
+  ../jwt/defaults.h \
+  ../jwt/traits.h \
   ../boost/include/boost/json.hpp \
   ../boost/include/boost/json/detail/config.hpp \
   ../boost/include/boost/config/auto_link.hpp \
@@ -6315,7 +6640,6 @@ CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o: ../BACKEND/User/User.cpp \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/xmmintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mmintrin.h \
   /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h \
-  /usr/include/c++/11/stdlib.h \
   ../boost/include/boost/json/parser.hpp \
   ../boost/include/boost/json/detail/handler.hpp \
   ../boost/include/boost/json/value_stack.hpp \
@@ -6772,159 +7096,7 @@ CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o: ../BACKEND/User/User.cpp \
   ../boost/include/boost/algorithm/string/constants.hpp \
   ../boost/include/boost/algorithm/string/detail/finder.hpp \
   ../boost/include/boost/algorithm/string/detail/predicate.hpp \
-  ../BACKEND/Helper/md5.h \
-  ../jwt/jwt.h \
-  ../jwt/base.h \
-  /usr/include/openssl/ec.h \
-  /usr/include/openssl/macros.h \
-  /usr/include/x86_64-linux-gnu/openssl/opensslconf.h \
-  /usr/include/x86_64-linux-gnu/openssl/configuration.h \
-  /usr/include/openssl/opensslv.h \
-  /usr/include/openssl/types.h \
-  /usr/include/openssl/e_os2.h \
-  /usr/include/openssl/safestack.h \
-  /usr/include/openssl/stack.h \
-  /usr/include/openssl/asn1.h \
-  /usr/include/openssl/bio.h \
-  /usr/include/openssl/crypto.h \
-  /usr/include/openssl/cryptoerr.h \
-  /usr/include/openssl/symhacks.h \
-  /usr/include/openssl/cryptoerr_legacy.h \
-  /usr/include/openssl/core.h \
-  /usr/include/openssl/bioerr.h \
-  /usr/include/openssl/asn1err.h \
-  /usr/include/openssl/bn.h \
-  /usr/include/openssl/bnerr.h \
-  /usr/include/openssl/ecerr.h \
-  /usr/include/openssl/params.h \
-  /usr/include/openssl/ecdsa.h \
-  /usr/include/openssl/err.h \
-  /usr/include/openssl/lhash.h \
-  /usr/include/openssl/evp.h \
-  /usr/include/openssl/core_dispatch.h \
-  /usr/include/openssl/evperr.h \
-  /usr/include/openssl/objects.h \
-  /usr/include/openssl/obj_mac.h \
-  /usr/include/openssl/objectserr.h \
-  /usr/include/openssl/hmac.h \
-  /usr/include/openssl/pem.h \
-  /usr/include/openssl/x509.h \
-  /usr/include/openssl/buffer.h \
-  /usr/include/openssl/buffererr.h \
-  /usr/include/openssl/rsa.h \
-  /usr/include/openssl/rsaerr.h \
-  /usr/include/openssl/dsa.h \
-  /usr/include/openssl/dh.h \
-  /usr/include/openssl/dherr.h \
-  /usr/include/openssl/dsaerr.h \
-  /usr/include/openssl/sha.h \
-  /usr/include/openssl/x509err.h \
-  /usr/include/openssl/x509_vfy.h \
-  /usr/include/openssl/pkcs7.h \
-  /usr/include/openssl/pkcs7err.h \
-  /usr/include/openssl/ocsp.h \
-  /usr/include/openssl/http.h \
-  /usr/include/openssl/conf.h \
-  /usr/include/openssl/conferr.h \
-  /usr/include/openssl/conftypes.h \
-  /usr/include/openssl/x509v3.h \
-  /usr/include/openssl/x509v3err.h \
-  /usr/include/openssl/ocsperr.h \
-  /usr/include/openssl/pemerr.h \
-  /usr/include/openssl/ssl.h \
-  /usr/include/openssl/comp.h \
-  /usr/include/openssl/comperr.h \
-  /usr/include/openssl/async.h \
-  /usr/include/openssl/asyncerr.h \
-  /usr/include/openssl/ct.h \
-  /usr/include/openssl/cterr.h \
-  /usr/include/openssl/sslerr.h \
-  /usr/include/openssl/sslerr_legacy.h \
-  /usr/include/openssl/prov_ssl.h \
-  /usr/include/openssl/ssl2.h \
-  /usr/include/openssl/ssl3.h \
-  /usr/include/openssl/tls1.h \
-  /usr/include/openssl/dtls1.h \
-  /usr/include/openssl/srtp.h \
-  /usr/include/c++/11/set \
-  /usr/include/c++/11/bits/stl_set.h \
-  /usr/include/c++/11/bits/stl_multiset.h \
-  /usr/include/c++/11/experimental/type_traits \
-  /usr/include/c++/11/experimental/bits/lfts_config.h \
-  ../jwt/defaults.h \
-  ../jwt/traits.h \
-  ../jwt/jwt.h \
-  ../boost/include/boost/json/src.hpp \
-  ../boost/include/boost/json/impl/array.ipp \
-  ../boost/include/boost/container_hash/hash.hpp \
-  ../boost/include/boost/container_hash/hash_fwd.hpp \
-  ../boost/include/boost/container_hash/is_range.hpp \
-  ../boost/include/boost/container_hash/is_contiguous_range.hpp \
-  ../boost/include/boost/container_hash/is_unordered_range.hpp \
-  ../boost/include/boost/container_hash/is_described_class.hpp \
-  ../boost/include/boost/container_hash/detail/hash_integral.hpp \
-  ../boost/include/boost/container_hash/detail/hash_mix.hpp \
-  ../boost/include/boost/container_hash/detail/hash_tuple_like.hpp \
-  ../boost/include/boost/container_hash/is_tuple_like.hpp \
-  ../boost/include/boost/container_hash/detail/hash_range.hpp \
-  ../boost/include/boost/container_hash/detail/mulx.hpp \
-  /usr/include/c++/11/complex \
-  ../boost/include/boost/json/impl/error.ipp \
-  ../boost/include/boost/json/impl/kind.ipp \
-  ../boost/include/boost/json/impl/monotonic_resource.ipp \
-  ../boost/include/boost/align/align.hpp \
-  ../boost/include/boost/align/detail/align.hpp \
-  ../boost/include/boost/align/detail/is_alignment.hpp \
-  ../boost/include/boost/core/max_align.hpp \
-  ../boost/include/boost/core/alignof.hpp \
-  ../boost/include/boost/json/impl/null_resource.ipp \
-  ../boost/include/boost/json/impl/object.ipp \
-  ../boost/include/boost/json/impl/parse.ipp \
-  ../boost/include/boost/json/impl/parser.ipp \
-  ../boost/include/boost/json/impl/pointer.ipp \
-  ../boost/include/boost/json/impl/serialize.ipp \
-  ../boost/include/boost/json/impl/serializer.ipp \
-  ../boost/include/boost/json/impl/static_resource.ipp \
-  ../boost/include/boost/json/impl/stream_parser.ipp \
-  ../boost/include/boost/json/impl/string.ipp \
-  ../boost/include/boost/json/impl/value.ipp \
-  ../boost/include/boost/json/impl/value_stack.ipp \
-  ../boost/include/boost/json/impl/value_ref.ipp \
-  ../boost/include/boost/json/detail/impl/shared_resource.ipp \
-  ../boost/include/boost/json/detail/impl/default_resource.ipp \
-  ../boost/include/boost/json/detail/impl/except.ipp \
-  ../boost/include/boost/json/detail/impl/format.ipp \
-  ../boost/include/boost/json/detail/ryu/ryu.hpp \
-  ../boost/include/boost/json/detail/impl/handler.ipp \
-  ../boost/include/boost/json/detail/impl/stack.ipp \
-  ../boost/include/boost/json/detail/impl/string_impl.ipp \
-  ../boost/include/boost/json/detail/ryu/impl/d2s.ipp \
-  ../boost/include/boost/json/detail/ryu/detail/common.hpp \
-  ../boost/include/boost/json/detail/ryu/detail/digit_table.hpp \
-  ../boost/include/boost/json/detail/ryu/detail/d2s.hpp \
-  ../boost/include/boost/json/detail/ryu/detail/d2s_full_table.hpp \
-  ../boost/include/boost/json/detail/ryu/detail/d2s_intrinsics.hpp \
-  ../boost/include/boost/json/detail/charconv/impl/from_chars.ipp \
-  ../boost/include/boost/json/detail/charconv/detail/fast_float/fast_float.hpp \
-  ../boost/include/boost/json/detail/charconv/detail/fast_float/float_common.hpp \
-  ../boost/include/boost/json/detail/charconv/detail/fast_float/constexpr_feature_detect.hpp \
-  ../boost/include/boost/json/detail/charconv/detail/fast_float/parse_number.hpp \
-  ../boost/include/boost/json/detail/charconv/detail/fast_float/ascii_number.hpp \
-  ../boost/include/boost/json/detail/charconv/detail/fast_float/decimal_to_binary.hpp \
-  ../boost/include/boost/json/detail/charconv/detail/fast_float/fast_table.hpp \
-  /usr/include/c++/11/cinttypes \
-  /usr/include/inttypes.h \
-  ../boost/include/boost/json/detail/charconv/detail/fast_float/digit_comparison.hpp \
-  ../boost/include/boost/json/detail/charconv/detail/fast_float/bigint.hpp \
-  ../boost/include/boost/json/detail/charconv/detail/from_chars_float_impl.hpp \
-  ../boost/include/boost/json/detail/charconv/detail/parser.hpp \
-  ../boost/include/boost/json/detail/charconv/detail/from_chars_integer_impl.hpp \
-  ../boost/include/boost/json/detail/charconv/detail/integer_search_trees.hpp \
-  ../boost/include/boost/json/detail/charconv/limits.hpp \
-  ../boost/include/boost/json/detail/charconv/detail/compute_float64.hpp \
-  ../boost/include/boost/json/detail/charconv/detail/significand_tables.hpp \
-  ../boost/include/boost/json/detail/charconv/detail/emulated128.hpp \
-  ../boost/include/boost/core/bit.hpp
+  ../BACKEND/Helper/md5.h
 
 CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
   /usr/include/stdc-predef.h \
@@ -8341,29 +8513,9 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
   /usr/local/include/mongocxx/v_noabi/mongocxx/instance.hpp \
   /usr/local/include/mongocxx/v_noabi/mongocxx/instance-fwd.hpp \
   /usr/local/include/mongocxx/v_noabi/mongocxx/logger-fwd.hpp \
-  /usr/local/include/bsoncxx/v_noabi/bsoncxx/json.hpp \
-  /usr/local/include/bsoncxx/v_noabi/bsoncxx/json-fwd.hpp \
-  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/helpers.hpp \
-  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/document.hpp \
-  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/document-fwd.hpp \
-  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/key_context.hpp \
-  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/closed_context-fwd.hpp \
-  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/key_context-fwd.hpp \
-  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/value_context.hpp \
-  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/value_context-fwd.hpp \
-  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/array_context.hpp \
-  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/array_context-fwd.hpp \
-  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/single_context-fwd.hpp \
-  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/closed_context.hpp \
-  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/single_context.hpp \
-  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/array.hpp \
-  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/array-fwd.hpp \
-  ../BACKEND/Module/Module.h \
-  ../BACKEND/Module/Billing/Billing.h \
-  ../BACKEND/server.h \
+  ../boost/include/boost/json/src.hpp \
   ../boost/include/boost/json.hpp \
   ../boost/include/boost/json/detail/config.hpp \
-  ../boost/include/boost/config/auto_link.hpp \
   ../boost/include/boost/json/array.hpp \
   ../boost/include/boost/json/kind.hpp \
   ../boost/include/boost/json/string_view.hpp \
@@ -8413,6 +8565,7 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
   ../boost/include/boost/container/throw_exception.hpp \
   ../boost/include/boost/container/pmr/global_resource.hpp \
   ../boost/include/boost/container/detail/auto_link.hpp \
+  ../boost/include/boost/config/auto_link.hpp \
   ../boost/include/boost/json/detail/shared_resource.hpp \
   ../boost/include/boost/json/detail/default_resource.hpp \
   ../boost/include/boost/json/detail/array.hpp \
@@ -8524,6 +8677,177 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
   ../boost/include/boost/json/detail/value_to.hpp \
   ../boost/include/boost/json/visit.hpp \
   ../boost/include/boost/json/impl/visit.hpp \
+  ../boost/include/boost/json/impl/array.ipp \
+  ../boost/include/boost/container_hash/hash.hpp \
+  ../boost/include/boost/container_hash/hash_fwd.hpp \
+  ../boost/include/boost/container_hash/is_range.hpp \
+  ../boost/include/boost/container_hash/is_contiguous_range.hpp \
+  ../boost/include/boost/container_hash/is_unordered_range.hpp \
+  ../boost/include/boost/container_hash/is_described_class.hpp \
+  ../boost/include/boost/container_hash/detail/hash_integral.hpp \
+  ../boost/include/boost/container_hash/detail/hash_mix.hpp \
+  ../boost/include/boost/container_hash/detail/hash_tuple_like.hpp \
+  ../boost/include/boost/container_hash/is_tuple_like.hpp \
+  ../boost/include/boost/container_hash/detail/hash_range.hpp \
+  ../boost/include/boost/container_hash/detail/mulx.hpp \
+  /usr/include/c++/11/complex \
+  ../boost/include/boost/json/impl/error.ipp \
+  ../boost/include/boost/json/impl/kind.ipp \
+  ../boost/include/boost/json/impl/monotonic_resource.ipp \
+  ../boost/include/boost/align/align.hpp \
+  ../boost/include/boost/align/detail/align.hpp \
+  ../boost/include/boost/align/detail/is_alignment.hpp \
+  ../boost/include/boost/core/max_align.hpp \
+  ../boost/include/boost/core/alignof.hpp \
+  ../boost/include/boost/json/impl/null_resource.ipp \
+  ../boost/include/boost/json/impl/object.ipp \
+  ../boost/include/boost/json/impl/parse.ipp \
+  ../boost/include/boost/json/impl/parser.ipp \
+  ../boost/include/boost/json/impl/pointer.ipp \
+  ../boost/include/boost/json/impl/serialize.ipp \
+  ../boost/include/boost/json/impl/serializer.ipp \
+  ../boost/include/boost/json/impl/static_resource.ipp \
+  ../boost/include/boost/json/impl/stream_parser.ipp \
+  ../boost/include/boost/json/impl/string.ipp \
+  ../boost/include/boost/json/impl/value.ipp \
+  ../boost/include/boost/json/impl/value_stack.ipp \
+  ../boost/include/boost/json/impl/value_ref.ipp \
+  ../boost/include/boost/json/detail/impl/shared_resource.ipp \
+  ../boost/include/boost/json/detail/impl/default_resource.ipp \
+  ../boost/include/boost/json/detail/impl/except.ipp \
+  ../boost/include/boost/json/detail/impl/format.ipp \
+  ../boost/include/boost/json/detail/ryu/ryu.hpp \
+  ../boost/include/boost/json/detail/impl/handler.ipp \
+  ../boost/include/boost/json/detail/impl/stack.ipp \
+  ../boost/include/boost/json/detail/impl/string_impl.ipp \
+  ../boost/include/boost/json/detail/ryu/impl/d2s.ipp \
+  ../boost/include/boost/json/detail/ryu/detail/common.hpp \
+  ../boost/include/boost/json/detail/ryu/detail/digit_table.hpp \
+  ../boost/include/boost/json/detail/ryu/detail/d2s.hpp \
+  ../boost/include/boost/json/detail/ryu/detail/d2s_full_table.hpp \
+  ../boost/include/boost/json/detail/ryu/detail/d2s_intrinsics.hpp \
+  ../boost/include/boost/json/detail/charconv/impl/from_chars.ipp \
+  ../boost/include/boost/json/detail/charconv/detail/fast_float/fast_float.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/fast_float/float_common.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/fast_float/constexpr_feature_detect.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/fast_float/parse_number.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/fast_float/ascii_number.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/fast_float/decimal_to_binary.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/fast_float/fast_table.hpp \
+  /usr/include/c++/11/cinttypes \
+  /usr/include/inttypes.h \
+  ../boost/include/boost/json/detail/charconv/detail/fast_float/digit_comparison.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/fast_float/bigint.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/from_chars_float_impl.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/parser.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/from_chars_integer_impl.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/integer_search_trees.hpp \
+  ../boost/include/boost/json/detail/charconv/limits.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/compute_float64.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/significand_tables.hpp \
+  ../boost/include/boost/json/detail/charconv/detail/emulated128.hpp \
+  ../boost/include/boost/core/bit.hpp \
+  /usr/local/include/bsoncxx/v_noabi/bsoncxx/json.hpp \
+  /usr/local/include/bsoncxx/v_noabi/bsoncxx/json-fwd.hpp \
+  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/helpers.hpp \
+  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/document.hpp \
+  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/document-fwd.hpp \
+  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/key_context.hpp \
+  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/closed_context-fwd.hpp \
+  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/key_context-fwd.hpp \
+  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/value_context.hpp \
+  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/value_context-fwd.hpp \
+  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/array_context.hpp \
+  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/array_context-fwd.hpp \
+  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/single_context-fwd.hpp \
+  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/closed_context.hpp \
+  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/single_context.hpp \
+  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/array.hpp \
+  /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/array-fwd.hpp \
+  ../BACKEND/Module/Module.h \
+  ../BACKEND/Module/Billing/Billing.h \
+  ../BACKEND/server.h \
+  ../BACKEND/Helper/Authorization.h \
+  ../jwt/jwt.h \
+  ../jwt/base.h \
+  /usr/include/openssl/ec.h \
+  /usr/include/openssl/macros.h \
+  /usr/include/x86_64-linux-gnu/openssl/opensslconf.h \
+  /usr/include/x86_64-linux-gnu/openssl/configuration.h \
+  /usr/include/openssl/opensslv.h \
+  /usr/include/openssl/types.h \
+  /usr/include/openssl/e_os2.h \
+  /usr/include/openssl/safestack.h \
+  /usr/include/openssl/stack.h \
+  /usr/include/openssl/asn1.h \
+  /usr/include/openssl/bio.h \
+  /usr/include/openssl/crypto.h \
+  /usr/include/openssl/cryptoerr.h \
+  /usr/include/openssl/symhacks.h \
+  /usr/include/openssl/cryptoerr_legacy.h \
+  /usr/include/openssl/core.h \
+  /usr/include/openssl/bioerr.h \
+  /usr/include/openssl/asn1err.h \
+  /usr/include/openssl/bn.h \
+  /usr/include/openssl/bnerr.h \
+  /usr/include/openssl/ecerr.h \
+  /usr/include/openssl/params.h \
+  /usr/include/openssl/ecdsa.h \
+  /usr/include/openssl/err.h \
+  /usr/include/openssl/lhash.h \
+  /usr/include/openssl/evp.h \
+  /usr/include/openssl/core_dispatch.h \
+  /usr/include/openssl/evperr.h \
+  /usr/include/openssl/objects.h \
+  /usr/include/openssl/obj_mac.h \
+  /usr/include/openssl/objectserr.h \
+  /usr/include/openssl/hmac.h \
+  /usr/include/openssl/pem.h \
+  /usr/include/openssl/x509.h \
+  /usr/include/openssl/buffer.h \
+  /usr/include/openssl/buffererr.h \
+  /usr/include/openssl/rsa.h \
+  /usr/include/openssl/rsaerr.h \
+  /usr/include/openssl/dsa.h \
+  /usr/include/openssl/dh.h \
+  /usr/include/openssl/dherr.h \
+  /usr/include/openssl/dsaerr.h \
+  /usr/include/openssl/sha.h \
+  /usr/include/openssl/x509err.h \
+  /usr/include/openssl/x509_vfy.h \
+  /usr/include/openssl/pkcs7.h \
+  /usr/include/openssl/pkcs7err.h \
+  /usr/include/openssl/ocsp.h \
+  /usr/include/openssl/http.h \
+  /usr/include/openssl/conf.h \
+  /usr/include/openssl/conferr.h \
+  /usr/include/openssl/conftypes.h \
+  /usr/include/openssl/x509v3.h \
+  /usr/include/openssl/x509v3err.h \
+  /usr/include/openssl/ocsperr.h \
+  /usr/include/openssl/pemerr.h \
+  /usr/include/openssl/ssl.h \
+  /usr/include/openssl/comp.h \
+  /usr/include/openssl/comperr.h \
+  /usr/include/openssl/async.h \
+  /usr/include/openssl/asyncerr.h \
+  /usr/include/openssl/ct.h \
+  /usr/include/openssl/cterr.h \
+  /usr/include/openssl/sslerr.h \
+  /usr/include/openssl/sslerr_legacy.h \
+  /usr/include/openssl/prov_ssl.h \
+  /usr/include/openssl/ssl2.h \
+  /usr/include/openssl/ssl3.h \
+  /usr/include/openssl/tls1.h \
+  /usr/include/openssl/dtls1.h \
+  /usr/include/openssl/srtp.h \
+  /usr/include/c++/11/set \
+  /usr/include/c++/11/bits/stl_set.h \
+  /usr/include/c++/11/bits/stl_multiset.h \
+  /usr/include/c++/11/experimental/type_traits \
+  /usr/include/c++/11/experimental/bits/lfts_config.h \
+  ../jwt/defaults.h \
+  ../jwt/traits.h \
   ../BACKEND/Module/Request/RequestManagement.h \
   ../BACKEND/server.h \
   ../BACKEND/Module/Inventory/Inventory.h \
@@ -8534,8 +8858,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 
 ../BACKEND/Module/Module.h:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/logger-fwd.hpp:
 
 ../boost/include/boost/json/detail/charconv/detail/emulated128.hpp:
 
@@ -8597,75 +8919,7 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/container_hash/is_contiguous_range.hpp:
 
-../jwt/traits.h:
-
-../jwt/defaults.h:
-
-/usr/include/c++/11/experimental/bits/lfts_config.h:
-
-/usr/include/c++/11/set:
-
-/usr/include/openssl/srtp.h:
-
-/usr/include/openssl/dtls1.h:
-
-/usr/include/openssl/ssl3.h:
-
-/usr/include/openssl/comperr.h:
-
-/usr/include/openssl/comp.h:
-
-/usr/include/openssl/ssl.h:
-
-/usr/include/openssl/x509v3.h:
-
-/usr/include/openssl/conftypes.h:
-
-/usr/include/openssl/conf.h:
-
-/usr/include/openssl/x509_vfy.h:
-
-/usr/include/openssl/sha.h:
-
-/usr/include/openssl/dh.h:
-
-/usr/include/openssl/rsaerr.h:
-
-/usr/include/openssl/rsa.h:
-
-../boost/include/boost/core/bit.hpp:
-
-/usr/include/openssl/objects.h:
-
-/usr/include/openssl/core_dispatch.h:
-
-/usr/include/openssl/evp.h:
-
-/usr/include/openssl/lhash.h:
-
-/usr/include/openssl/ecdsa.h:
-
-/usr/include/openssl/bn.h:
-
-/usr/include/openssl/asn1err.h:
-
-/usr/include/openssl/bioerr.h:
-
-/usr/include/openssl/core.h:
-
-/usr/include/openssl/cryptoerr.h:
-
-/usr/include/openssl/safestack.h:
-
-/usr/include/openssl/types.h:
-
-/usr/include/openssl/opensslv.h:
-
-/usr/include/openssl/ec.h:
-
-/usr/include/openssl/buffererr.h:
-
-../jwt/base.h:
+/usr/local/include/mongocxx/v_noabi/mongocxx/logger-fwd.hpp:
 
 ../BACKEND/User/User.cpp:
 
@@ -8692,10 +8946,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 ../boost/include/boost/next_prior.hpp:
 
 ../boost/include/boost/range/detail/safe_bool.hpp:
-
-/usr/include/openssl/bnerr.h:
-
-../boost/include/boost/range/rend.hpp:
 
 ../boost/include/boost/range/rbegin.hpp:
 
@@ -8831,10 +9081,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/type_traits/is_const.hpp:
 
-/usr/include/openssl/x509.h:
-
-../boost/include/boost/type_traits/remove_const.hpp:
-
 ../boost/include/boost/range/detail/extract_optional_type.hpp:
 
 ../boost/include/boost/range/iterator.hpp:
@@ -8847,23 +9093,11 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 /usr/include/c++/11/bits/regex_executor.h:
 
-/usr/include/openssl/x509v3err.h:
-
-/usr/include/c++/11/bits/regex.h:
-
 /usr/include/c++/11/bits/regex_compiler.h:
 
 ../boost/include/boost/json/detail/impl/default_resource.ipp:
 
 /usr/include/c++/11/bits/regex_scanner.h:
-
-../boost/include/boost/container_hash/hash_fwd.hpp:
-
-/usr/include/openssl/bio.h:
-
-../boost/include/boost/range/detail/has_member_size.hpp:
-
-/usr/include/c++/11/bits/regex_automaton.tcc:
 
 /usr/include/c++/11/bits/regex_error.h:
 
@@ -8904,10 +9138,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 /usr/local/include/mongocxx/v_noabi/mongocxx/options/tls.hpp:
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/options/server_api-fwd.hpp:
-
-/usr/include/openssl/dsaerr.h:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/options/auto_encryption.hpp:
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/events/topology_opening_event-fwd.hpp:
 
@@ -9065,12 +9295,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/types.hpp:
 
-/usr/include/x86_64-linux-gnu/openssl/opensslconf.h:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/options/client_encryption.hpp:
-
-/usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/core-fwd.hpp:
-
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/core.hpp:
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/array/view_or_value.hpp:
@@ -9117,14 +9341,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/options/transaction-fwd.hpp:
 
-/usr/include/openssl/conferr.h:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/options/transaction.hpp:
-
-/usr/include/openssl/buffer.h:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/options/client_session.hpp:
-
 /usr/local/include/mongocxx/v_noabi/mongocxx/result/bulk_write-fwd.hpp:
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/third_party/mnmlstc/core/string.hpp:
@@ -9155,10 +9371,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/config/prelude.hpp:
 
-/usr/include/openssl/ecerr.h:
-
-/usr/local/include/bsoncxx/v_noabi/bsoncxx/document/view-fwd.hpp:
-
 ../boost/include/boost/range/iterator_range.hpp:
 
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/document/view.hpp:
@@ -9172,10 +9384,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 /usr/local/include/mongocxx/v_noabi/mongocxx/pool-fwd.hpp:
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/options/auto_encryption-fwd.hpp:
-
-/usr/include/openssl/crypto.h:
-
-/usr/local/include/mongocxx/v_noabi/mongocxx/config/postlude.hpp:
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/index_model-fwd.hpp:
 
@@ -9199,12 +9407,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/json/detail/value_from.hpp:
 
-/usr/include/openssl/ssl2.h:
-
-../boost/include/boost/range/mutable_iterator.hpp:
-
-../boost/include/boost/json/value_from.hpp:
-
 ../boost/include/boost/json/stream_parser.hpp:
 
 /usr/local/include/mongocxx/v_noabi/mongocxx/model/replace_one-fwd.hpp:
@@ -9214,8 +9416,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 ../boost/include/boost/json/serialize.hpp:
 
 ../boost/include/boost/json/detail/handler.hpp:
-
-/usr/include/c++/11/stdlib.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/11/include/mm_malloc.h:
 
@@ -9307,10 +9507,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/mp11/detail/mp_fold.hpp:
 
-/usr/include/openssl/e_os2.h:
-
-../boost/include/boost/mp11/detail/mp_plus.hpp:
-
 /usr/local/include/mongocxx/v_noabi/mongocxx/stdx.hpp:
 
 ../boost/include/boost/mp11/detail/mp_count.hpp:
@@ -9341,10 +9537,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/mp11.hpp:
 
-../jwt/jwt.h:
-
-../boost/include/boost/variant2/variant.hpp:
-
 ../boost/include/boost/system/result.hpp:
 
 ../boost/include/boost/json/fwd.hpp:
@@ -9362,10 +9554,6 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 ../boost/include/boost/json/string.hpp:
 
 ../boost/include/boost/json/set_pointer_options.hpp:
-
-/usr/include/openssl/ct.h:
-
-../boost/include/boost/json/detail/value.hpp:
 
 ../boost/include/boost/json/detail/object.hpp:
 
@@ -9482,6 +9670,142 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 ../boost/include/boost/config/auto_link.hpp:
 
 ../boost/include/boost/json/detail/config.hpp:
+
+../jwt/traits.h:
+
+../jwt/defaults.h:
+
+/usr/include/c++/11/experimental/bits/lfts_config.h:
+
+/usr/include/c++/11/set:
+
+/usr/include/openssl/srtp.h:
+
+/usr/include/openssl/dtls1.h:
+
+/usr/include/openssl/ssl3.h:
+
+../boost/include/boost/range/mutable_iterator.hpp:
+
+../boost/include/boost/json/value_from.hpp:
+
+/usr/include/openssl/ssl2.h:
+
+../boost/include/boost/json/detail/value.hpp:
+
+/usr/include/openssl/ct.h:
+
+/usr/include/openssl/comperr.h:
+
+/usr/include/openssl/comp.h:
+
+/usr/include/openssl/ssl.h:
+
+/usr/include/c++/11/bits/regex.h:
+
+/usr/include/openssl/x509v3err.h:
+
+/usr/include/openssl/x509v3.h:
+
+/usr/include/openssl/conftypes.h:
+
+/usr/local/include/mongocxx/v_noabi/mongocxx/options/transaction.hpp:
+
+/usr/include/openssl/conferr.h:
+
+/usr/include/openssl/conf.h:
+
+/usr/include/openssl/x509_vfy.h:
+
+/usr/include/openssl/sha.h:
+
+/usr/local/include/mongocxx/v_noabi/mongocxx/options/auto_encryption.hpp:
+
+/usr/include/openssl/dsaerr.h:
+
+/usr/include/openssl/dh.h:
+
+/usr/include/openssl/rsaerr.h:
+
+/usr/include/openssl/rsa.h:
+
+/usr/local/include/mongocxx/v_noabi/mongocxx/options/client_session.hpp:
+
+/usr/include/openssl/buffer.h:
+
+../boost/include/boost/type_traits/remove_const.hpp:
+
+/usr/include/openssl/x509.h:
+
+../boost/include/boost/core/bit.hpp:
+
+/usr/include/openssl/objects.h:
+
+/usr/include/openssl/core_dispatch.h:
+
+/usr/include/openssl/evp.h:
+
+/usr/include/openssl/lhash.h:
+
+/usr/include/openssl/ecdsa.h:
+
+/usr/local/include/bsoncxx/v_noabi/bsoncxx/document/view-fwd.hpp:
+
+/usr/include/openssl/ecerr.h:
+
+../boost/include/boost/range/rend.hpp:
+
+/usr/include/openssl/bnerr.h:
+
+/usr/include/openssl/bn.h:
+
+/usr/include/openssl/asn1err.h:
+
+/usr/include/openssl/bioerr.h:
+
+/usr/include/openssl/core.h:
+
+/usr/include/openssl/cryptoerr.h:
+
+/usr/include/c++/11/stdlib.h:
+
+/usr/local/include/mongocxx/v_noabi/mongocxx/config/postlude.hpp:
+
+/usr/include/openssl/crypto.h:
+
+../boost/include/boost/container_hash/hash_fwd.hpp:
+
+../boost/include/boost/range/detail/has_member_size.hpp:
+
+/usr/include/c++/11/bits/regex_automaton.tcc:
+
+/usr/include/openssl/bio.h:
+
+/usr/include/openssl/safestack.h:
+
+../boost/include/boost/mp11/detail/mp_plus.hpp:
+
+/usr/include/openssl/e_os2.h:
+
+/usr/include/openssl/types.h:
+
+/usr/include/openssl/opensslv.h:
+
+/usr/local/include/mongocxx/v_noabi/mongocxx/options/client_encryption.hpp:
+
+/usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/core-fwd.hpp:
+
+/usr/include/x86_64-linux-gnu/openssl/opensslconf.h:
+
+/usr/include/openssl/ec.h:
+
+/usr/include/openssl/buffererr.h:
+
+../jwt/base.h:
+
+../boost/include/boost/variant2/variant.hpp:
+
+../jwt/jwt.h:
 
 /usr/include/openssl/hmac.h:
 
@@ -9631,9 +9955,9 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/asio/impl/redirect_error.hpp:
 
-/usr/include/openssl/params.h:
-
 ../boost/include/boost/type_traits/add_pointer.hpp:
+
+/usr/include/openssl/params.h:
 
 ../boost/include/boost/asio/redirect_error.hpp:
 
@@ -9835,13 +10159,13 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 /usr/include/x86_64-linux-gnu/sys/ioctl.h:
 
-/usr/include/openssl/x509err.h:
-
 ../boost/include/boost/type_traits/conjunction.hpp:
 
 ../boost/include/boost/utility/binary.hpp:
 
 ../boost/include/boost/json/storage_ptr.hpp:
+
+/usr/include/openssl/x509err.h:
 
 /usr/include/x86_64-linux-gnu/asm/posix_types.h:
 
@@ -10227,11 +10551,11 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/date_time/constrained_value.hpp:
 
-/usr/include/openssl/dherr.h:
-
 ../boost/include/boost/mpl/bind.hpp:
 
 /usr/include/c++/11/bitset:
+
+/usr/include/openssl/dherr.h:
 
 ../boost/include/boost/numeric/conversion/int_float_mixture_enum.hpp:
 
@@ -10395,9 +10719,9 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 /usr/include/x86_64-linux-gnu/asm/socket.h:
 
-/usr/include/openssl/symhacks.h:
-
 /usr/local/include/mongocxx/v_noabi/mongocxx/result/insert_many.hpp:
+
+/usr/include/openssl/symhacks.h:
 
 /usr/include/x86_64-linux-gnu/bits/wchar.h:
 
@@ -11891,11 +12215,11 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/mpl/aux_/config/static_constant.hpp:
 
-/usr/include/openssl/macros.h:
-
 ../boost/include/boost/range/value_type.hpp:
 
 /usr/include/c++/11/bits/regex_constants.h:
+
+/usr/include/openssl/macros.h:
 
 ../boost/include/boost/mpl/aux_/na_fwd.hpp:
 
@@ -11961,6 +12285,8 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/preprocessor/detail/auto_rec.hpp:
 
+../BACKEND/Helper/Authorization.h:
+
 ../boost/include/boost/preprocessor/detail/limits/auto_rec_256.hpp:
 
 ../boost/include/boost/mpl/limits/arity.hpp:
@@ -12023,9 +12349,9 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/asio/detail/impl/reactive_descriptor_service.ipp:
 
-/usr/include/openssl/prov_ssl.h:
-
 /usr/local/include/mongocxx/v_noabi/mongocxx/result/gridfs/upload.hpp:
+
+/usr/include/openssl/prov_ssl.h:
 
 ../boost/include/boost/preprocessor/logical/limits/bool_256.hpp:
 
@@ -12157,9 +12483,9 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/asio/basic_raw_socket.hpp:
 
-/usr/include/openssl/async.h:
-
 /usr/local/include/mongocxx/v_noabi/mongocxx/pipeline-fwd.hpp:
+
+/usr/include/openssl/async.h:
 
 ../boost/include/boost/asio/detail/reactive_descriptor_service.hpp:
 
@@ -12367,9 +12693,9 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 
 ../boost/include/boost/asio/ip/impl/network_v6.hpp:
 
-/usr/include/openssl/stack.h:
-
 /usr/local/include/bsoncxx/v_noabi/bsoncxx/array/element-fwd.hpp:
+
+/usr/include/openssl/stack.h:
 
 ../boost/include/boost/asio/ip/basic_endpoint.hpp:
 

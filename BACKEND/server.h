@@ -9,9 +9,7 @@
 #include "crow/middlewares/cors.h"
 #include "unordered_set"
 #include "vector"
-
-#include <boost/json.hpp>
-// #include "Helper/Authorization.h"
+#include "Helper/Authorization.h"
 
 #include <mongocxx/client.hpp>
 #include <mongocxx/uri.hpp>
@@ -31,9 +29,15 @@ struct UserMiddleware: crow::ILocalMiddleware
 
     void after_handle(crow::request& req, crow::response& res, context& ctx)
     {
-        std::cout<<"Data is "<<req.url<<" "<<req.remote_ip_address<<" PORT is "<<res.body<<std::endl;
+        // std::cout<<"Data is "<<req.url<<" "<<req.remote_ip_address<<" PORT is "<<res.body<<std::endl;
         boost::json::object data = boost::json::parse(res.body).as_object();
-        std::cout<<"Now is "<<data["email"];
+        Session& s = Session::getInstance();
+        std::string email = data["email"].as_string().data();
+        std::string password = data["password"].as_string().data();
+        std::string jwt_str = "";
+        std::pair<bool,std::string>ans = s.create_session(jwt_str,email,password);
+
+        std::cout<<"Now is "<<ans.first<<" "<<ans.second<<std::endl;
     }
 };
 
