@@ -74,13 +74,11 @@ public:
     std::string getHash(std::string &jwtToken)
     {
         std::string id;
-        for(int i=jwtToken.length()-1;i>=0 && jwtToken[i]!='.';i--) id+=jwtToken[i];
-        std::cout<<"Id is "<<id<<std::endl;
+        for(int i=jwtToken.length()-1;i>=0 && jwtToken[i]!='.';i--) id=jwtToken[i]+id;
         return id;
     }
 
-    std::pair<bool,std::string> create_session(std::string &jwtToken,std::string &email, std::string &password)
-    {
+    std::pair<bool,std::string> verify_session(std::string &jwtToken,std::string &email, std::string &password){
         User u;
 
         if(user.find(email)!= user.end()){
@@ -95,8 +93,16 @@ public:
         if(jwtToken!="" && !session_expire(u) && !jwtExpire(jwtToken)) return {true,jwtToken};
         if(jwtToken!="") destroy_session(jwtToken,email,password);
 
+        return {true,"User is already loggedin"};
+    }
+
+    std::pair<bool,std::string> create_session(std::string &jwtToken,std::string &email, std::string &password)
+    {
+        User u;
+
+        if(user.find(email)!= user.end())return {false,"Session is already creatred"};
         std::chrono::_V2::system_clock::time_point now = std::chrono::system_clock::now();
-        std::string jwtToken = generateToken(email,password,now);
+        jwtToken = generateToken(email,password,now);
         u.created_at = now;
         u.valid_upto = std::chrono::minutes(5);
         std::lock_guard<std::mutex>guard(lock);
@@ -110,7 +116,7 @@ public:
 
         if(jwtToken=="") return {false, "Enter token"};
 
-        if(user.find(email)!= user.end()) return {false, "Session isnt created for this user"};
+        if(user.find(email)== user.end()) return {false, "Session does not present for this user"};
 
         bool is_valid = verifyJwt(email,password,jwtToken);
         if(!is_valid) return {false, "Invalid token"};

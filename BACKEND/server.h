@@ -3,7 +3,9 @@
 
 #include "string"
 #include "vector"
+#include "chrono"
 #include "unordered_set"
+#include "sstream"
 
 #include "crow.h"
 #include "crow/middlewares/cors.h"
@@ -24,20 +26,44 @@ struct UserMiddleware: crow::ILocalMiddleware
 
     void before_handle(crow::request& req, crow::response& res, context& ctx)
     {
+        if((req.method == crow::HTTPMethod::PUT || req.method == crow::HTTPMethod::POST) && req.body=="")
+        {
+            res.code = 403;
+            res.end("Enter Payload");
+            return;
+        }
     }
 
 
     void after_handle(crow::request& req, crow::response& res, context& ctx)
     {
-        // std::cout<<"Data is "<<req.url<<" "<<req.remote_ip_address<<" PORT is "<<res.body<<std::endl;
+        if(res.code == 403) return;
+
         boost::json::object data = boost::json::parse(res.body).as_object();
         Session& s = Session::getInstance();
+
+        std::stringstream ss;
+
         std::string email = data["email"].as_string().data();
         std::string password = data["password"].as_string().data();
         std::string jwt_str = "";
+
+
         std::pair<bool,std::string>ans = s.create_session(jwt_str,email,password);
 
-        std::cout<<"Now is "<<ans.first<<" "<<ans.second<<std::endl;
+        if(!ans.first) {
+            res.code = crow::status::FORBIDDEN;
+            res.body = ans.second;
+            return;
+        }
+
+        data["jwt"] = ans.second;
+
+        ss << std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now() - std::chrono::system_clock::from_time_t(0)).count();
+        data["session_created"] = ss.str();
+        ss.str("");
+        ss<<data;
+        res.body = ss.str();
     }
 };
 

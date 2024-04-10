@@ -225,13 +225,11 @@ void User::UserSignin(){
 		.methods(crow::HTTPMethod::Post)
         ([db_ref](const crow::request &req) {
             try {
+
                 crow::json::rvalue reqj = crow::json::load(req.body);
 
                 auto userSchema = crow::json::load(wUserSchema.dump());
                 std::pair<std::string, bool> check = JsonValid(reqj, userSchema, 2); 
-
-                if (!reqj)
-                    return crow::response(crow::status::BAD_REQUEST);
 
                 if(!check.second)
                     return crow::response(crow::status::BAD_REQUEST, check.first);
@@ -256,35 +254,8 @@ void User::UserSignin(){
                 std::string hashed_now = md5(reqj["password"].s());
                 std::string json_str = bsoncxx::to_json(finder_str);
 
-                // if(pass_hash != hashed_now)
-                //     return crow::response(crow::status::UNAUTHORIZED,"Incorrect Password");
-
-
-                // const int arraySize = 24;
-                // char charArray[arraySize];
-
-                // std::random_device rd;
-                // std::mt19937 gen(rd());
-                // std::uniform_int_distribution<int> dis(std::numeric_limits<char>::min(), std::numeric_limits<char>::max());
-
-                // std::generate(charArray, charArray + arraySize, [&]() { return static_cast<char>(dis(gen)); });
-
-                // std::string jti =
-                //     jwt::base::encode<jwt::alphabet::base64url>(std::string{reinterpret_cast<const char*>(charArray), sizeof(charArray)});
-
-            	// auto token = jwt::create()
-				// 			.set_issuer("auth0")
-				// 			.set_type("JWT")
-				// 			.set_id(jti)
-				// 			.set_issued_at(std::chrono::system_clock::now())
-				// 			.set_expires_at(std::chrono::system_clock::now() + std::chrono::seconds{36000})
-				// 			.set_payload_claim("email", jwt::claim(reqj["email"].s()))
-				// 			.set_payload_claim("password", jwt::claim(hashed_now))
-                //             .sign(jwt::algorithm::hs256("Hello"));
-
-
-                // std::cout<<"Token is "<<token<<std::endl;
-
+                if(pass_hash != hashed_now)
+                    return crow::response(crow::status::UNAUTHORIZED,"Incorrect Password");
 
                 return crow::response(crow::status::ACCEPTED,json_str);
             } catch (const std::exception& e) {
