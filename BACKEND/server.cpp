@@ -14,6 +14,8 @@
 #include <iostream>
 #include <vector>
 
+#include <boost/json/src.hpp>
+
 #include <bsoncxx/json.hpp>
 #include <bsoncxx/builder/stream/helpers.hpp>
 #include <bsoncxx/builder/stream/document.hpp>

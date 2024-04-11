@@ -47,6 +47,9 @@ add_executable(app.out ${SOURCES})
 # Definations
 add_definitions(-DCROW_USE_LOCALTIMEZONE -DCROW_FANCY_LOG)
 
+target_compile_definitions(app.out PRIVATE BOOST_JSON_STANDALONE) 
+target_compile_features(app.out PRIVATE cxx_std_17) 
+
 # Include directories
 target_include_directories(app.out PRIVATE ${INCLUDE_DIRS})
 

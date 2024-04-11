@@ -111,6 +111,7 @@ namespace crow
             gmtime_r(&t, &my_tm);
 #endif
 #endif
+
             size_t sz = strftime(date, sizeof(date), "%d-%m-%Y %H:%M:%S", &my_tm);
             return std::string(date, date + sz);
         }

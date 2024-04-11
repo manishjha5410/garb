@@ -3,7 +3,7 @@
 #include "../Helper/md5.h"
 #include <boost/algorithm/string/predicate.hpp>
 #include <variant>
-#include <jwt.h>
+// #include <#include "Helper/Authorization.h">
 
 User::User() {
     Server& s = Server::getInstance();
@@ -155,6 +155,8 @@ void User::UserView(){
     mongocxx::database& db_ref = *db;
 
     CROW_ROUTE((*app), "/api/user/view")
+    .CROW_MIDDLEWARES((*app), UserMiddleware)
+		.methods(crow::HTTPMethod::Get)
     ([db_ref]() {
         try{
             mongocxx::collection collection = db_ref["user"];
@@ -187,7 +189,6 @@ void User::UserViewOne(){
     mongocxx::database& db_ref = *db;
 
     CROW_ROUTE((*app), "/api/user/view/<int>")
-        .CROW_MIDDLEWARES((*app), UserMiddleware)
 		.methods(crow::HTTPMethod::Get)
         ([db_ref](const int& id) {
             try {
@@ -225,13 +226,11 @@ void User::UserSignin(){
 		.methods(crow::HTTPMethod::Post)
         ([db_ref](const crow::request &req) {
             try {
+
                 crow::json::rvalue reqj = crow::json::load(req.body);
 
                 auto userSchema = crow::json::load(wUserSchema.dump());
                 std::pair<std::string, bool> check = JsonValid(reqj, userSchema, 2); 
-
-                if (!reqj)
-                    return crow::response(crow::status::BAD_REQUEST);
 
                 if(!check.second)
                     return crow::response(crow::status::BAD_REQUEST, check.first);
@@ -241,7 +240,6 @@ void User::UserSignin(){
                 bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
                 auto finalizer = bsoncxx::builder::stream::finalize;
 
-                // bsoncxx::document::value projection = builder << "email" << 1<<"password"<<1<<finalizer;
                 bsoncxx::document::value filter = builder<<"email"<<std::string(reqj["email"].s())<<finalizer;
 
                 bsoncxx::stdx::optional<bsoncxx::document::value> finder = collection.find_one(filter.view());
@@ -258,35 +256,6 @@ void User::UserSignin(){
 
                 if(pass_hash != hashed_now)
                     return crow::response(crow::status::UNAUTHORIZED,"Incorrect Password");
-
-
-                const int arraySize = 24;
-                char charArray[arraySize];
-
-                std::random_device rd;
-                std::mt19937 gen(rd());
-                std::uniform_int_distribution<int> dis(std::numeric_limits<char>::min(), std::numeric_limits<char>::max());
-
-                std::generate(charArray, charArray + arraySize, [&]() { return static_cast<char>(dis(gen)); });
-
-                // unsigned char nonce[24];
-                // RAND_bytes(nonce, sizeof(nonce));
-                std::string jti =
-                    jwt::base::encode<jwt::alphabet::base64url>(std::string{reinterpret_cast<const char*>(charArray), sizeof(charArray)});
-
-            	auto token = jwt::create()
-							.set_issuer("auth0")
-							.set_type("JWT")
-							.set_id(jti)
-							.set_issued_at(std::chrono::system_clock::now())
-							.set_expires_at(std::chrono::system_clock::now() + std::chrono::seconds{36000})
-							.set_payload_claim("email", jwt::claim(reqj["email"].s()))
-							.set_payload_claim("password", jwt::claim(hashed_now))
-                            .sign(jwt::algorithm::hs256("Hello"));
-
-
-                std::cout<<"Token is "<<token<<std::endl;
-
 
                 return crow::response(crow::status::ACCEPTED,json_str);
             } catch (const std::exception& e) {
