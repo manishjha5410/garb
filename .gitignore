@@ -1,2 +1,3 @@
 mongo-cxx-driver-r3.10.1/
 build/
+.vscode/

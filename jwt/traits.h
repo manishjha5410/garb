@@ -1,10 +1,10 @@
+#pragma once
+
 #ifndef JWT_CPP_BOOSTJSON_TRAITS_H
 #define JWT_CPP_BOOSTJSON_TRAITS_H
 
-#define JWT_DISABLE_PICOJSON
 #include "jwt.h"
-
-#include <boost/json/src.hpp>
+#include <boost/json.hpp>
 // if not boost JSON standalone then error...
 
 namespace jwt {

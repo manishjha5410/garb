@@ -1,12 +1,7 @@
+#pragma once
+
 #ifndef JWT_CPP_JWT_H
 #define JWT_CPP_JWT_H
-
-// #ifndef JWT_DISABLE_PICOJSON
-// #ifndef PICOJSON_USE_INT64
-// #define PICOJSON_USE_INT64
-// #endif
-// #include "picojson/picojson.h"
-// #endif
 
 #ifndef JWT_DISABLE_BASE64
 #include "base.h"
@@ -2168,6 +2163,13 @@ namespace jwt {
 		typename json_traits::string_type as_string() const { return json_traits::as_string(val); }
 
 		/**
+		 * Get the contained JSON value as a object
+		 * \return content as object
+		 * \throw std::bad_cast Content was not a object
+		 */
+		typename json_traits::object_type as_object() const { return json_traits::as_object(val); }
+
+		/**
 		 * \brief Get the contained JSON value as a date
 		 *
 		 * If the value is a decimal, it is rounded up to the closest integer
@@ -3647,10 +3649,6 @@ template<typename json_traits>
 std::ostream& operator<<(std::ostream& os, const jwt::basic_claim<json_traits>& c) {
 	return os << c.to_json();
 }
-
-// #ifndef JWT_DISABLE_PICOJSON
-// #include "traits/kazuho-picojson/defaults.h"
-// #endif
 
 #include "defaults.h"
 
