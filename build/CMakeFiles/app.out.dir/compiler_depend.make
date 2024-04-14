@@ -1187,9 +1187,9 @@ CMakeFiles/app.out.dir/BACKEND/Module/Billing/Billing.cpp.o: ../BACKEND/Module/B
   /usr/include/c++/11/bits/this_thread_sleep.h \
   ../crow/include/crow/middlewares/cors.h \
   ../BACKEND/server.h \
+  ../BACKEND/Helper/Authorization.h \
   /usr/include/c++/11/unordered_set \
   /usr/include/c++/11/bits/unordered_set.h \
-  ../BACKEND/Helper/Authorization.h \
   ../jwt/jwt.h \
   ../jwt/base.h \
   /usr/include/openssl/ec.h \
@@ -2863,9 +2863,9 @@ CMakeFiles/app.out.dir/BACKEND/Module/Inventory/Inventory.cpp.o: ../BACKEND/Modu
   /usr/include/c++/11/bits/this_thread_sleep.h \
   ../crow/include/crow/middlewares/cors.h \
   ../BACKEND/server.h \
+  ../BACKEND/Helper/Authorization.h \
   /usr/include/c++/11/unordered_set \
   /usr/include/c++/11/bits/unordered_set.h \
-  ../BACKEND/Helper/Authorization.h \
   ../jwt/jwt.h \
   ../jwt/base.h \
   /usr/include/openssl/ec.h \
@@ -4735,9 +4735,9 @@ CMakeFiles/app.out.dir/BACKEND/Module/Request/RequestManagement.cpp.o: ../BACKEN
   /usr/include/c++/11/bits/this_thread_sleep.h \
   ../crow/include/crow/middlewares/cors.h \
   ../BACKEND/server.h \
+  ../BACKEND/Helper/Authorization.h \
   /usr/include/c++/11/unordered_set \
   /usr/include/c++/11/bits/unordered_set.h \
-  ../BACKEND/Helper/Authorization.h \
   ../jwt/jwt.h \
   ../jwt/base.h \
   /usr/include/openssl/ec.h \
@@ -6410,10 +6410,10 @@ CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o: ../BACKEND/User/User.cpp \
   /usr/include/c++/11/thread \
   /usr/include/c++/11/bits/this_thread_sleep.h \
   ../crow/include/crow/middlewares/cors.h \
+  ../BACKEND/User/Middleware.h \
+  ../BACKEND/Helper/Authorization.h \
   /usr/include/c++/11/unordered_set \
   /usr/include/c++/11/bits/unordered_set.h \
-  ../BACKEND/server.h \
-  ../BACKEND/Helper/Authorization.h \
   ../jwt/jwt.h \
   ../jwt/base.h \
   /usr/include/openssl/ec.h \
@@ -6657,6 +6657,8 @@ CMakeFiles/app.out.dir/BACKEND/User/User.cpp.o: ../BACKEND/User/User.cpp \
   ../boost/include/boost/json/detail/value_to.hpp \
   ../boost/include/boost/json/visit.hpp \
   ../boost/include/boost/json/impl/visit.hpp \
+  ../BACKEND/server.h \
+  ../BACKEND/Helper/Authorization.h \
   /usr/local/include/mongocxx/v_noabi/mongocxx/client.hpp \
   /usr/local/include/mongocxx/v_noabi/mongocxx/client-fwd.hpp \
   /usr/local/include/mongocxx/v_noabi/mongocxx/config/prelude.hpp \
@@ -8764,9 +8766,8 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
   /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/single_context.hpp \
   /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/array.hpp \
   /usr/local/include/bsoncxx/v_noabi/bsoncxx/builder/stream/array-fwd.hpp \
-  ../BACKEND/Module/Module.h \
-  ../BACKEND/Module/Billing/Billing.h \
-  ../BACKEND/server.h \
+  ../BACKEND/User/User.h \
+  ../BACKEND/User/Middleware.h \
   ../BACKEND/Helper/Authorization.h \
   ../jwt/jwt.h \
   ../jwt/base.h \
@@ -8848,16 +8849,10 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
   /usr/include/c++/11/experimental/bits/lfts_config.h \
   ../jwt/defaults.h \
   ../jwt/traits.h \
-  ../BACKEND/Module/Request/RequestManagement.h \
   ../BACKEND/server.h \
-  ../BACKEND/Module/Inventory/Inventory.h \
-  ../BACKEND/server.h \
-  ../BACKEND/User/User.h \
-  ../BACKEND/server.h \
+  ../BACKEND/Helper/Authorization.h \
   ../BACKEND/server.h
 
-
-../BACKEND/Module/Module.h:
 
 ../boost/include/boost/json/detail/charconv/detail/emulated128.hpp:
 
@@ -9528,6 +9523,8 @@ CMakeFiles/app.out.dir/BACKEND/server.cpp.o: ../BACKEND/server.cpp \
 ../boost/include/boost/mp11/detail/mp_value.hpp:
 
 ../boost/include/boost/mp11/version.hpp:
+
+../BACKEND/User/Middleware.h:
 
 ../boost/include/boost/mp11/integral.hpp:
 

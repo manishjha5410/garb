@@ -48,9 +48,17 @@ private:
 				.with_issuer("auth0")
 				.with_id(hash)
 				.leeway(60UL);
-                
-                
-        verifier.verify(token);
+
+        try
+        {
+            verifier.verify(token);
+            return true;
+        }
+        catch (const std::exception& e) 
+        {
+            return false;
+        }
+
         
         return true;
     }
@@ -102,6 +110,8 @@ public:
         if(jwtToken=="") return {false, "Enter token"};
 
         int id = stoi(getData(jwtToken,"id"));
+
+        if(!verifyJwt(jwtToken)) return {false,"Invalid token"};
 
 
         std::unordered_set<int>::iterator it = user.find(id);
