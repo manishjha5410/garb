@@ -16,6 +16,9 @@
 #include <mongocxx/client.hpp>
 #include <mongocxx/uri.hpp>
 
+//Middleware
+#include "User/Middleware.h"
+
 struct UserMiddleware: crow::ILocalMiddleware
 {
     struct context
@@ -93,20 +96,20 @@ struct UserMiddleware: crow::ILocalMiddleware
 
 class Server {
 public:
-    crow::App<crow::CORSHandler,UserMiddleware> *app;
+    crow::App<crow::CORSHandler,VerifyUserMiddleware,LoginMiddleware> *app;
     mongocxx::database *db;
 
-    struct User {
-        std::string username;
-        std::string role;
-    };
-
-    static Server& getInstance() {
-        static Server instance;
-        return instance;
+    void startServer()
+    {
+        
     }
 
-    void setServerData(crow::App<crow::CORSHandler,UserMiddleware> *server, mongocxx::database *db_loc) {
+    static Server* getInstance() {
+        static Server instance;
+        return &instance;
+    }
+
+    void setServerData(crow::App<crow::CORSHandler,VerifyUserMiddleware,LoginMiddleware> *server, mongocxx::database *db_loc) {
         app = server;
         db = db_loc;
     }

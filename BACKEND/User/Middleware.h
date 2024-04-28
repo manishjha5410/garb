@@ -12,6 +12,7 @@ struct VerifyUserMiddleware: crow::ILocalMiddleware
 {
     struct context
     {
+        boost::json::object user_data;
     };
 
     void before_handle(crow::request& req, crow::response& res, context& ctx)
@@ -20,8 +21,6 @@ struct VerifyUserMiddleware: crow::ILocalMiddleware
 
         try
         {
-            if(req.body=="") throw std::invalid_argument("Enter Payload");
-
             std::string jwtToken = req.get_header_value("Authorization");
 
             if(jwtToken=="") throw std::invalid_argument("Enter Authorization Header");
@@ -29,6 +28,12 @@ struct VerifyUserMiddleware: crow::ILocalMiddleware
             std::pair<bool,std::string>ans = s.verify_session(jwtToken);
 
             if(!ans.first) throw std::runtime_error(ans.second);
+
+            std::pair<bool,boost::json::object>da = s.return_value(jwtToken);
+            std::string from_dat = da.second["message"].as_string().c_str();
+            if(!da.first) throw std::runtime_error(from_dat);
+
+            ctx.user_data = da.second;
         }
         catch (const std::exception& e) {
             res.code = 403;
@@ -56,7 +61,6 @@ struct LoginMiddleware: crow::ILocalMiddleware
     void after_handle(crow::request& req, crow::response& res, context& ctx)
     {
         if(res.code >= 400) return;
-std::cout<<"Data is \n";
         Session& s = Session::getInstance();
 
         try
@@ -65,7 +69,7 @@ std::cout<<"Data is \n";
 
             std::stringstream ss;
             data.erase("_id");
-            data.erase("name");
+            // data.erase("name");
 
             std::string jwt_str = "";
 

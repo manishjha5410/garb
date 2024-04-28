@@ -15,9 +15,9 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 # Source files
 set(SOURCES
     BACKEND/server.cpp
-    BACKEND/Module/Billing/Billing.cpp
-    BACKEND/Module/Request/RequestManagement.cpp
-    BACKEND/Module/Inventory/Inventory.cpp
+    # BACKEND/Module/Billing/Billing.cpp
+    # BACKEND/Module/Request/RequestManagement.cpp
+    # BACKEND/Module/Inventory/Inventory.cpp
     BACKEND/User/User.cpp
 )
 

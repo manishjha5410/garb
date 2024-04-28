@@ -65,7 +65,13 @@ private:
 
     std::string getData(std::string &jwtToken, std::string claim)
     {
-        return jwt::decode(jwtToken).get_payload_claim(claim).as_string();
+        std::string data ="";
+        try{
+            data= jwt::decode(jwtToken).get_payload_claim(claim).as_string();
+        } catch (const std::exception& e) {
+            data = "Cannot find "+ claim;
+        }
+        return data;
     }
 
     bool session_expire(User &u)
@@ -109,7 +115,9 @@ public:
 
         if(jwtToken=="") return {false, "Enter token"};
 
-        int id = stoi(getData(jwtToken,"id"));
+        std::string id_str = getData(jwtToken,"id");
+        if(id_str.rfind("Cannot", 0) == 0) return {false,"Invalid Token"};
+        int id = stoi(id_str);
 
         if(!verifyJwt(jwtToken)) return {false,"Invalid token"};
 
@@ -163,19 +171,24 @@ public:
         return {true,"Session Deleted"};
     }
 
-    std::pair<bool,boost::json::value> return_value(std::string jwtToken, std::string key){
-        if(jwtToken=="") return {false,"Enter token"};
+    std::pair<bool,boost::json::object> return_value(std::string jwtToken){
+        boost::json::object obj;
+        if(jwtToken=="") {
+            obj["message"] = "Enter token";
+            return {false,obj};
+        }
         std::string hash = getHash(jwtToken);
 
         std::unordered_map<std::string, Session::User>::iterator it = sessionMap.find(hash);
 
-        if(it == sessionMap.end()) return {false,"Session is not present"};
+        if(it == sessionMap.end()) {
+            obj["message"] = "Session is not present";
+            return {false,obj};
+        }
         
         User &u = it->second;
-        boost::json::object::iterator it1 = u.data.find(key);
-        if(it1==u.data.end()) return {false,boost::json::value{}};
 
-        return {true,it1->value()};
+        return {true,u.data};
     }
 
     static Session& getInstance() {

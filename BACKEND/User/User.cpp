@@ -3,12 +3,13 @@
 #include "../Helper/md5.h"
 #include <boost/algorithm/string/predicate.hpp>
 #include <variant>
-// #include <#include "Helper/Authorization.h">
+
 
 User::User() {
-    Server& s = Server::getInstance();
-    app = s.app;
-    db = s.db;
+    s = Server::getInstance();
+    bp = new crow::Blueprint("user");
+    s->app->register_blueprint(*bp);
+    db = s->db;
 }
 
 crow::json::wvalue wUserSchema = {
@@ -40,18 +41,18 @@ crow::json::wvalue wUserSchema = {
 };
 
 void User::createRoutes(){
+    UserSignin();
     UserSignUp();
     UserDelete();
     UserViewOne();
     UserView();
-    UserSignin();
 }
 
 void User::UserSignUp(){
 
     mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE((*app), "/api/signup")
+    CROW_BP_ROUTE((*bp), "/signup")
         .methods("POST"_method)([db_ref](const crow::request &req) {
             try {
                 crow::json::rvalue reqj = crow::json::load(req.body);
@@ -124,7 +125,7 @@ void User::UserDelete(){
 
     mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE((*app), "/api/user/delete/<int>")
+    CROW_BP_ROUTE((*bp), "/delete/<int>")
         .methods("DELETE"_method)([db_ref](const int& id) {
             try{
                 bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
@@ -154,12 +155,15 @@ void User::UserView(){
 
     mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE((*app), "/api/user/view")
-    .CROW_MIDDLEWARES((*app), UserMiddleware)
+    CROW_BP_ROUTE((*bp), "/view")
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
 		.methods(crow::HTTPMethod::Get)
-    ([db_ref]() {
+    ([db_ref](const crow::request& req) {
         try{
             mongocxx::collection collection = db_ref["user"];
+
+            auto& ctx = s->app->get_context<VerifyUserMiddleware>(req);
+            std::cout<<ctx.user_data.name<<std::endl;
 
             bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
             auto finalizer = bsoncxx::builder::stream::finalize;
@@ -188,7 +192,7 @@ void User::UserViewOne(){
 
     mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE((*app), "/api/user/view/<int>")
+    CROW_BP_ROUTE((*bp), "/view/<int>")
 		.methods(crow::HTTPMethod::Get)
         ([db_ref](const int& id) {
             try {
@@ -220,9 +224,8 @@ void User::UserSignin(){
     mongocxx::database& db_ref = *db;
     // UserMiddleware usermid = Server::getInstance().middleware;
 
-
-    CROW_ROUTE((*app), "/api/login")
-    .CROW_MIDDLEWARES((*app), UserMiddleware)
+    CROW_BP_ROUTE((*bp), "/login")
+    .CROW_MIDDLEWARES((*s->app), LoginMiddleware)
 		.methods(crow::HTTPMethod::Post)
         ([db_ref](const crow::request &req) {
             try {
@@ -230,8 +233,9 @@ void User::UserSignin(){
                 crow::json::rvalue reqj = crow::json::load(req.body);
 
                 auto userSchema = crow::json::load(wUserSchema.dump());
-                std::pair<std::string, bool> check = JsonValid(reqj, userSchema, 2); 
 
+
+                std::pair<std::string, bool> check = JsonValid(reqj, userSchema, 0); 
                 if(!check.second)
                     return crow::response(crow::status::BAD_REQUEST, check.first);
 

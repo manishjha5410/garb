@@ -55,7 +55,7 @@ inline std::pair<std::string,bool> JsonValid(crow::json::rvalue &res,crow::json:
 
         if(!res.has(key)){
             if(operation==1 || operation==2) continue;
-            if(boost::iequals(val["required"].s(),"NO")) continue;
+            if(val.has("required") && boost::iequals(val["required"].s(),"NO")) continue;
             msg = key + " is not present in the message";
             valid = valid && false;
             break;
