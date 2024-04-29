@@ -30,8 +30,7 @@ struct VerifyUserMiddleware: crow::ILocalMiddleware
             if(!ans.first) throw std::runtime_error(ans.second);
 
             std::pair<bool,boost::json::object>da = s.return_value(jwtToken);
-            std::string from_dat = da.second["message"].as_string().c_str();
-            if(!da.first) throw std::runtime_error(from_dat);
+            if(!da.first) throw std::runtime_error(da.second["message"].as_string().c_str());
 
             ctx.user_data = da.second;
         }

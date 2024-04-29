@@ -154,22 +154,55 @@ void User::UserDelete(){
 void User::UserView(){
 
     mongocxx::database& db_ref = *db;
+    auto &app = s->app;
 
     CROW_BP_ROUTE((*bp), "/view")
     .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
 		.methods(crow::HTTPMethod::Get)
-    ([db_ref](const crow::request& req) {
+    ([db_ref,app](const crow::request& req) {
         try{
             mongocxx::collection collection = db_ref["user"];
 
-            auto& ctx = s->app->get_context<VerifyUserMiddleware>(req);
-            std::cout<<ctx.user_data.name<<std::endl;
+            auto& ctx = app->get_context<VerifyUserMiddleware>(req);
+            std::string user_role = ctx.user_data["role"].as_string().c_str();
 
             bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
             auto finalizer = bsoncxx::builder::stream::finalize;
+            auto open = bsoncxx::builder::stream::open_document;
+            auto close = bsoncxx::builder::stream::close_document;
 
             bsoncxx::document::value projection = builder << "_id" << 0 <<finalizer;
-            mongocxx::cursor cursor = collection.find({},mongocxx::options::find{}.projection(projection.view()));
+            // bsoncxx::document::value filter = builder << "_id" << 0 <<finalizer;
+
+            bsoncxx::builder::stream::document filter_builder{};
+
+        filter_builder << "$or" << bsoncxx::builder::stream::open_array
+                       << bsoncxx::builder::stream::open_document << "email" << std::string(ctx.user_data["email"].as_string().c_str()) << bsoncxx::builder::stream::close_document
+                       << bsoncxx::builder::stream::open_document << "role" << "employee" << bsoncxx::builder::stream::close_document
+                       << bsoncxx::builder::stream::close_array;
+
+
+            filter_builder << "$or";
+            filter_builder << "$or" << bsoncxx::builder::stream::open_array << bsoncxx::builder::stream::open_document << "email" << std::string(ctx.user_data["email"].as_string().c_str()) << bsoncxx::builder::stream::close_document;
+            filter_builder << bsoncxx::builder::stream::close_array;
+            filter_builder << "email" << std::string(ctx.user_data["email"].as_string().c_str());
+
+            // std::cout<<user_role<<std::endl;
+
+            // if(user_role == "manager"){
+            //     filter_builder << "role" << "employee";
+            // } else if (user_role == "employee"){
+            //     filter_builder << "password" << std::string(ctx.user_data["password"].as_string().c_str());
+            // } else {
+            //     filter_builder << "name" << std::atoi(ctx.user_data["name"].as_string().c_str());
+            // }
+
+            // filter_builder << close;
+            // filter_builder << finalizer;
+
+            std::cout<<bsoncxx::to_json(filter_builder.view())<<std::endl;
+
+            mongocxx::cursor cursor = collection.find(filter_builder.view(),mongocxx::options::find{}.projection(projection.view()));
 
             std::string main_str = "[";
 
@@ -235,7 +268,7 @@ void User::UserSignin(){
                 auto userSchema = crow::json::load(wUserSchema.dump());
 
 
-                std::pair<std::string, bool> check = JsonValid(reqj, userSchema, 0); 
+                std::pair<std::string, bool> check = JsonValid(reqj, userSchema, 2); 
                 if(!check.second)
                     return crow::response(crow::status::BAD_REQUEST, check.first);
 
