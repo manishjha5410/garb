@@ -126,7 +126,7 @@ void Inventory::InventoryEdit(){
 
             bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
             auto open = bsoncxx::builder::stream::open_document;
-            auto close = bsoncxx::builder::stream::close_document;0
+            auto close = bsoncxx::builder::stream::close_document;
             auto finalizer = bsoncxx::builder::stream::finalize;
 
             bsoncxx::document::value filter = builder<<"id"<<id<<finalizer;

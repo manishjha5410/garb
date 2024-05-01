@@ -4,8 +4,8 @@
 #include <boost/algorithm/string/predicate.hpp>
 #include <variant>
 
-
-User::User() {
+User::User()
+{
     s = Server::getInstance();
     bp = new crow::Blueprint("user");
     s->app->register_blueprint(*bp);
@@ -40,7 +40,8 @@ crow::json::wvalue wUserSchema = {
     }}
 };
 
-void User::createRoutes(){
+void User::createRoutes()
+{
     UserSignin();
     UserSignUp();
     UserDelete();
@@ -48,9 +49,10 @@ void User::createRoutes(){
     UserView();
 }
 
-void User::UserSignUp(){
+void User::UserSignUp()
+{
 
-    mongocxx::database& db_ref = *db;
+    mongocxx::database &db_ref = *db;
 
     CROW_BP_ROUTE((*bp), "/signup")
         .methods("POST"_method)([db_ref](const crow::request &req) {
@@ -117,13 +119,13 @@ void User::UserSignUp(){
                 return crow::response(crow::status::CREATED, return_str);
             } catch (const std::exception& e) {
                 return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
-            }
-        });
+            } });
 }
 
-void User::UserDelete(){
+void User::UserDelete()
+{
 
-    mongocxx::database& db_ref = *db;
+    mongocxx::database &db_ref = *db;
 
     CROW_BP_ROUTE((*bp), "/delete/<int>")
         .methods("DELETE"_method)([db_ref](const int& id) {
@@ -147,13 +149,13 @@ void User::UserDelete(){
             }
             catch (const std::exception& e) {
                 return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
-            }
-        });
+            } });
 }
 
-void User::UserView(){
+void User::UserView()
+{
 
-    mongocxx::database& db_ref = *db;
+    mongocxx::database &db_ref = *db;
     auto &app = s->app;
 
     CROW_BP_ROUTE((*bp), "/view")
@@ -172,37 +174,19 @@ void User::UserView(){
             auto close = bsoncxx::builder::stream::close_document;
 
             bsoncxx::document::value projection = builder << "_id" << 0 <<finalizer;
-            // bsoncxx::document::value filter = builder << "_id" << 0 <<finalizer;
 
-            bsoncxx::builder::stream::document filter_builder{};
+            bsoncxx::builder::stream::array_context filter_builder = builder << "$or" << bsoncxx::builder::stream::open_array;
+            filter_builder << open << "email" << std::string(ctx.user_data["email"].as_string().c_str()) << close;
 
-        filter_builder << "$or" << bsoncxx::builder::stream::open_array
-                       << bsoncxx::builder::stream::open_document << "email" << std::string(ctx.user_data["email"].as_string().c_str()) << bsoncxx::builder::stream::close_document
-                       << bsoncxx::builder::stream::open_document << "role" << "employee" << bsoncxx::builder::stream::close_document
-                       << bsoncxx::builder::stream::close_array;
+            if(user_role == "manager"){
+                filter_builder << open << "role" << "employee" << close;
+            } else if( user_role == "admin"){
+                filter_builder << open << "id" << open << "$gt" << 0 << close << close;
+            }
 
+            bsoncxx::document::value filter_view = filter_builder << bsoncxx::builder::stream::close_array << finalizer;
 
-            filter_builder << "$or";
-            filter_builder << "$or" << bsoncxx::builder::stream::open_array << bsoncxx::builder::stream::open_document << "email" << std::string(ctx.user_data["email"].as_string().c_str()) << bsoncxx::builder::stream::close_document;
-            filter_builder << bsoncxx::builder::stream::close_array;
-            filter_builder << "email" << std::string(ctx.user_data["email"].as_string().c_str());
-
-            // std::cout<<user_role<<std::endl;
-
-            // if(user_role == "manager"){
-            //     filter_builder << "role" << "employee";
-            // } else if (user_role == "employee"){
-            //     filter_builder << "password" << std::string(ctx.user_data["password"].as_string().c_str());
-            // } else {
-            //     filter_builder << "name" << std::atoi(ctx.user_data["name"].as_string().c_str());
-            // }
-
-            // filter_builder << close;
-            // filter_builder << finalizer;
-
-            std::cout<<bsoncxx::to_json(filter_builder.view())<<std::endl;
-
-            mongocxx::cursor cursor = collection.find(filter_builder.view(),mongocxx::options::find{}.projection(projection.view()));
+            mongocxx::cursor cursor = collection.find(filter_view.view(),mongocxx::options::find{}.projection(projection.view()));
 
             std::string main_str = "[";
 
@@ -217,13 +201,13 @@ void User::UserView(){
         }
         catch (const std::exception& e) {
             return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
-        }
-    });
+        } });
 }
 
-void User::UserViewOne(){
+void User::UserViewOne()
+{
 
-    mongocxx::database& db_ref = *db;
+    mongocxx::database &db_ref = *db;
 
     CROW_BP_ROUTE((*bp), "/view/<int>")
 		.methods(crow::HTTPMethod::Get)
@@ -247,18 +231,17 @@ void User::UserViewOne(){
                 return crow::response(crow::status::OK,json_str);
             } catch (const std::exception& e) {
                 return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
-            }
-        });
+            } });
 }
 
+void User::UserSignin()
+{
 
-void User::UserSignin(){
-
-    mongocxx::database& db_ref = *db;
+    mongocxx::database &db_ref = *db;
     // UserMiddleware usermid = Server::getInstance().middleware;
 
     CROW_BP_ROUTE((*bp), "/login")
-    .CROW_MIDDLEWARES((*s->app), LoginMiddleware)
+        .CROW_MIDDLEWARES((*s->app), LoginMiddleware)
 		.methods(crow::HTTPMethod::Post)
         ([db_ref](const crow::request &req) {
             try {
@@ -297,6 +280,5 @@ void User::UserSignin(){
                 return crow::response(crow::status::ACCEPTED,json_str);
             } catch (const std::exception& e) {
                 return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
-            }
-        });
+            } });
 }
