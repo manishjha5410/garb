@@ -25,10 +25,8 @@ class Admin {
 
         Admin();
         void createRoutes();
-        // void UserEdit();
-        // void UserDelete();
-        void UserView();
-        void UserViewOne();
+        void UserEdit();
+        void UserDelete();
 };
 
 #endif
