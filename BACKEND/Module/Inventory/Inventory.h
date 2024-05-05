@@ -22,6 +22,7 @@ class Inventory {
         Server* s;
 
         Inventory();
+        void createRoutes();
         void InventoryAdd();
         void InventoryEdit();
         void InventoryDelete();

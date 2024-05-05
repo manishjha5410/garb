@@ -7,6 +7,15 @@ RequestManagement::RequestManagement() {
     db = s->db;
 }
 
+void RequestManagement::createRoutes()
+{
+    RequestManagementAdd();
+    RequestManagementView();
+    RequestManagementAccept();
+    RequestManagementReject();
+    RequestManagementDelete();   
+}
+
 void RequestManagement::RequestManagementAdd() {
     mongocxx::database& db_ref = *db;
 

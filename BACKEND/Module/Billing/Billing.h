@@ -24,6 +24,7 @@ class Billing {
         std::string convertString();
         Billing();
         void BillingAdd();
+        void createRoutes();
         void BillingView();
 };
 

@@ -7,6 +7,12 @@ Billing::Billing() {
     db = s->db;
 }
 
+void Billing::createRoutes()
+{
+    BillingView();
+    BillingAdd();
+}
+
 void Billing::BillingAdd() {
 
     mongocxx::database& db_ref = *db;

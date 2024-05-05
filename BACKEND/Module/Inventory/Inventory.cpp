@@ -47,6 +47,16 @@ crow::json::wvalue wInventorySchema = {
 
 auto inventorySchema = crow::json::load(wInventorySchema.dump());
 
+void Inventory::createRoutes()
+{
+    InventoryAdd();
+    InventoryEdit();
+    InventoryDelete();
+    InventoryViewOne();
+    InventoryView();
+    InventoryAssingServer();
+}
+
 void Inventory::InventoryAdd(){
 
     mongocxx::database& db_ref = *db;

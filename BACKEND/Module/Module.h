@@ -17,25 +17,15 @@ class Module
         void createRoutes(){
             // Billing
             Billing billing;
-            billing.BillingView();
-            billing.BillingAdd();
+            billing.createRoutes();
 
             // Request
             RequestManagement request;
-            request.RequestManagementAdd();
-            request.RequestManagementView();
-            request.RequestManagementAccept();
-            request.RequestManagementReject();
-            request.RequestManagementDelete();
+            request.createRoutes();
 
             // Inventory
             Inventory inventory;
-            inventory.InventoryAdd();
-            inventory.InventoryEdit();
-            inventory.InventoryDelete();
-            inventory.InventoryViewOne();
-            inventory.InventoryView();
-            inventory.InventoryAssingServer();
+            inventory.createRoutes();
         }
 };
 
