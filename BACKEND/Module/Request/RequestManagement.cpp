@@ -1,15 +1,16 @@
 #include "RequestManagement.h"
 
 RequestManagement::RequestManagement() {
-    Server& s = Server::getInstance();
-    app = s.app;
-    db = s.db;
+    s = Server::getInstance();
+    bp = new crow::Blueprint("request");
+    s->app->register_blueprint(*bp);
+    db = s->db;
 }
 
 void RequestManagement::RequestManagementAdd() {
     mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE((*app), "/api/request/add")
+    CROW_BP_ROUTE((*bp), "/api/request/add")
         .methods("POST"_method)([db_ref](const crow::request &req) {
             auto reqj = crow::json::load(req.body);
             if (!reqj)
@@ -46,7 +47,7 @@ void RequestManagement::RequestManagementAdd() {
 void RequestManagement::RequestManagementView() {
     mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE((*app), "/api/request/view")
+    CROW_BP_ROUTE((*bp), "/api/request/view")
         .methods("GET"_method)([db_ref]() {
             mongocxx::collection collection = db_ref["request"];
 
@@ -71,7 +72,7 @@ void RequestManagement::RequestManagementAccept() {
 
     mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE((*app), "/api/request/accept")
+    CROW_BP_ROUTE((*bp), "/api/request/accept")
         .methods("POST"_method)([db_ref](const crow::request &req) {
             auto reqj = crow::json::load(req.body);
             if (!reqj)
@@ -99,7 +100,7 @@ void RequestManagement::RequestManagementReject() {
 
     mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE((*app), "/api/request/reject")
+    CROW_BP_ROUTE((*bp), "/api/request/reject")
         .methods("POST"_method)([db_ref](const crow::request &req) {
             auto reqj = crow::json::load(req.body);
             if (!reqj)
@@ -127,7 +128,7 @@ void RequestManagement::RequestManagementDelete() {
 
     mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE((*app), "/api/request/delete")
+    CROW_BP_ROUTE((*bp), "/api/request/delete")
         .methods("POST"_method)([db_ref](const crow::request &req) {
             auto reqj = crow::json::load(req.body);
             if (!reqj)

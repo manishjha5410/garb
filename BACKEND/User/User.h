@@ -17,6 +17,8 @@
 
 #include "Middleware.h"
 
+#include "Admin/Admin.h"
+
 class User {
     public:
         crow::Blueprint *bp;
@@ -27,7 +29,6 @@ class User {
         void createRoutes();
         void UserSignUp();
         void UserEdit();
-        void UserDelete();
         void UserView();
         void UserViewOne();
         void UserSignin();

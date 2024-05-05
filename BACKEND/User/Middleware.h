@@ -67,8 +67,6 @@ struct LoginMiddleware: crow::ILocalMiddleware
             boost::json::object data = boost::json::parse(res.body).as_object();
 
             std::stringstream ss;
-            data.erase("_id");
-            // data.erase("name");
 
             std::string jwt_str = "";
 

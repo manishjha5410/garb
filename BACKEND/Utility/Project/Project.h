@@ -1,5 +1,5 @@
-#ifndef ADMIN_H_
-#define ADMIN_H_
+#ifndef PROJECT_H_
+#define PROJECT_H_
 
 #include "crow.h"
 #include "crow/middlewares/cors.h"
@@ -17,16 +17,15 @@
 
 #include "../Middleware.h"
 
-class Admin {
+class Project {
     public:
         crow::Blueprint *bp;
         mongocxx::database *db;
         Server* s;
 
-        Admin();
+        Project();
         void createRoutes();
-        void UserEdit();
-        void UserDelete();
+        void ProjectAdd();
 };
 
 #endif

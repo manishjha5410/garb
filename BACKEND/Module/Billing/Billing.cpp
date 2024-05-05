@@ -1,16 +1,17 @@
 #include "Billing.h"
 
 Billing::Billing() {
-    Server& s = Server::getInstance();
-    app = s.app;
-    db = s.db;
+    s = Server::getInstance();
+    bp = new crow::Blueprint("user");
+    s->app->register_blueprint(*bp);
+    db = s->db;
 }
 
 void Billing::BillingAdd() {
 
     mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE((*app), "/api/bill/add")
+    CROW_BP_ROUTE((*bp), "/api/bill/add")
         .methods("POST"_method)([db_ref](const crow::request &req) {
             auto reqj = crow::json::load(req.body);
             if (!reqj)
@@ -45,7 +46,7 @@ void Billing::BillingView() {
 
     mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE((*app), "/api/bill/view")
+    CROW_BP_ROUTE((*bp), "/api/bill/view")
     ([db_ref]() {
         mongocxx::collection collection = db_ref["billing"];
 

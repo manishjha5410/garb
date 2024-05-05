@@ -21,7 +21,8 @@
 #include <bsoncxx/builder/stream/document.hpp>
 #include <bsoncxx/builder/stream/array.hpp>
 
-// #include "Module/Module.h"
+#include "Module/Module.h"
+#include "Utility/Utility.h"
 #include "User/User.h"
 #include "server.h"
 
@@ -67,12 +68,16 @@ struct Request {
 void createRoutes(){
 
     // Module
-    // Module _module;
-    // _module.createRoutes();
+    Module _module;
+    _module.createRoutes();
 
     // User
     User user;
     user.createRoutes();
+
+    // Uitlity
+    Utility utility;
+    utility.createRoutes();
 }
 
 int main() {

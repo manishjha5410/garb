@@ -2,9 +2,10 @@
 #include "../../Helper/helper.h"
 
 Inventory::Inventory() {
-    Server& s = Server::getInstance();
-    app = s.app;
-    db = s.db;
+    s = Server::getInstance();
+    bp = new crow::Blueprint("inventory");
+    s->app->register_blueprint(*bp);
+    db = s->db;
 }
 
 crow::json::wvalue wInventorySchema = {
@@ -38,7 +39,7 @@ crow::json::wvalue wInventorySchema = {
     {"quantity", {
         {"type", "Integer"}
     }},
-    {"task_id", {
+    {"task_id", { 
         {"type", "List"},
         {"required", "No"}
     }},
@@ -50,7 +51,7 @@ void Inventory::InventoryAdd(){
 
     mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE((*app), "/api/list/add")
+    CROW_BP_ROUTE((*bp), "/add")
         .methods("POST"_method)([db_ref](const crow::request &req) {
             try {
                 crow::json::rvalue reqj = crow::json::load(req.body);
@@ -112,7 +113,7 @@ void Inventory::InventoryEdit(){
 
     mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE((*app), "/api/list/edit/<int>")
+    CROW_BP_ROUTE((*bp), "/edit/<int>")
         .methods("PUT"_method)([db_ref](const crow::request &req,const int& id) {
             crow::json::rvalue reqj = crow::json::load(req.body);
 
@@ -168,7 +169,7 @@ void Inventory::InventoryDelete(){
 
     mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE((*app), "/api/list/delete/<int>")
+    CROW_BP_ROUTE((*bp), "/delete/<int>")
         .methods("DELETE"_method)([db_ref](const int& id) {
             try{
                 bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
@@ -198,7 +199,7 @@ void Inventory::InventoryView(){
 
     mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE((*app), "/api/list/view")
+    CROW_BP_ROUTE((*bp), "/view")
     ([db_ref]() {
         try{
             mongocxx::collection collection = db_ref["inventory"];
@@ -230,7 +231,7 @@ void Inventory::InventoryViewOne(){
 
     mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE((*app), "/api/list/view/<int>")
+    CROW_BP_ROUTE((*bp), "/view/<int>")
         .methods("GET"_method)([db_ref](const int& id) {
             try {
 
@@ -259,7 +260,7 @@ void Inventory::InventoryAssingServer(){
 
     mongocxx::database& db_ref = *db;
 
-    CROW_ROUTE((*app), "/api/list/assign_server")
+    CROW_BP_ROUTE((*bp), "/assign_server")
     ([db_ref]() {
         std::string main_str;
 

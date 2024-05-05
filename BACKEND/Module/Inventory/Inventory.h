@@ -17,8 +17,9 @@
 
 class Inventory {
     public:
-        crow::App<crow::CORSHandler,UserMiddleware> *app;
+        crow::Blueprint *bp;
         mongocxx::database *db;
+        Server* s;
 
         Inventory();
         void InventoryAdd();
