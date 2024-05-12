@@ -75,12 +75,17 @@ inline std::pair<std::string,bool> JsonValid(crow::json::rvalue &res,crow::json:
         }
 
         if(val.has("size"))
-        {   
-            int len = res[key].s().size();
+        {
+            int len=0;
+            if(res[key].t()==crow::json::type::String)
+                len = res[key].s().size();
+            else if(res[key].t()==crow::json::type::Number)
+                len = int(log10(res[key].i()) + 1);
+
 
             if(len!=val["size"].i())
             {
-                msg = key + " should of size " + val["size"].i();
+                msg = key + " should of size " + std::to_string(val["size"].i());
                 valid = valid && false;
                 break;          
             }
