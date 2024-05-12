@@ -15,7 +15,9 @@ crow::json::wvalue wProjectSchema = {
     }},
     {"id", {
         {"insert", "No"},
-        {"update", "No"}
+        {"update", "Yes"},
+        {"skip", "Yes"},
+        {"size", 9}
     }},
     {"name", {
         {"type", "String"}
@@ -37,6 +39,7 @@ crow::json::wvalue wProjectSchema = {
         {"type", "String"},
         {"required", "No"},
         {"skip", "Yes"},
+        {"size", 24}
     }},
     {"request_id", {
         {"type", "List"},
@@ -66,6 +69,90 @@ crow::json::wvalue wProjectSchema = {
 
 void Project::createRoutes() {
     ProjectAdd();
+    ProjectView();
+}
+
+void Project::ProjectAssign(){
+    mongocxx::database &db_ref = *db;
+    auto &app = s->app;
+
+    CROW_BP_ROUTE((*bp), "/assign")
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+		.methods(crow::HTTPMethod::Post)    
+    ([db_ref,app](const crow::request& req) {
+        try{
+            mongocxx::collection collection = db_ref["project"];
+
+            crow::json::rvalue reqj = crow::json::load(req.body);
+
+            if (!reqj)
+                return crow::response(crow::status::BAD_REQUEST);
+
+            crow::json::wvalue wAssignSchema;
+            wAssignSchema["employee_id"] = &wProjectSchema["employee_id"];
+            wAssignSchema["id"] = &wProjectSchema["id"];
+
+            std::cout<<"Schema is "<<wAssignSchema.dump()<<std::endl;
+
+            auto assignSchema = crow::json::load(wAssignSchema.dump());
+            std::pair<std::string, bool> check = JsonValid(reqj, assignSchema);
+
+            auto& ctx = app->get_context<VerifyUserMiddleware>(req);
+
+            if(!check.second)
+                return crow::response(crow::status::BAD_REQUEST, check.first);
+
+            std::string user_role = ctx.user_data["role"].as_string().c_str();
+            std::string user_id = ctx.user_data["_id"].as_object()["$oid"].as_string().c_str();
+
+            return crow::response(crow::status::OK);
+        }
+        catch (const std::exception& e) {
+            return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
+        } });
+}
+
+
+void Project::ProjectView() {
+    mongocxx::database &db_ref = *db;
+    auto &app = s->app;
+
+    CROW_BP_ROUTE((*bp), "/view")
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+		.methods(crow::HTTPMethod::Get)
+    ([db_ref,app](const crow::request& req) {
+        try{
+            mongocxx::collection collection = db_ref["project"];
+
+            auto& ctx = app->get_context<VerifyUserMiddleware>(req);
+            std::string user_role = ctx.user_data["role"].as_string().c_str();
+            std::string user_id = ctx.user_data["_id"].as_object()["$oid"].as_string().c_str();
+
+            bsoncxx::builder::basic::document filter = bsoncxx::builder::basic::document{};
+
+            if (user_role == "admin") {
+                filter.append(bsoncxx::builder::basic::kvp("id", bsoncxx::builder::basic::make_document(bsoncxx::builder::basic::kvp("$gt", 0))));            } else if (user_role == "manager") {
+                filter.append(bsoncxx::builder::basic::kvp("manager_id", bsoncxx::oid{user_id}));
+            } else {
+                filter.append(bsoncxx::builder::basic::kvp("employee_id", bsoncxx::oid{user_id}));
+            }
+
+            mongocxx::cursor cursor = collection.find(filter.view());
+
+            std::string main_str = "[";
+
+            for(mongocxx::cursor::iterator it = cursor.begin();it != cursor.end();){
+                main_str += (bsoncxx::to_json(*it));
+                if(std::next(it) != cursor.end()) main_str+=",";
+            }
+
+            main_str += "]";
+
+            return crow::response(crow::status::OK, main_str);
+        }
+        catch (const std::exception& e) {
+            return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
+        } });
 }
 
 void Project::ProjectAdd() {

@@ -33,6 +33,7 @@ set(INCLUDE_DIRS
     boost/include
     crow/include
     jwt/
+    BACKEND/
     BACKEND/Helper/
     BACKEND/Module/Billing/
     BACKEND/Module/Request/

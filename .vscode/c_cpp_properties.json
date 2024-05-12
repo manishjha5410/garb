@@ -17,13 +17,19 @@
                 "/usr/local/include/bsoncxx/v_noabi",
                 "/usr/local/include/bsoncxx/v_noabi/**",
                 "/usr/local/include/bsoncxx/v_noabi/bsoncxx/third_party/mnmlstc",
-                "/usr/local/include/bsoncxx/v_noabi/bsoncxx/third_party/mnmlstc/**"
+                "/usr/local/include/bsoncxx/v_noabi/bsoncxx/third_party/mnmlstc/**",
+                "/usr/include/x86_64-linux-gnu/c++/11",
+                "/usr/include/x86_64-linux-gnu/c++/11/**",
+                "/usr/include/c++/11/"
             ],
-            "defines": ["-DCROW_USE_LOCALTIMEZONE","-DCROW_FANCY_LOG"],
-            "compilerPath": "/usr/bin/gcc",
+            "defines": [
+                "-DCROW_USE_LOCALTIMEZONE",
+                "-DCROW_FANCY_LOG"
+            ],
+            "compilerPath": "/usr/bin/g++",
             "cStandard": "c17",
             "cppStandard": "gnu++17",
-            "intelliSenseMode": "linux-gcc-x64",
+            "intelliSenseMode": "gcc-x64",
             "configurationProvider": "ms-vscode.cmake-tools"
         }
     ],

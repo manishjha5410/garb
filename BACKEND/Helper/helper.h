@@ -74,6 +74,18 @@ inline std::pair<std::string,bool> JsonValid(crow::json::rvalue &res,crow::json:
             }
         }
 
+        if(val.has("size"))
+        {   
+            int len = res[key].s().size();
+
+            if(len!=val["size"].i())
+            {
+                msg = key + " should of size " + val["size"].i();
+                valid = valid && false;
+                break;          
+            }
+        }
+
         std::string type = get_type_str(res[key].t());
 
         if(val["type"]=="Boolean"){

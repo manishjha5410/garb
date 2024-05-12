@@ -26,6 +26,8 @@ class Project {
         Project();
         void createRoutes();
         void ProjectAdd();
+        void ProjectView();
+        void ProjectAssign();
 };
 
 #endif
