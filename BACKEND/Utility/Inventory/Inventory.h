@@ -1,11 +1,11 @@
-#ifndef PROJECT_H_
-#define PROJECT_H_
+#ifndef INVENTORY_H_
+#define INVENTORY_H_
 
 #include "crow.h"
 #include "crow/middlewares/cors.h"
+#include "../../server.h"
 #include "unordered_set"
 #include "vector"
-#include "../../server.h"
 
 #include <mongocxx/client.hpp>
 #include <mongocxx/uri.hpp>
@@ -15,20 +15,20 @@
 #include <bsoncxx/builder/stream/document.hpp>
 #include <bsoncxx/builder/stream/array.hpp>
 
-#include "../Middleware.h"
-
-class Project {
+class Inventory {
     public:
         crow::Blueprint *bp;
         mongocxx::database *db;
         Server* s;
 
-        Project();
+        Inventory();
         void createRoutes();
-        void ProjectAdd();
-        void ProjectView();
-        void ProjectViewOne();
-        void ProjectAssign();
+        void InventoryAdd();
+        void InventoryEdit();
+        void InventoryDelete();
+        void InventoryView();
+        void InventoryViewOne();
+        void EnsureInventoryIndex();
 };
 
 #endif

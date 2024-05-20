@@ -17,10 +17,11 @@ set(SOURCES
     BACKEND/server.cpp
     BACKEND/Module/Billing/Billing.cpp
     BACKEND/Module/Request/RequestManagement.cpp
-    BACKEND/Module/Inventory/Inventory.cpp
     BACKEND/User/Admin/Admin.cpp
     BACKEND/User/User.cpp
     BACKEND/Utility/Project/Project.cpp
+    BACKEND/Utility/Server/Machine.cpp
+    BACKEND/Utility/Inventory/Inventory.cpp
 )
 
 # Include directories
@@ -37,11 +38,12 @@ set(INCLUDE_DIRS
     BACKEND/Helper/
     BACKEND/Module/Billing/
     BACKEND/Module/Request/
-    BACKEND/Module/Request/
     BACKEND/User/
     BACKEND/User/Admin/
     BACKEND/Utility/
     BACKEND/Utility/Project/
+    BACKEND/Utility/Server/
+    BACKEND/Utility/Inventory/
 )
 
 # Link directories

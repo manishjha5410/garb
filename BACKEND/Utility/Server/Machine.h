@@ -1,11 +1,11 @@
-#ifndef INVENTORY_H_
-#define INVENTORY_H_
+#ifndef TASK_H_
+#define TASK_H_
 
 #include "crow.h"
 #include "crow/middlewares/cors.h"
-#include "../../server.h"
 #include "unordered_set"
 #include "vector"
+#include "../../server.h"
 
 #include <mongocxx/client.hpp>
 #include <mongocxx/uri.hpp>
@@ -15,20 +15,19 @@
 #include <bsoncxx/builder/stream/document.hpp>
 #include <bsoncxx/builder/stream/array.hpp>
 
-class Inventory {
+#include "../../User/Middleware.h"
+
+class Machine {
     public:
         crow::Blueprint *bp;
         mongocxx::database *db;
         Server* s;
 
-        Inventory();
+        Machine();
         void createRoutes();
-        void InventoryAdd();
-        void InventoryEdit();
-        void InventoryDelete();
-        void InventoryView();
-        void InventoryViewOne();
-        void InventoryAssingServer();
+        void MachineAdd();
+        void MachineView();
+        void MachineViewOne();
 };
 
 #endif

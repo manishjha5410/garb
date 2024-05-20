@@ -16,6 +16,7 @@ crow::json::wvalue wProjectSchema = {
     {"id", {
         {"type", "Integer"},
         {"skip", "Yes"},
+        {"required", "No"},
         {"size", 9}
     }},
     {"name", {
@@ -30,12 +31,11 @@ crow::json::wvalue wProjectSchema = {
     {"income", {
         {"type", "Double"}
     }},
-    {"expected_time", {
-        {"type", "Integer"},
-        {"required", "No"}
+    {"expected_time", { // In Hours
+        {"type", "Integer"}
     }},
     {"assign_time", {
-        {"type", "String"},
+        {"type", "Integer"},
         {"required", "No"}
     }},
     {"employee_id", {
@@ -74,6 +74,7 @@ void Project::createRoutes() {
     ProjectAdd();
     ProjectView();
     ProjectAssign();
+    ProjectViewOne();
 }
 
 void Project::ProjectAssign(){
@@ -93,8 +94,9 @@ void Project::ProjectAssign(){
                 return crow::response(crow::status::BAD_REQUEST);
 
             crow::json::wvalue wAssignSchema;
-            wAssignSchema["employee_id"] = std::move(wProjectSchema["employee_id"]);
-            wAssignSchema["id"] = std::move(wProjectSchema["id"]);
+
+            wAssignSchema["employee_id"] = copySchema(wProjectSchema,"employee_id");
+            wAssignSchema["id"] = copySchema(wProjectSchema,"id");
 
             auto assignSchema = crow::json::load(wAssignSchema.dump());
             std::pair<std::string, bool> check = JsonValid(reqj, assignSchema);
@@ -118,23 +120,28 @@ void Project::ProjectAssign(){
             bsoncxx::document::value projection = builder << "_id" << 1 <<finalizer;
             bsoncxx::document::value filter = builder<<"id"<<reqj["employee_id"].i()<<finalizer;
 
-
-            std::cout<<bsoncxx::to_json(filter.view())<<std::endl;
-
             bsoncxx::stdx::optional<bsoncxx::document::value> finder = db_ref["user"].find_one(filter.view(), mongocxx::options::find{}.projection(projection.view()));
             if(!finder)
                 throw std::runtime_error("Unable to find Employee");
+
+            const bsoncxx::document::value& finder_str = *finder;
 
             filter = builder<<"id"<<reqj["id"].i()<<finalizer;
 
             bsoncxx::builder::stream::document update_builder{};
 
-            update_builder<<"$set"<<open<<"employee_id"<<bsoncxx::oid{user_id}<<close;
+            std::stringstream ss;
+            ss << std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now() - std::chrono::system_clock::from_time_t(0)).count();
+
+            update_builder<<"$set"<<open<<"employee_id"<<finder_str.view()["_id"].get_oid()<<"assign_time"<<std::stoi(ss.str())<<close;
 
             bsoncxx::document::value update = update_builder << finalizer;
 
+            bsoncxx::stdx::optional<mongocxx::result::update> result = collection.update_one(filter.view(), update.view());
+            if(!result) 
+                throw std::runtime_error("Error while Updation");
 
-            return crow::response(crow::status::OK,message);
+            return crow::response(crow::status::OK,"Project Updated Successfully");
         }
         catch (const std::exception& e) {
             return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
@@ -178,6 +185,46 @@ void Project::ProjectView() {
             main_str += "]";
 
             return crow::response(crow::status::OK, main_str);
+        }
+        catch (const std::exception& e) {
+            return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
+        } });
+}
+
+void Project::ProjectViewOne() {
+    mongocxx::database &db_ref = *db;
+    auto &app = s->app;
+
+    CROW_BP_ROUTE((*bp), "/view/<int>")
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+		.methods(crow::HTTPMethod::Get)
+    ([db_ref,app](const crow::request& req, const int& id) {
+        try{
+            bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
+            auto finalizer = bsoncxx::builder::stream::finalize;
+
+            auto& ctx = app->get_context<VerifyUserMiddleware>(req);
+            std::string user_role = ctx.user_data["role"].as_string().c_str();
+            std::string user_id = ctx.user_data["_id"].as_object()["$oid"].as_string().c_str();
+
+            bsoncxx::document::value projection = builder << "_id" << 0 <<finalizer;
+            bsoncxx::document::value filter = builder<<"id"<<id<<finalizer;
+
+            mongocxx::collection collection = db_ref["project"];
+            bsoncxx::stdx::optional<bsoncxx::document::value> finder = collection.find_one(filter.view(), mongocxx::options::find{}.projection(projection.view()));
+            if(!finder)
+                throw std::runtime_error("Unable to find document");
+
+            const bsoncxx::document::value& finder_str = *finder;
+
+            if(user_role=="manager" && finder_str["manager_id"].get_oid().value.to_string()!=user_id)
+                throw std::runtime_error("Unable to find document");
+            if(user_role=="employee" && finder_str["employee_id"].get_oid().value.to_string()!=user_id)
+                throw std::runtime_error("Unable to find document");
+
+            std::string json_str = bsoncxx::to_json(finder_str);
+
+            return crow::response(crow::status::OK,json_str);
         }
         catch (const std::exception& e) {
             return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());

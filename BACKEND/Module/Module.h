@@ -9,7 +9,7 @@
 
 #include "Billing/Billing.h"
 #include "Request/RequestManagement.h"
-#include "Inventory/Inventory.h"
+
 
 class Module
 {
@@ -22,10 +22,6 @@ class Module
             // Request
             RequestManagement request;
             request.createRoutes();
-
-            // Inventory
-            Inventory inventory;
-            inventory.createRoutes();
         }
 };
 

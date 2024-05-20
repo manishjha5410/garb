@@ -157,6 +157,10 @@ inline std::pair<std::string,bool> JsonValid(crow::json::rvalue &res,crow::json:
     return {msg,valid};
 }
 
+inline auto copySchema = [](crow::json::wvalue &wSchema, std::string key) -> crow::json::wvalue {
+    return wSchema[key];
+};
+
 inline auto convertData(const crow::json::rvalue &data) {
 
     std::variant<int, bool,double, std::string> value;

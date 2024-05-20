@@ -8,6 +8,8 @@
 #include <mongocxx/uri.hpp>
 
 #include "Project/Project.h"
+#include "Server/Machine.h"
+#include "Inventory/Inventory.h"
 
 class Utility
 {
@@ -16,6 +18,14 @@ class Utility
             // Project
             Project project;
             project.createRoutes();
+
+            // Machine
+            Machine machine;
+            machine.createRoutes();
+
+            // Inventory
+            Inventory inventory;
+            inventory.createRoutes();
         }
 };
 

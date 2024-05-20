@@ -20,12 +20,12 @@ crow::json::wvalue wInventorySchema = {
     {"name", {
         {"type", "String"}
     }},
+    {"type", {
+        {"type", "String"}
+    }},
     {"priority", {
         {"type", "String"},
         {"value", {{"high", "medium","low"}}}
-    }},
-    {"type", {
-        {"type", "String"}
     }},
     {"cost", {
         {"type", "Double"}
@@ -34,16 +34,14 @@ crow::json::wvalue wInventorySchema = {
         {"type", "Boolean"}
     }},
     {"life", {
-        {"type", "Integer"}
+        {"type", "Integer"},
+        {"skip", "Yes"}
     }},
-    {"quantity", {
+    {"max_server", {
         {"type", "Integer"}
-    }},
-    {"task_id", { 
-        {"type", "List"},
-        {"required", "No"}
     }},
 };
+
 
 auto inventorySchema = crow::json::load(wInventorySchema.dump());
 
@@ -54,15 +52,41 @@ void Inventory::createRoutes()
     InventoryDelete();
     InventoryViewOne();
     InventoryView();
-    InventoryAssingServer();
+    EnsureInventoryIndex();
 }
+
+void Inventory::EnsureInventoryIndex() {
+    mongocxx::collection collection = (*db)["inventory"];
+
+    mongocxx::cursor indexes = collection.indexes().list();
+    bool ttl_index_exists = false;
+
+    for (const auto& index : indexes) {
+        auto key = index["key"].get_document().view();
+        if (key.find("expireAt") != key.end() && index.find("expireAfterSeconds") != index.end()) {
+            ttl_index_exists = true;
+            break;
+        }
+    }
+
+    if (!ttl_index_exists) {
+        bsoncxx::document::value rule = bsoncxx::builder::stream::document{} << "expireAt" << 1 << bsoncxx::builder::stream::finalize;
+        collection.create_index(
+            rule.view(),
+            mongocxx::options::index{}.expire_after(std::chrono::seconds(0))
+        );
+    }
+}
+
 
 void Inventory::InventoryAdd(){
 
     mongocxx::database& db_ref = *db;
+    auto &app = s->app;
 
     CROW_BP_ROUTE((*bp), "/add")
-        .methods("POST"_method)([db_ref](const crow::request &req) {
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+        .methods(crow::HTTPMethod::Post)([db_ref,app](const crow::request &req) {
             try {
                 crow::json::rvalue reqj = crow::json::load(req.body);
 
@@ -77,6 +101,12 @@ void Inventory::InventoryAdd(){
                 bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
                 auto finalizer = bsoncxx::builder::stream::finalize;
 
+                auto& ctx = app->get_context<VerifyUserMiddleware>(req);
+                std::string user_role = ctx.user_data["role"].as_string().c_str();
+
+                if(user_role!="admin")
+                    throw std::runtime_error("User is not admin");
+
                 mongocxx::collection collection = db_ref["inventory"];
                 bsoncxx::document::value count_view = builder << finalizer;
                 std::string input = std::to_string(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::_V2::system_clock::now().time_since_epoch()).count());
@@ -88,12 +118,17 @@ void Inventory::InventoryAdd(){
                 bsoncxx::builder::stream::document insert_builder{};
 
                 for (auto it = reqj.begin(); it != reqj.end(); ++it) {
-                    auto key = std::string(it->key());
+                    std::string key = std::string(it->key());
+                    if(inventorySchema[key].has("skip") && boost::iequals(inventorySchema[key]["skip"].s(),"Yes")) continue;
                     auto var = convertData(*it);
                     std::visit([&insert_builder,&it,&key](auto& value) { insert_builder<< key<< value; }, var);
                 }
 
+                std::chrono::system_clock::time_point time_now = std::chrono::system_clock::now() + std::chrono::hours(24*reqj["life"].i());
+                time_t expiry_time_form = std::chrono::system_clock::to_time_t(time_now);
+
                 insert_builder<<"id"<<id;
+                insert_builder<<"expireAt"<<bsoncxx::types::b_date{std::chrono::system_clock::from_time_t(expiry_time_form)};
 
                 bsoncxx::document::value doc_value = insert_builder << finalizer;
 
@@ -122,9 +157,12 @@ void Inventory::InventoryAdd(){
 void Inventory::InventoryEdit(){
 
     mongocxx::database& db_ref = *db;
+    auto &app = s->app;
 
     CROW_BP_ROUTE((*bp), "/edit/<int>")
-        .methods("PUT"_method)([db_ref](const crow::request &req,const int& id) {
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+        .methods(crow::HTTPMethod::Put)
+        ([db_ref, app](const crow::request &req,const int& id) {
             crow::json::rvalue reqj = crow::json::load(req.body);
 
             if (!reqj)
@@ -134,6 +172,12 @@ void Inventory::InventoryEdit(){
 
             if(!check.second)
                 return crow::response(crow::status::BAD_REQUEST, check.first);
+
+            auto& ctx = app->get_context<VerifyUserMiddleware>(req);
+            std::string user_role = ctx.user_data["role"].as_string().c_str();
+
+            if(user_role!="admin")
+                throw std::runtime_error("User is not admin");
 
             bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
             auto open = bsoncxx::builder::stream::open_document;
@@ -178,9 +222,11 @@ void Inventory::InventoryEdit(){
 void Inventory::InventoryDelete(){
 
     mongocxx::database& db_ref = *db;
+    auto &app = s->app;
 
     CROW_BP_ROUTE((*bp), "/delete/<int>")
-        .methods("DELETE"_method)([db_ref](const int& id) {
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+        .methods(crow::HTTPMethod::Delete)([db_ref, app](const crow::request &req, const int& id) {
             try{
                 bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
                 auto finalizer = bsoncxx::builder::stream::finalize;
@@ -208,9 +254,11 @@ void Inventory::InventoryDelete(){
 void Inventory::InventoryView(){
 
     mongocxx::database& db_ref = *db;
+    auto &app = s->app;
 
     CROW_BP_ROUTE((*bp), "/view")
-    ([db_ref]() {
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+    .methods(crow::HTTPMethod::Get)([db_ref, app](const crow::request &req) {
         try{
             mongocxx::collection collection = db_ref["inventory"];
 
@@ -240,44 +288,30 @@ void Inventory::InventoryView(){
 void Inventory::InventoryViewOne(){
 
     mongocxx::database& db_ref = *db;
+    auto &app = s->app;
 
     CROW_BP_ROUTE((*bp), "/view/<int>")
-        .methods("GET"_method)([db_ref](const int& id) {
-            try {
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+    .methods(crow::HTTPMethod::Get)([db_ref, app](const crow::request &req, const int& id) {
+        try {
 
-                bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
-                auto finalizer = bsoncxx::builder::stream::finalize;
+            bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
+            auto finalizer = bsoncxx::builder::stream::finalize;
 
-                bsoncxx::document::value projection = builder << "_id" << 0 <<finalizer;
-                bsoncxx::document::value filter = builder<<"id"<<id<<finalizer;
+            bsoncxx::document::value projection = builder << "_id" << 0 <<finalizer;
+            bsoncxx::document::value filter = builder<<"id"<<id<<finalizer;
 
-                mongocxx::collection collection = db_ref["inventory"];
-                bsoncxx::stdx::optional<bsoncxx::document::value> finder = collection.find_one(filter.view(), mongocxx::options::find{}.projection(projection.view()));
-                if(!finder)
-                    throw std::runtime_error("Unable to find document");
+            mongocxx::collection collection = db_ref["inventory"];
+            bsoncxx::stdx::optional<bsoncxx::document::value> finder = collection.find_one(filter.view(), mongocxx::options::find{}.projection(projection.view()));
+            if(!finder)
+                throw std::runtime_error("Unable to find document");
 
-                const bsoncxx::document::value& finder_str = *finder;
-                std::string json_str = bsoncxx::to_json(finder_str);
+            const bsoncxx::document::value& finder_str = *finder;
+            std::string json_str = bsoncxx::to_json(finder_str);
 
-                return crow::response(crow::status::OK,json_str);
-            } catch (const std::exception& e) {
-                return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
-            }
-        });
-}
-
-void Inventory::InventoryAssingServer(){
-
-    mongocxx::database& db_ref = *db;
-
-    CROW_BP_ROUTE((*bp), "/assign_server")
-    ([db_ref]() {
-        std::string main_str;
-
-        mongocxx::collection collection = db_ref["inventory"];
-
-        mongocxx::cursor cursor = collection.find({});
-
-        return main_str;
+            return crow::response(crow::status::OK,json_str);
+        } catch (const std::exception& e) {
+            return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
+        }
     });
 }
