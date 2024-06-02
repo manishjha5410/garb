@@ -20,8 +20,9 @@ set(SOURCES
     BACKEND/User/Admin/Admin.cpp
     BACKEND/User/User.cpp
     BACKEND/Utility/Project/Project.cpp
-    BACKEND/Utility/Server/Machine.cpp
+    BACKEND/Utility/Machine/Machine.cpp
     BACKEND/Utility/Inventory/Inventory.cpp
+    BACKEND/Utility/Task/Task.cpp
 )
 
 # Include directories
@@ -42,8 +43,9 @@ set(INCLUDE_DIRS
     BACKEND/User/Admin/
     BACKEND/Utility/
     BACKEND/Utility/Project/
-    BACKEND/Utility/Server/
+    BACKEND/Utility/Machine/
     BACKEND/Utility/Inventory/
+    BACKEND/Utility/Task/
 )
 
 # Link directories

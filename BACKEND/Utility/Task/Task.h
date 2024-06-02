@@ -3,9 +3,9 @@
 
 #include "crow.h"
 #include "crow/middlewares/cors.h"
+#include "../../server.h"
 #include "unordered_set"
 #include "vector"
-#include "../../server.h"
 
 #include <mongocxx/client.hpp>
 #include <mongocxx/uri.hpp>
@@ -15,20 +15,15 @@
 #include <bsoncxx/builder/stream/document.hpp>
 #include <bsoncxx/builder/stream/array.hpp>
 
-#include "../../User/Middleware.h"
-
-class Machine {
+class Task {
     public:
         crow::Blueprint *bp;
         mongocxx::database *db;
         Server* s;
 
-        Machine();
+        Task();
         void createRoutes();
-        void MachineAdd();
-        void MachineView();
-        void Assigntask();
-        void MachineViewOne();
+        void TaskAdd();
 };
 
 #endif

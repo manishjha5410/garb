@@ -121,7 +121,7 @@ void Machine::MachineAdd()
             insert_builder<<"id"<<id;
             insert_builder<<"inventory_id"<<bsoncxx::oid(finder_str["_id"].get_oid().value.to_string());
 
-            std::string json_str = bsoncxx::to_json(insert_builder);
+            // std::string json_str = bsoncxx::to_json(insert_builder);
 
             bsoncxx::document::value doc_value = insert_builder << finalizer;
             bsoncxx::document::view docview = doc_value.view();

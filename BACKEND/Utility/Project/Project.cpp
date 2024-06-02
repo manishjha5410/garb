@@ -34,8 +34,22 @@ crow::json::wvalue wProjectSchema = {
     {"expected_time", { // In Hours
         {"type", "Integer"}
     }},
-    {"assign_time", {
-        {"type", "Integer"},
+    {"createdAt", {
+        {"type", "String"},
+        {"required", "No"},
+        {"skip", "Yes"},
+        {"required", "No"}
+    }},
+    {"assignAt", {
+        {"type", "String"},
+        {"required", "No"},
+        {"skip", "Yes"},
+        {"required", "No"}
+    }},
+    {"completedAt", {
+        {"type", "String"},
+        {"required", "No"},
+        {"skip", "Yes"},
         {"required", "No"}
     }},
     {"employee_id", {
@@ -67,6 +81,11 @@ crow::json::wvalue wProjectSchema = {
         {"required", "No"},
         {"skip", "Yes"},
     }},
+    {"task_count", {
+        {"type", "Integer"},
+        {"required", "No"},
+        {"skip", "Yes"},
+    }}
 };
 
 
@@ -133,7 +152,7 @@ void Project::ProjectAssign(){
             std::stringstream ss;
             ss << std::chrono::duration_cast<std::chrono::seconds>(std::chrono::system_clock::now() - std::chrono::system_clock::from_time_t(0)).count();
 
-            update_builder<<"$set"<<open<<"employee_id"<<finder_str.view()["_id"].get_oid()<<"assign_time"<<std::stoi(ss.str())<<close;
+            update_builder<<"$set"<<open<<"employee_id"<<finder_str.view()["_id"].get_oid()<<"createdAt"<<bsoncxx::types::b_date{std::chrono::system_clock::from_time_t(std::chrono::system_clock::to_time_t(std::chrono::system_clock::now()))}<<close;
 
             bsoncxx::document::value update = update_builder << finalizer;
 
@@ -281,6 +300,7 @@ void Project::ProjectAdd() {
 
             insert_builder<<"id"<<id;
             insert_builder<<"manager_id"<<bsoncxx::oid(user_id);
+            insert_builder<<"task_count"<<0;
 
             std::string json_str = bsoncxx::to_json(insert_builder);
 

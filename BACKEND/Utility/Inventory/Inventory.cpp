@@ -33,12 +33,13 @@ crow::json::wvalue wInventorySchema = {
     {"available", {
         {"type", "Boolean"}
     }},
-    {"life", {
-        {"type", "Integer"},
-        {"skip", "Yes"}
-    }},
     {"max_server", {
         {"type", "Integer"}
+    }},
+    {"expireAt", {
+        {"type", "String"},
+        {"required", "No"},
+        {"skip", "Yes"},
     }},
 };
 

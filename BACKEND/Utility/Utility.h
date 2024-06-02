@@ -7,8 +7,9 @@
 #include <mongocxx/client.hpp>
 #include <mongocxx/uri.hpp>
 
+#include "Task/Task.h"
 #include "Project/Project.h"
-#include "Server/Machine.h"
+#include "Machine/Machine.h"
 #include "Inventory/Inventory.h"
 
 class Utility
@@ -26,6 +27,10 @@ class Utility
             // Inventory
             Inventory inventory;
             inventory.createRoutes();
+
+            // Task
+            Task task;
+            task.createRoutes();
         }
 };
 
