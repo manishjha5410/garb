@@ -9,6 +9,10 @@ Machine::Machine() {
 }
 
 crow::json::wvalue wMachineSchema = {
+    {"_id", {
+        {"insert", "No"},
+        {"update", "No"}
+    }},
     {"id", {
         {"type", "Integer"},
         {"skip", "Yes"},
@@ -27,7 +31,7 @@ crow::json::wvalue wMachineSchema = {
         {"size", 9}
     }},
     {"task_id", {
-        {"type", "Integer"},
+        {"type", "List"},
         {"required", "No"},
         {"skip", "Yes"}
     }},
@@ -38,6 +42,7 @@ auto machineSchema = crow::json::load(wMachineSchema.dump());
 void Machine::createRoutes()
 {
     MachineAdd();
+    Assigntask();
     // MachineView();
     // MachineViewOne();
 }
@@ -82,13 +87,27 @@ void Machine::MachineAdd()
             std::string input = std::to_string(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::_V2::system_clock::now().time_since_epoch()).count());
             int id = adler_hash(input);
 
-            bsoncxx::document::value projection = builder << "_id" << 1 <<finalizer;
+            bsoncxx::document::value projection = builder << "_id" << 1 <<"max_server"<<1 <<finalizer;
             bsoncxx::document::value filter = builder<<"id"<<reqj["inventory_id"].i()<<finalizer;
 
             bsoncxx::stdx::optional<bsoncxx::document::value> finder = db_ref["inventory"].find_one(filter.view(), mongocxx::options::find{}.projection(projection.view()));
             if(!finder)
                 throw std::runtime_error("Unable to find Inventory");
             const bsoncxx::document::value& finder_str = *finder;
+
+            int max_server = int(finder_str["max_server"].get_int32().value);
+
+            if(max_server == 0)
+                throw std::runtime_error("No more server can be allocated to this inventory");
+
+            bsoncxx::builder::stream::document update_builder{};
+            update_builder << "$inc" << open << "max_server" << -1 << close;
+
+            bsoncxx::document::value update = update_builder << finalizer;
+
+            bsoncxx::stdx::optional<mongocxx::result::update> result_inven = db_ref["inventory"].update_one(filter.view(), update.view());
+            if(!result_inven) 
+                throw std::runtime_error("Error while Updating Inventory");
 
             bsoncxx::builder::stream::document insert_builder{};
 
@@ -128,4 +147,9 @@ void Machine::MachineAdd()
             return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
         }
     });
+}
+
+void Machine::Assigntask()
+{
+    
 }

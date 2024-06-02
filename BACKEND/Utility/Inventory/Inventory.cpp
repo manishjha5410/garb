@@ -78,7 +78,6 @@ void Inventory::EnsureInventoryIndex() {
     }
 }
 
-
 void Inventory::InventoryAdd(){
 
     mongocxx::database& db_ref = *db;
@@ -196,7 +195,7 @@ void Inventory::InventoryEdit(){
             }
             update_builder<<close;
 
-            bsoncxx::document::value update = update_builder << finalizer;        
+            bsoncxx::document::value update = update_builder << finalizer;    
 
             std::string json_str1 = bsoncxx::to_json(update);
 
