@@ -41,7 +41,7 @@ crow::json::wvalue wTaskSchema = {
         {"size", 9}
     }},
     {"project_id", {
-        {"type", "String"},
+        {"type", "Integer"},
         {"skip", "Yes"},
         {"size", 9}
     }},
@@ -70,7 +70,7 @@ void Task::TaskAdd()
     {
         try
         {
-            mongocxx::collection collection = db_ref["server"];
+            mongocxx::collection collection = db_ref["task"];
 
             crow::json::rvalue reqj = crow::json::load(req.body);
 
@@ -97,7 +97,7 @@ void Task::TaskAdd()
             std::string input = std::to_string(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::_V2::system_clock::now().time_since_epoch()).count());
             int id = adler_hash(input);
 
-            bsoncxx::document::value projection = builder << "_id" << 1 <<finalizer;
+            bsoncxx::document::value projection = builder << "_id" << 1 << "quantity" << 1 << "employee_id" << 1 << "priority" << 1 <<finalizer;
             bsoncxx::document::value filter = builder<<"id"<<reqj["project_id"].i()<<finalizer;
 
             bsoncxx::stdx::optional<bsoncxx::document::value> finder = db_ref["project"].find_one(filter.view(), mongocxx::options::find{}.projection(projection.view()));
@@ -105,8 +105,17 @@ void Task::TaskAdd()
                 throw std::runtime_error("Unable to find Project");
             const bsoncxx::document::value& finder_str = *finder;
 
+            if(reqj["quantity"].i() == 0)
+                throw std::runtime_error("Enter Quantity");
+
+            if(reqj["quantity"].i() > finder_str["quantity"].get_int32().value)
+                throw std::runtime_error("Quantity should not be greater than project inventory");
+
+            if(finder_str["employee_id"].get_oid().value.to_string() != user_id)
+                throw std::runtime_error("User should be same as project employee");
+
             bsoncxx::builder::stream::document update_builder{};
-            update_builder << "$inc" << open << "task_count" << 1 << close;
+            update_builder << "$inc" << open << "task_count" << 1 << "quantity" << -(reqj["quantity"].i()) << close;
 
             bsoncxx::document::value update = update_builder << finalizer;
 
