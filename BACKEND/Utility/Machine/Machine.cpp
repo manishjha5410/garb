@@ -20,7 +20,9 @@ crow::json::wvalue wMachineSchema = {
         {"size", 9}
     }},
     {"income_generated", {
-        {"type", "Integer"}
+        {"type", "Integer"},
+        {"skip", "Yes"},
+        {"required", "No"}
     }},
     {"storage", {
         {"type", "Integer"}
@@ -32,6 +34,11 @@ crow::json::wvalue wMachineSchema = {
     }},
     {"task_id", {
         {"type", "List"},
+        {"required", "No"},
+        {"skip", "Yes"}
+    }},
+    {"priority", {
+        {"type", "String"},
         {"required", "No"},
         {"skip", "Yes"}
     }},
@@ -87,7 +94,7 @@ void Machine::MachineAdd()
             std::string input = std::to_string(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::_V2::system_clock::now().time_since_epoch()).count());
             int id = adler_hash(input);
 
-            bsoncxx::document::value projection = builder << "_id" << 1 <<"max_server"<<1 <<finalizer;
+            bsoncxx::document::value projection = builder << "_id" << 1 <<"max_server"<<1<<"priority"<<1 <<finalizer;
             bsoncxx::document::value filter = builder<<"id"<<reqj["inventory_id"].i()<<finalizer;
 
             bsoncxx::stdx::optional<bsoncxx::document::value> finder = db_ref["inventory"].find_one(filter.view(), mongocxx::options::find{}.projection(projection.view()));
@@ -118,8 +125,12 @@ void Machine::MachineAdd()
                 std::visit([&insert_builder,&it,&key](auto& value) { insert_builder<< key<< value; }, var);
             }
 
+            std::string priority = finder_str["priority"].get_string().value.data();
+
             insert_builder<<"id"<<id;
             insert_builder<<"inventory_id"<<bsoncxx::oid(finder_str["_id"].get_oid().value.to_string());
+            insert_builder<<"priority"<<priority;
+            insert_builder<<"income_generated"<<0;
 
             // std::string json_str = bsoncxx::to_json(insert_builder);
 
@@ -137,6 +148,8 @@ void Machine::MachineAdd()
             crow::json::wvalue reqj_wvalue = crow::json::rvalue(reqj);
             reqj_wvalue["_id"] = oss.str();
             reqj_wvalue["id"] = id;
+            reqj_wvalue["priority"] = priority;
+            reqj_wvalue["income_generated"] = 0;
 
             std::string return_str = reqj_wvalue.dump();
 

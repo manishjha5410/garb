@@ -29,7 +29,12 @@ crow::json::wvalue wProjectSchema = {
         {"type", "Integer"}
     }},
     {"income", {
-        {"type", "Double"}
+        {"type", "Integer"}
+    }},
+    {"income_generated", {
+        {"type", "Integer"},
+        {"skip", "Yes"},
+        {"required", "No"}
     }},
     {"expected_time", { // In Hours
         {"type", "Integer"}
@@ -301,6 +306,7 @@ void Project::ProjectAdd() {
             insert_builder<<"id"<<id;
             insert_builder<<"manager_id"<<bsoncxx::oid(user_id);
             insert_builder<<"task_count"<<0;
+            insert_builder<<"income_generated"<<0;
 
             std::string json_str = bsoncxx::to_json(insert_builder);
 
@@ -319,6 +325,7 @@ void Project::ProjectAdd() {
             reqj_wvalue["_id"] = oss.str();
             reqj_wvalue["manager_id"] = user_id;
             reqj_wvalue["id"] = id;
+            reqj_wvalue["income_generated"] = 0;
 
             std::string return_str = reqj_wvalue.dump();
 

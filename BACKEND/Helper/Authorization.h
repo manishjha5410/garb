@@ -56,6 +56,7 @@ private:
         }
         catch (const std::exception& e) 
         {
+            std::cout<<"Token Error is "<<e.what();
             return false;
         }
 
@@ -102,7 +103,7 @@ private:
                     .set_type("JWT")
                     .set_id(jti)
                     .set_issued_at(now)
-                    .set_expires_at(now + std::chrono::minutes(5))
+                    .set_expires_at(now + std::chrono::minutes(10))
                     .set_payload_claim("id",jwt::claim(std::to_string(id)))
                     .sign(jwt::algorithm::hs256("secret"));
 
@@ -116,20 +117,25 @@ public:
         if(jwtToken=="") return {false, "Enter token"};
 
         std::string id_str = getData(jwtToken,"id");
-        if(id_str.rfind("Cannot", 0) == 0) return {false,"Invalid Token"};
+        if(id_str.rfind("Cannot", 0) == 0) return {false,"Invalid Token 1"};
         int id = stoi(id_str);
 
-        if(!verifyJwt(jwtToken)) return {false,"Invalid token"};
-
+        bool isJwtExpired = jwtExpire(jwtToken);
 
         std::unordered_set<int>::iterator it = user.find(id);
+
+        if(!verifyJwt(jwtToken)) {
+            if(it!=user.end())
+                destroy_session(id,jwtToken);
+            return {false,"Invalid token 2"};
+        }
 
         if(it== user.end()) return {false,"Session is not created"};
 
         std::string hash = getHash(jwtToken);
         User u = sessionMap[hash];
 
-        if(!session_expire(u) && !jwtExpire(jwtToken))
+        if(!session_expire(u) && !isJwtExpired)
             return {true,jwtToken};
         else
         {
