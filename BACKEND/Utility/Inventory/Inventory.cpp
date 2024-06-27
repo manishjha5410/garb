@@ -200,8 +200,6 @@ void Inventory::InventoryEdit(){
 
             bsoncxx::document::value update = update_builder << finalizer;    
 
-            std::string json_str1 = bsoncxx::to_json(update);
-
             mongocxx::collection collection = db_ref["inventory"];
 
             bsoncxx::stdx::optional<mongocxx::result::update> result = collection.update_one(filter.view(), update.view());

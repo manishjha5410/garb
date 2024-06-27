@@ -173,10 +173,12 @@ void Task::TaskAdd()
             std::transform(priority.begin(), priority.end(), priority.begin(), ::tolower); 
             std::string server_priority = finder_server_str["priority"].get_string().value.to_string();
 
-            double ratio = 0;
-            ratio = server_priority == "high" ? 0.2 : server_priority == "medium" ? 0.1 : 0.05;
+            double ratio_server = server_priority == "high" ? 0.75 : server_priority == "medium" ? 0.5 : 0.25;
+            double ratio_doc = priority == "high" ? 1 : priority == "medium" ? 0.5 : 0.25;
 
-            std::chrono::system_clock::time_point time_expire = time_now + std::chrono::hours(int(1/ratio));
+            int num = ceil(quantity / round((ratio_doc*quantity)*(1+ratio_server)));
+
+            std::chrono::system_clock::time_point time_expire = time_now + std::chrono::minutes(30*num);
             time_t expiry_time_form = std::chrono::system_clock::to_time_t(time_expire);
 
             insert_builder<<"id"<<id;

@@ -40,8 +40,9 @@ crow::json::wvalue wMachineSchema = {
     {"priority", {
         {"type", "String"},
         {"required", "No"},
-        {"skip", "Yes"}
-    }},
+        {"skip", "Yes"},
+        {"value", {{"high", "medium","low"}}}
+    }}
 };
 
 auto machineSchema = crow::json::load(wMachineSchema.dump());
