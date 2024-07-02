@@ -29,6 +29,7 @@ class Project {
         void ProjectView();
         void ProjectViewOne();
         void ProjectAssign();
+        void EnsureProjectIndex();
 };
 
 #endif

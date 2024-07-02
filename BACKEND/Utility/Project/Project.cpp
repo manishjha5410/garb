@@ -28,10 +28,12 @@ crow::json::wvalue wProjectSchema = {
     {"quantity", {
         {"type", "Integer"}
     }},
-    {"income", {
-        {"type", "Integer"}
-    }},
     {"income_generated", {
+        {"type", "Integer"},
+        {"skip", "Yes"},
+        {"required", "No"}
+    }},
+    {"expense", {
         {"type", "Integer"},
         {"skip", "Yes"},
         {"required", "No"}
@@ -99,6 +101,30 @@ void Project::createRoutes() {
     ProjectView();
     ProjectAssign();
     ProjectViewOne();
+    EnsureProjectIndex();
+}
+
+void Project::EnsureProjectIndex() {
+    mongocxx::collection collection = (*db)["project"];
+
+    mongocxx::cursor indexes = collection.indexes().list();
+    bool ttl_index_exists = false;
+
+    for (const auto& index : indexes) {
+        auto key = index["key"].get_document().view();
+        if (key.find("expireAt") != key.end() && index.find("expireAfterSeconds") != index.end()) {
+            ttl_index_exists = true;
+            break;
+        }
+    }
+
+    if (!ttl_index_exists) {
+        bsoncxx::document::value rule = bsoncxx::builder::stream::document{} << "expireAt" << 1 << bsoncxx::builder::stream::finalize;
+        collection.create_index(
+            rule.view(),
+            mongocxx::options::index{}.expire_after(std::chrono::seconds(0))
+        );
+    }
 }
 
 void Project::ProjectAssign(){
@@ -307,6 +333,7 @@ void Project::ProjectAdd() {
             insert_builder<<"manager_id"<<bsoncxx::oid(user_id);
             insert_builder<<"task_count"<<0;
             insert_builder<<"income_generated"<<0;
+            insert_builder<<"expense"<<0;
 
             std::string json_str = bsoncxx::to_json(insert_builder);
 
@@ -326,6 +353,7 @@ void Project::ProjectAdd() {
             reqj_wvalue["manager_id"] = user_id;
             reqj_wvalue["id"] = id;
             reqj_wvalue["income_generated"] = 0;
+            reqj_wvalue["expense"] = 0;
 
             std::string return_str = reqj_wvalue.dump();
 
