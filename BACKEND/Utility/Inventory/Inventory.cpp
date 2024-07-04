@@ -25,7 +25,8 @@ crow::json::wvalue wInventorySchema = {
     }},
     {"priority", {
         {"type", "String"},
-        {"value", {{"high", "medium","low"}}}
+        {"value", {{"high", "medium","low"}}},
+        {"skip", "Yes"}        
     }},
     {"cost", {
         {"type", "Double"}
@@ -39,7 +40,7 @@ crow::json::wvalue wInventorySchema = {
     {"expireAt", {
         {"type", "String"},
         {"required", "No"},
-        {"skip", "Yes"},
+        {"skip", "Yes"}
     }},
 };
 
@@ -128,6 +129,7 @@ void Inventory::InventoryAdd(){
                 time_t expiry_time_form = std::chrono::system_clock::to_time_t(time_now);
 
                 insert_builder<<"id"<<id;
+                insert_builder<<"priority"<<priority;
                 insert_builder<<"expireAt"<<bsoncxx::types::b_date{std::chrono::system_clock::from_time_t(expiry_time_form)};
 
                 bsoncxx::document::value doc_value = insert_builder << finalizer;
@@ -197,8 +199,6 @@ void Inventory::InventoryEdit(){
             update_builder<<close;
 
             bsoncxx::document::value update = update_builder << finalizer;    
-
-            std::string json_str1 = bsoncxx::to_json(update);
 
             mongocxx::collection collection = db_ref["inventory"];
 

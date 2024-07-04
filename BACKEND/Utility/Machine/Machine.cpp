@@ -1,5 +1,6 @@
 #include "Machine.h"
 #include "../../Helper/helper.h"
+#include "unordered_set"
 
 Machine::Machine() {
     s = Server::getInstance();
@@ -20,7 +21,9 @@ crow::json::wvalue wMachineSchema = {
         {"size", 9}
     }},
     {"income_generated", {
-        {"type", "Integer"}
+        {"type", "Integer"},
+        {"skip", "Yes"},
+        {"required", "No"}
     }},
     {"storage", {
         {"type", "Integer"}
@@ -35,6 +38,12 @@ crow::json::wvalue wMachineSchema = {
         {"required", "No"},
         {"skip", "Yes"}
     }},
+    {"priority", {
+        {"type", "String"},
+        {"required", "No"},
+        {"skip", "Yes"},
+        {"value", {{"high", "medium","low"}}}
+    }}
 };
 
 auto machineSchema = crow::json::load(wMachineSchema.dump());
@@ -42,8 +51,10 @@ auto machineSchema = crow::json::load(wMachineSchema.dump());
 void Machine::createRoutes()
 {
     MachineAdd();
-    Assigntask();
-    // MachineView();
+    MachineViewEmployee();
+    MachineView();
+    MachineViewOneEmployee();
+    MachineViewOne();
     // MachineViewOne();
 }
 
@@ -87,7 +98,7 @@ void Machine::MachineAdd()
             std::string input = std::to_string(std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::_V2::system_clock::now().time_since_epoch()).count());
             int id = adler_hash(input);
 
-            bsoncxx::document::value projection = builder << "_id" << 1 <<"max_server"<<1 <<finalizer;
+            bsoncxx::document::value projection = builder << "_id" << 1 <<"max_server"<<1<<"priority"<<1 <<finalizer;
             bsoncxx::document::value filter = builder<<"id"<<reqj["inventory_id"].i()<<finalizer;
 
             bsoncxx::stdx::optional<bsoncxx::document::value> finder = db_ref["inventory"].find_one(filter.view(), mongocxx::options::find{}.projection(projection.view()));
@@ -118,10 +129,12 @@ void Machine::MachineAdd()
                 std::visit([&insert_builder,&it,&key](auto& value) { insert_builder<< key<< value; }, var);
             }
 
+            std::string priority = finder_str["priority"].get_string().value.data();
+
             insert_builder<<"id"<<id;
             insert_builder<<"inventory_id"<<bsoncxx::oid(finder_str["_id"].get_oid().value.to_string());
-
-            // std::string json_str = bsoncxx::to_json(insert_builder);
+            insert_builder<<"priority"<<priority;
+            insert_builder<<"income_generated"<<0;
 
             bsoncxx::document::value doc_value = insert_builder << finalizer;
             bsoncxx::document::view docview = doc_value.view();
@@ -137,6 +150,8 @@ void Machine::MachineAdd()
             crow::json::wvalue reqj_wvalue = crow::json::rvalue(reqj);
             reqj_wvalue["_id"] = oss.str();
             reqj_wvalue["id"] = id;
+            reqj_wvalue["priority"] = priority;
+            reqj_wvalue["income_generated"] = 0;
 
             std::string return_str = reqj_wvalue.dump();
 
@@ -149,7 +164,192 @@ void Machine::MachineAdd()
     });
 }
 
-void Machine::Assigntask()
-{
-    
+void Machine::MachineViewEmployee(){
+
+    mongocxx::database& db_ref = *db;
+    auto &app = s->app;
+
+    CROW_BP_ROUTE((*bp), "/view_employee")
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+    .methods(crow::HTTPMethod::Get)([db_ref, app](const crow::request &req) {
+        try {
+
+            bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
+            auto finalizer = bsoncxx::builder::stream::finalize;
+
+            auto& ctx = app->get_context<VerifyUserMiddleware>(req);
+            std::string user_role = ctx.user_data["role"].as_string().c_str();
+            std::string user_id = ctx.user_data["_id"].as_object()["$oid"].as_string().c_str();
+
+            if(user_role != "employee")
+                throw std::runtime_error("User should be employee"); 
+
+            bsoncxx::document::value projection = builder << "_id" << 0 <<finalizer;
+            mongocxx::cursor cursor = db_ref["server"].find({}, mongocxx::options::find{}.projection(projection.view()));
+
+            std::unordered_set<std::string>container_inventory;
+
+            bsoncxx::document::value projection_request = builder << "_id" << 0 <<finalizer;
+            bsoncxx::document::value filter_request = builder<<"status"<<"accepted"<<finalizer;;
+
+            mongocxx::cursor cursor_request = db_ref["request"].find(filter_request.view(), mongocxx::options::find{}.projection(projection_request.view()));
+
+            for(mongocxx::cursor::iterator it = cursor_request.begin();it != cursor_request.end();it++){
+                bsoncxx::document::view doc_view = *it;
+                std::string inventory_id = doc_view["inventory_id"].get_oid().value.to_string();
+                std::string employee_id = doc_view["employee_id"].get_oid().value.to_string();
+                if(employee_id == user_id)
+                    container_inventory.insert(inventory_id);
+            }
+
+            bool inside = false;;
+            std::string main_str = "[";
+            for(mongocxx::cursor::iterator it = cursor.begin();it != cursor.end();it++){
+                bsoncxx::document::view doc_view = *it;
+                std::string inventory_id = doc_view["inventory_id"].get_oid().value.to_string();                
+                if(container_inventory.find(inventory_id)!=container_inventory.end()){
+                    main_str += (bsoncxx::to_json(*it));
+                    main_str+=",";
+                }
+                inside = true;
+            }
+            if(inside) main_str.pop_back();
+
+            main_str += "]";
+
+            return crow::response(crow::status::OK, main_str);
+        } catch (const std::exception& e) {
+            return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
+        }
+    });
+}
+
+void Machine::MachineView(){
+
+    mongocxx::database& db_ref = *db;
+    auto &app = s->app;
+
+    CROW_BP_ROUTE((*bp), "/view")
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+    .methods(crow::HTTPMethod::Get)([db_ref, app](const crow::request &req) {
+        try{
+
+            auto& ctx = app->get_context<VerifyUserMiddleware>(req);
+            std::string user_role = ctx.user_data["role"].as_string().c_str();
+
+            if(user_role=="employee")
+                throw std::runtime_error("User should not be employee");
+
+            bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
+            auto finalizer = bsoncxx::builder::stream::finalize;
+
+            bsoncxx::document::value projection = builder << "_id" << 0 <<finalizer;
+            mongocxx::cursor cursor = db_ref["server"].find({},mongocxx::options::find{}.projection(projection.view()));
+
+            std::string main_str = "[";
+
+            for(mongocxx::cursor::iterator it = cursor.begin();it != cursor.end();){
+                main_str += (bsoncxx::to_json(*it));
+                if(std::next(it) != cursor.end()) main_str+=",";
+            }
+
+            main_str += "]";
+
+            return crow::response(crow::status::OK, main_str);
+        }
+        catch (const std::exception& e) {
+            return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
+        }
+    });
+}
+
+void Machine::MachineViewOneEmployee(){
+
+    mongocxx::database& db_ref = *db;
+    auto &app = s->app;
+
+    CROW_BP_ROUTE((*bp), "/view_employee/<int>")
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+    .methods(crow::HTTPMethod::Get)([db_ref, app](const crow::request &req, const int& id) {
+        try {
+
+            bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
+            auto finalizer = bsoncxx::builder::stream::finalize;
+
+            auto& ctx = app->get_context<VerifyUserMiddleware>(req);
+            std::string user_role = ctx.user_data["role"].as_string().c_str();
+            std::string user_id = ctx.user_data["_id"].as_object()["$oid"].as_string().c_str();
+
+            if(user_role != "employee")
+                throw std::runtime_error("User should be employee"); 
+
+            bsoncxx::document::value projection = builder << "_id" << 0 <<finalizer;
+            bsoncxx::document::value filter = builder<<"id"<<id<<finalizer;
+
+            bsoncxx::stdx::optional<bsoncxx::document::value> finder = db_ref["server"].find_one(filter.view(), mongocxx::options::find{}.projection(projection.view()));
+            if(!finder)
+                throw std::runtime_error("Unable to find document");
+
+            const bsoncxx::document::value& finder_str = *finder;
+
+            bsoncxx::document::value projection_request = builder << "_id" << 0 << "employee_id"<< 1 <<finalizer;
+            bsoncxx::document::value filter_request = builder<<"inventory_id"<<bsoncxx::oid(finder_str["inventory_id"].get_oid().value.to_string())<<"status"<<"accepted"<<finalizer;
+
+            bsoncxx::stdx::optional<bsoncxx::document::value> finder_request = db_ref["request"].find_one(filter_request.view(), mongocxx::options::find{}.projection(projection_request.view()));
+            if(!finder_request)
+                throw std::runtime_error("Request is not created or accepted");
+
+            const bsoncxx::document::value& finder_request_str = *finder_request;
+
+
+
+            std::string employee_id = finder_request_str["employee_id"].get_oid().value.to_string();
+            if(employee_id != user_id)
+                throw std::runtime_error("User should be same as Request generated user");
+
+            std::string json_str = bsoncxx::to_json(finder_str);
+
+            return crow::response(crow::status::OK,json_str);
+        } catch (const std::exception& e) {
+            return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
+        }
+    });
+}
+
+void Machine::MachineViewOne(){
+
+    mongocxx::database& db_ref = *db;
+    auto &app = s->app;
+
+    CROW_BP_ROUTE((*bp), "/view/<int>")
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+    .methods(crow::HTTPMethod::Get)([db_ref, app](const crow::request &req, const int& id) {
+        try {
+
+            bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
+            auto finalizer = bsoncxx::builder::stream::finalize;
+
+            auto& ctx = app->get_context<VerifyUserMiddleware>(req);
+            std::string user_role = ctx.user_data["role"].as_string().c_str();
+            std::string user_id = ctx.user_data["_id"].as_object()["$oid"].as_string().c_str();
+
+            if(user_role == "employee")
+                throw std::runtime_error("User should not be employee"); 
+
+            bsoncxx::document::value projection = builder << "_id" << 0 <<finalizer;
+            bsoncxx::document::value filter = builder<<"id"<<id<<finalizer;
+
+            bsoncxx::stdx::optional<bsoncxx::document::value> finder = db_ref["server"].find_one(filter.view(), mongocxx::options::find{}.projection(projection.view()));
+            if(!finder)
+                throw std::runtime_error("Unable to find document");
+
+            const bsoncxx::document::value& finder_str = *finder;
+
+            std::string json_str = bsoncxx::to_json(finder_str);
+
+            return crow::response(crow::status::OK,json_str);
+        } catch (const std::exception& e) {
+            return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
+        }
+    });
 }
