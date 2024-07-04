@@ -27,7 +27,8 @@ class Machine {
         void createRoutes();
         void MachineAdd();
         void MachineView();
-        void Assigntask();
+        void MachineViewEmployee();
+        void MachineViewOneEmployee();
         void MachineViewOne();
 };
 

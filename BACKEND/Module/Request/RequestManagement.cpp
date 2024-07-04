@@ -21,14 +21,16 @@ crow::json::wvalue wRequestSchema = {
     {"employee_id", {
         {"type", "Integer"},
         {"size", 9},
-        {"insert", "No"},
-        {"update", "No"}
+        {"insert", "Yes"},
+        {"update", "No"},
+        {"skip", "Yes"}
     }},
     {"inventory_id", {
         {"type", "Integer"},
         {"size", 9},
-        {"insert", "No"},
-        {"update", "No"}
+        {"insert", "Yes"},
+        {"update", "No"},
+        {"skip", "Yes"}
     }},
     {"reason", {
         {"type", "String"},
@@ -174,8 +176,8 @@ void RequestManagement::RequestManagementEdit(){
             std::string user_role = ctx.user_data["role"].as_string().c_str();
             std::string user_id = ctx.user_data["_id"].as_object()["$oid"].as_string().c_str();
 
-            if(user_role!="admin")
-                throw std::runtime_error("User should be admin");
+            if(user_role=="employee")
+                throw std::runtime_error("User should be admin or manager");
 
             bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
             auto finalizer = bsoncxx::builder::stream::finalize;
