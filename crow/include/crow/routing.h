@@ -580,8 +580,8 @@ namespace crow
         {
             if (!custom_templates_base.empty())
                 mustache::set_base(custom_templates_base);
-            else if (mustache::detail::get_template_base_directory_ref() != "templates")
-                mustache::set_base("templates");
+            else if (mustache::detail::get_template_base_directory_ref() != "Templates")
+                mustache::set_base("Templates");
             erased_handler_(req, res, params);
         }
 

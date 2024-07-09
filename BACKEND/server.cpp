@@ -114,6 +114,18 @@ int main() {
         return "<h1>IMS Status OK 4</h1>";
     });
 
+    CROW_ROUTE(app, "/favicon.ico")
+    .methods(crow::HTTPMethod::GET)
+    ([db]() {
+        crow::response res;
+        std::string static_dir_ = "static/ico/light.ico";
+        std::filesystem::path pt = std::filesystem::path(std::string(CURRENT_FUNCTION_LIST_DIR)) / std::filesystem::path(std::string(PROJECT_PATH)) / std::filesystem::path(static_dir_);
+        static_dir_ = pt.string();
+
+        res.set_static_file_info(static_dir_);
+        return res;
+    });
+
     createRoutes();
 
     // LiveHandlerModule(&app, &db, &request_list_users, &inventory_list_users);

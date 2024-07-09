@@ -9,6 +9,7 @@
 #include <type_traits>
 #include <thread>
 #include <condition_variable>
+#include <filesystem>
 
 #include "crow/version.h"
 #include "crow/settings.h"
@@ -20,6 +21,8 @@
 #include "crow/http_server.h"
 #include "crow/task_timer.h"
 #include "crow/websocket.h"
+#include "cmake_helper.h"
+
 #ifdef CROW_ENABLE_COMPRESSION
 #include "crow/compression.h"
 #endif
@@ -296,6 +299,9 @@ namespace crow
                 if (static_dir_[static_dir_.length() - 1] != '/')
                     static_dir_ += '/';
 
+                std::filesystem::path pt = std::filesystem::path(std::string(CURRENT_FUNCTION_LIST_DIR)) / std::filesystem::path(std::string(PROJECT_PATH)) / std::filesystem::path(static_dir_);
+                static_dir_ = pt.string();
+
                 route<crow::black_magic::get_parameter_tag(CROW_STATIC_ENDPOINT)>(CROW_STATIC_ENDPOINT)([static_dir_](crow::response& res, std::string file_path_partial) {
                     utility::sanitize_filename(file_path_partial);
                     res.set_static_file_info_unsafe(static_dir_ + file_path_partial);
@@ -315,6 +321,9 @@ namespace crow
                             std::replace(static_dir_.begin(), static_dir_.end(), '\\', '/');
                             if (static_dir_[static_dir_.length() - 1] != '/')
                                 static_dir_ += '/';
+
+                            std::filesystem::path pt = std::filesystem::path(std::string(CURRENT_FUNCTION_LIST_DIR)) / std::filesystem::path(std::string(PROJECT_PATH)) / std::filesystem::path(static_dir_);
+                            static_dir_ = pt.string();
 
                             bp->new_rule_tagged<crow::black_magic::get_parameter_tag(CROW_STATIC_ENDPOINT)>(CROW_STATIC_ENDPOINT)([static_dir_](crow::response& res, std::string file_path_partial) {
                                 utility::sanitize_filename(file_path_partial);

@@ -3,11 +3,14 @@
 #include <vector>
 #include <fstream>
 #include <iterator>
+#include <filesystem>
 #include <functional>
 #include "crow/json.h"
 #include "crow/logging.h"
 #include "crow/returnable.h"
 #include "crow/utility.h"
+#include "cmake_helper.h"
+
 
 namespace crow
 {
@@ -634,14 +637,14 @@ namespace crow
         {
             inline std::string& get_template_base_directory_ref()
             {
-                static std::string template_base_directory = "templates";
+                static std::string template_base_directory = "Templates";
                 return template_base_directory;
             }
 
             /// A base directory not related to any blueprint
             inline std::string& get_global_template_base_directory_ref()
             {
-                static std::string template_base_directory = "templates";
+                static std::string template_base_directory = "Templates";
                 return template_base_directory;
             }
         } // namespace detail
@@ -649,7 +652,9 @@ namespace crow
         inline std::string default_loader(const std::string& filename)
         {
             std::string path = detail::get_template_base_directory_ref();
-            std::ifstream inf(utility::join_path(path, filename));
+            std::filesystem::path pt = std::filesystem::path(std::string(CURRENT_FUNCTION_LIST_DIR)) / std::filesystem::path(std::string(PROJECT_PATH)) / std::filesystem::path(path);
+            std::ifstream inf(utility::join_path(pt.string(), filename));
+
             if (!inf)
             {
                 CROW_LOG_WARNING << "Template \"" << filename << "\" not found.";

@@ -11,6 +11,7 @@
 #include "Project/Project.h"
 #include "Machine/Machine.h"
 #include "Inventory/Inventory.h"
+#include "Docs/Docs.h"
 
 class Utility
 {
@@ -31,6 +32,10 @@ class Utility
             // Task
             Task task;
             task.createRoutes();
+
+            // Docs
+            Docs doc;
+            doc.createRoutes();
         }
 };
 

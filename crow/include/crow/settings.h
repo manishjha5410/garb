@@ -26,7 +26,7 @@
 #endif
 
 #ifndef CROW_STATIC_DIRECTORY
-#define CROW_STATIC_DIRECTORY "static/"
+#define CROW_STATIC_DIRECTORY "Static/"
 #endif
 #ifndef CROW_STATIC_ENDPOINT
 #define CROW_STATIC_ENDPOINT "/static/<path>"

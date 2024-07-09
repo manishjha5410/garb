@@ -11,6 +11,7 @@ project(Server)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
+set(PROJECT_PATH BACKEND)
 
 # Source files
 set(SOURCES
@@ -23,6 +24,7 @@ set(SOURCES
     BACKEND/Utility/Machine/Machine.cpp
     BACKEND/Utility/Inventory/Inventory.cpp
     BACKEND/Utility/Task/Task.cpp
+    BACKEND/Utility/Docs/Docs.cpp
 )
 
 # Include directories
@@ -46,10 +48,16 @@ set(INCLUDE_DIRS
     BACKEND/Utility/Machine/
     BACKEND/Utility/Inventory/
     BACKEND/Utility/Task/
+    BACKEND/Utility/Docs/
 )
 
 # Link directories
 link_directories(/usr/local/lib)
+
+configure_file( BACKEND/Header/cmake_helper.h.in ${CMAKE_BINARY_DIR}/Header/cmake_helper.h )
+include_directories( ${CMAKE_BINARY_DIR}/Header/ ) # Make sure it can be included...
+
+add_compile_definitions(CURRENT_FUNCTION_LIST_DIR="${CMAKE_CURRENT_LIST_DIR}")
 
 # Executable
 add_executable(app.out ${SOURCES})
