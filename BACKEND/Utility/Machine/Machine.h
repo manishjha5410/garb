@@ -30,6 +30,7 @@ class Machine {
         void MachineViewEmployee();
         void MachineViewOneEmployee();
         void MachineViewOne();
+        void MachineEdit();
 };
 
 #endif

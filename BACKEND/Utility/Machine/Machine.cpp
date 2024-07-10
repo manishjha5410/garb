@@ -33,8 +33,8 @@ crow::json::wvalue wMachineSchema = {
         {"skip", "Yes"},
         {"size", 9}
     }},
-    {"task_id", {
-        {"type", "List"},
+    {"task_count", {
+        {"type", "Integer"},
         {"required", "No"},
         {"skip", "Yes"}
     }},
@@ -352,4 +352,76 @@ void Machine::MachineViewOne(){
             return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
         }
     });
+}
+
+
+void Machine::MachineEdit(){
+
+    mongocxx::database& db_ref = *db;
+    auto &app = s->app;
+
+    CROW_BP_ROUTE((*bp), "/edit/<int>")
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+        .methods(crow::HTTPMethod::Put)
+        ([db_ref, app](const crow::request &req,const int& id) {
+            crow::json::rvalue reqj = crow::json::load(req.body);
+
+            if (!reqj)
+                return crow::response(crow::status::BAD_REQUEST);
+
+            std::pair<std::string, bool> check = JsonValid(reqj, machineSchema, 1); 
+
+            if(!check.second)
+                return crow::response(crow::status::BAD_REQUEST, check.first);
+
+            auto& ctx = app->get_context<VerifyUserMiddleware>(req);
+            std::string user_role = ctx.user_data["role"].as_string().c_str();
+
+            if(user_role!="admin")
+                throw std::runtime_error("User is not admin");
+
+            bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
+            auto open = bsoncxx::builder::stream::open_document;
+            auto close = bsoncxx::builder::stream::close_document;
+            auto finalizer = bsoncxx::builder::stream::finalize;
+
+            bsoncxx::document::value filter = builder<<"id"<<id<<finalizer;
+
+            bsoncxx::document::value projection = builder << "task_count" << 1 <<finalizer;
+
+            bsoncxx::stdx::optional<bsoncxx::document::value> finder = db_ref["server"].find_one(filter.view(), mongocxx::options::find{}.projection(projection.view()));
+            if(!finder)
+                throw std::runtime_error("Unable to find server");
+
+            const bsoncxx::document::value& finder_str = *finder;
+
+            if(finder_str["task_count"].get_int32().value != 0)
+                throw std::runtime_error("Cannot update it server is not free");
+
+            bsoncxx::builder::stream::document update_builder{};
+
+            update_builder<<"$set"<<open;
+            for (auto it = reqj.begin(); it != reqj.end(); ++it) {
+                auto key = std::string(it->key());
+                auto var = convertData(*it);
+                std::visit([&update_builder,&it,&key](auto& value) { update_builder<< key<< value; }, var);
+            }
+            update_builder<<close;
+
+            bsoncxx::document::value update = update_builder << finalizer;    
+
+            bsoncxx::stdx::optional<mongocxx::result::update> result = db_ref["server"].update_one(filter.view(), update.view());
+            if(!result) 
+                throw std::runtime_error("Error while Updation");
+            bsoncxx::document::value projection = builder << "_id" << 0 <<finalizer;
+
+            bsoncxx::stdx::optional<bsoncxx::document::value> finder = db_ref["server"].find_one(filter.view(), mongocxx::options::find{}.projection(projection.view()));
+            if(!finder)
+                throw std::runtime_error("Updation done unable to find modified document");
+
+            const bsoncxx::document::value& finder_str = *finder;
+            std::string json_str = bsoncxx::to_json(finder_str);
+
+            return crow::response(crow::status::ACCEPTED,json_str);
+        });
 }
