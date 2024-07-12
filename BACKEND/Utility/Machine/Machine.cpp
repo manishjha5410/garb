@@ -55,7 +55,8 @@ void Machine::createRoutes()
     MachineView();
     MachineViewOneEmployee();
     MachineViewOne();
-    // MachineViewOne();
+    MachineEdit();
+    MachineDelete();
 }
 
 
@@ -385,18 +386,7 @@ void Machine::MachineEdit(){
             auto close = bsoncxx::builder::stream::close_document;
             auto finalizer = bsoncxx::builder::stream::finalize;
 
-            bsoncxx::document::value filter = builder<<"id"<<id<<finalizer;
-
-            bsoncxx::document::value projection = builder << "task_count" << 1 <<finalizer;
-
-            bsoncxx::stdx::optional<bsoncxx::document::value> finder = db_ref["server"].find_one(filter.view(), mongocxx::options::find{}.projection(projection.view()));
-            if(!finder)
-                throw std::runtime_error("Unable to find server");
-
-            const bsoncxx::document::value& finder_str = *finder;
-
-            if(finder_str["task_count"].get_int32().value != 0)
-                throw std::runtime_error("Cannot update it server is not free");
+            bsoncxx::document::value filter = builder<<"id"<<id<<"task_count"<<0<<finalizer;
 
             bsoncxx::builder::stream::document update_builder{};
 
@@ -410,18 +400,44 @@ void Machine::MachineEdit(){
 
             bsoncxx::document::value update = update_builder << finalizer;    
 
-            bsoncxx::stdx::optional<mongocxx::result::update> result = db_ref["server"].update_one(filter.view(), update.view());
-            if(!result) 
-                throw std::runtime_error("Error while Updation");
-            bsoncxx::document::value projection = builder << "_id" << 0 <<finalizer;
+            mongocxx::options::find_one_and_update options{};
+            options.return_document(mongocxx::options::return_document::k_after);
 
-            bsoncxx::stdx::optional<bsoncxx::document::value> finder = db_ref["server"].find_one(filter.view(), mongocxx::options::find{}.projection(projection.view()));
-            if(!finder)
-                throw std::runtime_error("Updation done unable to find modified document");
 
-            const bsoncxx::document::value& finder_str = *finder;
-            std::string json_str = bsoncxx::to_json(finder_str);
+            core::v1::optional<bsoncxx::v_noabi::document::value> result = db_ref["server"].find_one_and_update(filter.view(), update.view(), options);
+            std::string json_str = bsoncxx::to_json(*result);
 
             return crow::response(crow::status::ACCEPTED,json_str);
+        });
+}
+
+void Machine::MachineDelete(){
+
+    mongocxx::database& db_ref = *db;
+    auto &app = s->app;
+
+    CROW_BP_ROUTE((*bp), "/delete/<int>")
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+        .methods(crow::HTTPMethod::Delete)([db_ref, app](const crow::request &req, const int& id) {
+            try{
+                bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
+                auto finalizer = bsoncxx::builder::stream::finalize;
+
+                bsoncxx::document::value filter = builder<<"id"<<id<<finalizer;
+
+                bsoncxx::stdx::optional<mongocxx::result::delete_result> deleter = db_ref["server"].delete_one(filter.view());
+                if(!deleter)
+                    throw std::runtime_error("Unable to delete document");
+
+                const mongocxx::result::delete_result& deleter_str = *deleter;
+
+                std::string message = deleter_str.deleted_count() == 0 ? "No document to delete":"Document deleted sucessfully";
+                crow::status status = deleter_str.deleted_count() == 0 ? crow::status::BAD_REQUEST : crow::status::ACCEPTED;
+
+                return crow::response(status,message);
+            }
+            catch (const std::exception& e) {
+                return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
+            }
         });
 }
