@@ -9,6 +9,16 @@ Billing::Billing() {
 }
 
 crow::json::wvalue wBillingSchema = {
+    {"_id", {
+        {"insert", "No"},
+        {"update", "No"}
+    }},
+    {"id", {
+        {"type", "Integer"},
+        {"skip", "Yes"},
+        {"required", "No"},
+        {"size", 9}
+    }},
     {"employee_id", {
         {"type", "Integer"},
         {"update", "No"},
@@ -76,9 +86,6 @@ void Billing::BillingAdd()
                 if(!finder)
                     throw std::runtime_error("Unable to find Project");
                 const bsoncxx::document::value& finder_str = *finder;
-
-                std::cout<<"ID is "<<user_id<<" "<<finder_str["manager_id"].get_oid().value.to_string()<<std::endl;
-                // throw std::invalid_argument("Hello");
 
                 if(finder_str["quantity"].get_int32().value == 0)
                     throw std::runtime_error("Project Quantity should be zero");

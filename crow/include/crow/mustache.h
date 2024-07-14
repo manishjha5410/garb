@@ -9,7 +9,6 @@
 #include "crow/logging.h"
 #include "crow/returnable.h"
 #include "crow/utility.h"
-#include "cmake_helper.h"
 
 
 namespace crow

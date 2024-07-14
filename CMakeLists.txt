@@ -11,7 +11,6 @@ project(Server)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
-set(PROJECT_PATH BACKEND)
 
 # Source files
 set(SOURCES
@@ -54,10 +53,8 @@ set(INCLUDE_DIRS
 # Link directories
 link_directories(/usr/local/lib)
 
-configure_file( BACKEND/Header/cmake_helper.h.in ${CMAKE_BINARY_DIR}/Header/cmake_helper.h )
-include_directories( ${CMAKE_BINARY_DIR}/Header/ ) # Make sure it can be included...
-
 add_compile_definitions(CURRENT_FUNCTION_LIST_DIR="${CMAKE_CURRENT_LIST_DIR}")
+add_compile_definitions(PROJECT_PATH="BACKEND")
 
 # Executable
 add_executable(app.out ${SOURCES})

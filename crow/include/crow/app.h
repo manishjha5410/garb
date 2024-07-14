@@ -21,7 +21,6 @@
 #include "crow/http_server.h"
 #include "crow/task_timer.h"
 #include "crow/websocket.h"
-#include "cmake_helper.h"
 
 #ifdef CROW_ENABLE_COMPRESSION
 #include "crow/compression.h"

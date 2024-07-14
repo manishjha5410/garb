@@ -1,8 +1,4 @@
-const schema = {
-
-}
-
-var spec = {
+let spec = {
     openapi: "3.0.1",
     info: {
       version: "1.0.0",
@@ -156,7 +152,15 @@ var spec = {
       }
     },
     components: {
-      schemas: {
+      schemas:{
+        Billing: {
+          $ref: './static/data/schema.json#Billing'
+        },
+        Request: {
+          $ref: './static/data/schema.json#Request'
+        }
+      },
+      schemas1: {
         "Id": {
           "description": "Resource ID",
           "type": "integer",
@@ -279,21 +283,24 @@ var spec = {
     }
   }
 
-window.onload = function() {
-    const ui = SwaggerUIBundle({
-      spec: spec,
+const loadswagger = () => {
+  const ui = SwaggerUIBundle({
+    spec: spec,
+    dom_id: '#swagger-ui',
+    deepLinking: true,
+    presets: [
+      SwaggerUIBundle.presets.apis,
+      SwaggerUIStandalonePreset
+    ],
+    plugins: [
+      SwaggerUIBundle.plugins.DownloadUrl
+    ],
+    layout: "StandaloneLayout"
+  })
 
-      dom_id: '#swagger-ui',
-      deepLinking: true,
-      presets: [
-        SwaggerUIBundle.presets.apis,
-        SwaggerUIStandalonePreset
-      ],
-      plugins: [
-        SwaggerUIBundle.plugins.DownloadUrl
-      ],
-      layout: "StandaloneLayout"
-    })
- 
-    window.ui = ui
-  }
+  window.ui = ui;
+}
+  
+window.onload = () => {
+  loadswagger();
+}
