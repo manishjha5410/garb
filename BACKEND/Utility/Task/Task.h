@@ -24,6 +24,10 @@ class Task {
         Task();
         void createRoutes();
         void TaskAdd();
+        void TaskViewAdmin();
+        void TaskView();
+        void TaskViewOne();
+        void TaskViewOneAdmin();
 };
 
 #endif

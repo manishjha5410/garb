@@ -29,6 +29,9 @@ class RequestManagement {
         void createRoutes();
         void RequestManagementAdd();
         void RequestManagementEdit();
+        void RequestManagementView();
+        void RequestManagementViewOne();
+        void RequestManagementDelete();
 };
 
 #endif

@@ -18,14 +18,13 @@ class Billing {
         mongocxx::database *db;
         Server* s;
 
-        int price;
-        int quantity;
-
-        std::string convertString();
         Billing();
         void BillingAdd();
         void createRoutes();
         void BillingView();
+        void BillingEdit();
+        void BillingViewOne();
+        void BillingDelete();
 };
 
 #endif

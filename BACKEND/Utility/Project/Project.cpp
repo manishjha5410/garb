@@ -215,6 +215,7 @@ void Project::ProjectView() {
             std::string user_id = ctx.user_data["_id"].as_object()["$oid"].as_string().c_str();
 
             bsoncxx::builder::basic::document filter = bsoncxx::builder::basic::document{};
+            bsoncxx::document::value projection = bsoncxx::builder::basic::make_document(bsoncxx::builder::basic::kvp("_id", 0));
 
             if (user_role == "admin") {
                 filter.append(bsoncxx::builder::basic::kvp("id", bsoncxx::builder::basic::make_document(bsoncxx::builder::basic::kvp("$gt", 0))));            } else if (user_role == "manager") {
@@ -223,7 +224,7 @@ void Project::ProjectView() {
                 filter.append(bsoncxx::builder::basic::kvp("employee_id", bsoncxx::oid{user_id}));
             }
 
-            mongocxx::cursor cursor = collection.find(filter.view());
+            mongocxx::cursor cursor = collection.find(filter.view(), mongocxx::options::find{}.projection(projection.view()));
 
             std::string main_str = "[";
 

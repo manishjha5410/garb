@@ -72,6 +72,10 @@ auto TaskSchema = crow::json::load(wTaskSchema.dump());
 void Task::createRoutes()
 {
     TaskAdd();
+    TaskViewAdmin();
+    TaskView();
+    TaskViewOne();
+    TaskViewOneAdmin();
 }
 
 void Task::TaskAdd()
@@ -235,4 +239,210 @@ void Task::TaskAdd()
             return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
         }
     });
+}
+
+void Task::TaskViewAdmin()
+{
+    mongocxx::database &db_ref = *db;
+    auto &app = s->app;
+
+    CROW_BP_ROUTE((*bp), "/view_admin")
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+		.methods(crow::HTTPMethod::Get)
+    ([db_ref,app](const crow::request& req) {
+        try{
+
+            auto& ctx = app->get_context<VerifyUserMiddleware>(req);
+            std::string user_role = ctx.user_data["role"].as_string().c_str();
+            std::string user_id = ctx.user_data["_id"].as_object()["$oid"].as_string().c_str();
+
+            bsoncxx::document::value projection = bsoncxx::builder::basic::make_document(bsoncxx::builder::basic::kvp("_id", 0));
+
+            if (user_role != "admin")
+                throw std::runtime_error("User is not admin");
+
+            mongocxx::cursor cursor = db_ref["task"].find({},mongocxx::options::find{}.projection(projection.view()));
+
+            std::string main_str = "[";
+
+            for(mongocxx::cursor::iterator it = cursor.begin();it != cursor.end();){
+                main_str += (bsoncxx::to_json(*it));
+                if(std::next(it) != cursor.end()) main_str+=",";
+            }
+
+            main_str += "]";
+
+            return crow::response(crow::status::OK, main_str);
+        }
+        catch (const std::exception& e) {
+            return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
+        } });
+}
+
+void Task::TaskView(){
+
+    mongocxx::database& db_ref = *db;
+    auto &app = s->app;
+
+    CROW_BP_ROUTE((*bp), "/view")
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+    .methods(crow::HTTPMethod::Get)([db_ref, app](const crow::request &req) {
+        try {
+
+            bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
+            auto finalizer = bsoncxx::builder::stream::finalize;
+
+            auto& ctx = app->get_context<VerifyUserMiddleware>(req);
+            std::string user_role = ctx.user_data["role"].as_string().c_str();
+            std::string user_id = ctx.user_data["_id"].as_object()["$oid"].as_string().c_str();
+
+            if(user_role == "admin")
+                throw std::runtime_error("User should be employee or manager"); 
+
+            bsoncxx::document::value projection = builder << "_id" << 0 <<finalizer;
+            mongocxx::cursor cursor = db_ref["task"].find({}, mongocxx::options::find{}.projection(projection.view()));
+
+            std::unordered_set<std::string>container_project;
+
+            bsoncxx::builder::basic::document filter_project = bsoncxx::builder::basic::document{};
+            bsoncxx::builder::basic::document projection_project = bsoncxx::builder::basic::document{};
+            projection_project.append(bsoncxx::builder::basic::kvp("_id", 1));
+
+            if (user_role == "manager") {
+                filter_project.append(bsoncxx::builder::basic::kvp("manager_id", bsoncxx::oid{user_id}));
+                projection_project.append(bsoncxx::builder::basic::kvp("manager_id", 1));
+            } else {
+                filter_project.append(bsoncxx::builder::basic::kvp("employee_id", bsoncxx::oid{user_id}));
+                projection_project.append(bsoncxx::builder::basic::kvp("employee_id", 1));
+            }
+
+            mongocxx::cursor cursor_project = db_ref["project"].find(filter_project.view(), mongocxx::options::find{}.projection(projection_project.view()));
+
+            for(mongocxx::cursor::iterator it = cursor_project.begin();it != cursor_project.end();it++){
+                bsoncxx::document::view doc_view = *it;
+                std::string project_id = doc_view["_id"].get_oid().value.to_string();
+                std::string required_id = user_role == "manager" ? doc_view["manager_id"].get_oid().value.to_string() : doc_view["employee_id"].get_oid().value.to_string();
+                if(required_id == user_id)
+                    container_project.insert(project_id);
+            }
+
+            bool inside = false;;
+            std::string main_str = "[";
+            for(mongocxx::cursor::iterator it = cursor.begin();it != cursor.end();it++){
+                bsoncxx::document::view doc_view = *it;
+                std::string project_id = doc_view["project_id"].get_oid().value.to_string();                
+                if(container_project.find(project_id)!=container_project.end()){
+                    main_str += (bsoncxx::to_json(*it));
+                    main_str+=",";
+                }
+                inside = true;
+            }
+            if(inside) main_str.pop_back();
+
+            main_str += "]";
+
+            return crow::response(crow::status::OK, main_str);
+        } catch (const std::exception& e) {
+            return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
+        }
+    });
+}
+
+void Task::TaskViewOne()
+{
+    mongocxx::database &db_ref = *db;
+    auto &app = s->app;
+
+    CROW_BP_ROUTE((*bp), "/view/<int>")
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+    .methods(crow::HTTPMethod::Get)
+    ([db_ref,app](const crow::request& req, const int& id) {
+        try{
+            bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
+            auto finalizer = bsoncxx::builder::stream::finalize;
+
+            auto& ctx = app->get_context<VerifyUserMiddleware>(req);
+            std::string user_role = ctx.user_data["role"].as_string().c_str();
+            std::string user_id = ctx.user_data["_id"].as_object()["$oid"].as_string().c_str();
+
+            if(user_role == "admin")
+                throw std::runtime_error("User should be employee or manager"); 
+
+            bsoncxx::document::value projection = builder << "_id" << 0 <<finalizer;
+            bsoncxx::document::value filter = builder<<"id"<<id<<finalizer;
+
+            bsoncxx::stdx::optional<bsoncxx::document::value> finder = db_ref["task"].find_one(filter.view(), mongocxx::options::find{}.projection(projection.view()));
+            if(!finder)
+                throw std::runtime_error("Unable to find document");
+
+            const bsoncxx::document::value& finder_str = *finder;
+
+            bsoncxx::builder::basic::document filter_project = bsoncxx::builder::basic::document{};
+            bsoncxx::builder::basic::document projection_project = bsoncxx::builder::basic::document{};
+            projection_project.append(bsoncxx::builder::basic::kvp("_id", 1));
+            filter_project.append(bsoncxx::builder::basic::kvp("_id", bsoncxx::oid{finder_str["project_id"].get_oid().value.to_string()}));
+
+            if (user_role == "manager") {
+                projection_project.append(bsoncxx::builder::basic::kvp("manager_id", 1));
+            } else {
+                projection_project.append(bsoncxx::builder::basic::kvp("employee_id", 1));
+            }
+
+            bsoncxx::stdx::optional<bsoncxx::document::value> finder_project = db_ref["project"].find_one(filter_project.view(), mongocxx::options::find{}.projection(projection_project.view()));
+            if(!finder_project)
+                throw std::runtime_error("Request is not created or accepted");
+
+            const bsoncxx::document::value& finder_project_str = *finder_project;
+
+            std::string required_id = user_role == "manager" ? finder_project_str["manager_id"].get_oid().value.to_string() : finder_project_str["employee_id"].get_oid().value.to_string();
+
+            if(required_id != user_id)
+            {
+                std::string msg = user_role + " and the current user is not same";
+                throw std::runtime_error(msg);
+            }
+
+            std::string json_str = bsoncxx::to_json(finder_str);
+
+            return crow::response(crow::status::OK,json_str);
+        }
+        catch (const std::exception& e) {
+            return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
+        } });    
+}
+
+void Task::TaskViewOneAdmin()
+{
+    mongocxx::database &db_ref = *db;
+    auto &app = s->app;
+
+    CROW_BP_ROUTE((*bp), "/view_admin/<int>")
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+    .methods(crow::HTTPMethod::Get)
+    ([db_ref,app](const crow::request& req, const int& id) {
+        try{
+            bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
+            auto finalizer = bsoncxx::builder::stream::finalize;
+
+            auto& ctx = app->get_context<VerifyUserMiddleware>(req);
+            std::string user_role = ctx.user_data["role"].as_string().c_str();
+
+            if(user_role != "admin")
+                throw std::runtime_error("User should be admin"); 
+
+            bsoncxx::document::value projection = builder << "_id" << 0 <<finalizer;
+            bsoncxx::document::value filter = builder<<"id"<<id<<finalizer;
+
+            bsoncxx::stdx::optional<bsoncxx::document::value> finder = db_ref["task"].find_one(filter.view(), mongocxx::options::find{}.projection(projection.view()));
+            if(!finder)
+                throw std::runtime_error("Unable to find document");
+
+            const bsoncxx::document::value& finder_str = *finder;
+            std::string json_str = bsoncxx::to_json(finder_str);
+
+            return crow::response(crow::status::OK,json_str);
+        }
+        catch (const std::exception& e) {
+            return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
+        } });
 }

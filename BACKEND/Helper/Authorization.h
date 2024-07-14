@@ -56,7 +56,8 @@ private:
         }
         catch (const std::exception& e) 
         {
-            std::cout<<"Token Error is "<<e.what();
+            std::string msg = "Token Error is " + std::string(e.what());
+            throw std::runtime_error(msg);
             return false;
         }
 

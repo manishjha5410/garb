@@ -423,7 +423,7 @@ void Machine::MachineDelete(){
                 bsoncxx::builder::stream::document builder = bsoncxx::builder::stream::document{};
                 auto finalizer = bsoncxx::builder::stream::finalize;
 
-                bsoncxx::document::value filter = builder<<"id"<<id<<finalizer;
+                bsoncxx::document::value filter = builder<<"id"<<id<<"task_count"<<0<<finalizer;
 
                 bsoncxx::stdx::optional<mongocxx::result::delete_result> deleter = db_ref["server"].delete_one(filter.view());
                 if(!deleter)
