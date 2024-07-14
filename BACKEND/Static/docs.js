@@ -70,7 +70,7 @@ var spec = {
         }
       },
       "/articles/{id}": {
-        "get": {
+        "patch": {
           "summary": "Get an article.",
           "operationId": "getArticle",
           "tags": [

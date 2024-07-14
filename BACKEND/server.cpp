@@ -97,7 +97,8 @@ int main() {
 
     // Database
     mongocxx::instance inst{};
-    const auto uri = mongocxx::uri{"mongodb+srv://manish:1234@cluster.d2khew0.mongodb.net/?retryWrites=true&w=majority"};
+    const auto uri = mongocxx::uri{"mongodb+srv://manish:1234@cluster.d2khew0.mongodb.net/?appName=Cluster"};
+
 
     mongocxx::client conn{uri};
     mongocxx::database db = conn["IMS"];

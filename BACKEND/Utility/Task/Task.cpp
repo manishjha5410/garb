@@ -173,7 +173,7 @@ void Task::TaskAdd()
                 throw std::runtime_error("Error while Updating Project");
 
             bsoncxx::builder::stream::document update_builder_server{};
-            update_builder_server << "$inc" << open << "storage" << -(quantity) << close;
+            update_builder_server << "$inc" << open << "storage" << -(quantity) << "task_count" << 1 << close;
 
             bsoncxx::document::value update_server = update_builder_server << finalizer;
 
