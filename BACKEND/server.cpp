@@ -143,9 +143,14 @@ g++ --std=c++11 combined/server.cpp -I/usr/local/include/mongocxx/v_noabi -I/usr
 */
 
 /*
-Create a server.h while this file would be renamed to main.cpp 
-so in server.h i would have a server class 
-in server class i can have app, db, sessions, users
-in main.cpp i would include User Inventory RequestManagement classes
-while in all this files User Inventory RequestManagement i could include server.h so that i can get the value of app, db, .. in Inventory Request ..
+
+Access Token: sl.B5N6WcalzzbtyfQTg-rDghjIjXcvk8cYqxMUcoYBj5Pxs5LcinOJWknNQU1DWm6nubCX_YAdETUGucC6RqtnVxZZxUfgVE-C1Rw77lxIO0uX2AAa9pEUUyQAqZVNh1ENmlZjYaPBYUzjXK1_xhJADvs
+To download data from dropbox
+API: - https://content.dropboxapi.com/2/files/download
+Header :- Dropbox-API-Arg: {"path":"/IMS/shadow.txt"}
+
+To upload a file
+API: - https://content.dropboxapi.com/2/files/upload
+Header: - Dropbox-API-Arg: { "autorename": false, "mode": "add", "mute": false, "path": "/IMS/shadow.txt", "strict_conflict": false }
+Body Binary File
 */
