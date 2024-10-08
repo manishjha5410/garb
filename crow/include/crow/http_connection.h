@@ -1,26 +1,33 @@
 #pragma once
+
+#ifdef CROW_USE_BOOST
+#include <boost/asio.hpp>
+#else
 #ifndef ASIO_STANDALONE
 #define ASIO_STANDALONE
 #endif
-#include <boost/asio.hpp>
+#include <asio.hpp>
+#endif
+
 #include <algorithm>
 #include <atomic>
 #include <chrono>
-#include <vector>
 #include <memory>
+#include <vector>
 
 #include "crow/http_parser_merged.h"
 #include "crow/common.h"
-#include "crow/parser.h"
+#include "crow/compression.h"
 #include "crow/http_response.h"
 #include "crow/logging.h"
-#include "crow/settings.h"
-#include "crow/task_timer.h"
-#include "crow/middleware_context.h"
 #include "crow/middleware.h"
+#include "crow/middleware_context.h"
+#include "crow/parser.h"
+#include "crow/settings.h"
 #include "crow/socket_adaptors.h"
-#include "crow/compression.h"
+#include "crow/task_timer.h"
 #include "crow/utility.h"
+
 #define RESET   "\033[0m"
 #define RED     "\033[31m"
 #define GREEN   "\033[32m"
@@ -36,8 +43,13 @@
 
 namespace crow
 {
+#ifdef CROW_USE_BOOST
+    namespace asio = boost::asio;
+    using error_code = boost::system::error_code;
+#else
+    using error_code = asio::error_code;
+#endif
     using tcp = asio::ip::tcp;
-
 
 #ifdef CROW_ENABLE_DEBUG
     static std::atomic<int> connectionCount;
@@ -93,7 +105,7 @@ namespace crow
         void start()
         {
             auto self = this->shared_from_this();
-            adaptor_.start([self](const boost::system::error_code& ec) {
+            adaptor_.start([self](const error_code& ec) {
                 if (!ec)
                 {
                     self->start_deadline();
@@ -115,6 +127,7 @@ namespace crow
             if (!routing_handle_result_->rule_index)
             {
                 parser_.done();
+                need_to_call_after_handlers_ = true;
                 complete_request(std::chrono::high_resolution_clock::now());
             }
         }
@@ -139,8 +152,13 @@ namespace crow
             bool is_invalid_request = false;
             add_keep_alive_ = false;
 
+            // Create context
+            ctx_ = detail::context<Middlewares...>();
+            req_.middleware_context = static_cast<void*>(&ctx_);
+            req_.middleware_container = static_cast<void*>(middlewares_);
+            req_.io_service = &adaptor_.get_io_service();
+            
             req_.remote_ip_address = adaptor_.remote_endpoint().address().to_string();
-            req_.port = adaptor_.remote_endpoint().port();
 
             add_keep_alive_ = req_.keep_alive;
             close_connection_ = req_.close_connection;
@@ -162,13 +180,15 @@ namespace crow
                     }
                     else
                     {
+                
+                        detail::middleware_call_helper<detail::middleware_call_criteria_only_global,
+                                                       0, decltype(ctx_), decltype(*middlewares_)>({}, *middlewares_, req_, res, ctx_);
                         close_connection_ = true;
                         handler_->handle_upgrade(req_, res, std::move(adaptor_));
                         return;
                     }
                 }
             }
-
 
             #ifdef CROW_FANCY_LOG
                 CROW_LOG_INFO << GREEN << method_name(req_.method) <<  " " << BROWN << req_.url  << " " << DRED << utility::lexical_cast<std::string>(adaptor_.remote_endpoint())  << RESET << " " << (char)(req_.http_ver_major + '0') << "." << (char)(req_.http_ver_minor + '0') <<" " << CYAN << this << RESET;
@@ -185,12 +205,7 @@ namespace crow
                 res.is_alive_helper_ = [self]() -> bool {
                     return self->adaptor_.is_open();
                 };
-
-                ctx_ = detail::context<Middlewares...>();
-                req_.middleware_context = static_cast<void*>(&ctx_);
-                req_.middleware_container = static_cast<void*>(middlewares_);
-                req_.io_service = &adaptor_.get_io_service();
-
+                
                 detail::middleware_call_helper<detail::middleware_call_criteria_only_global,
                                                0, decltype(ctx_), decltype(*middlewares_)>({}, *middlewares_, req_, res, ctx_);
 
@@ -227,8 +242,8 @@ namespace crow
             #else
                 CROW_LOG_INFO << res.code << " " << req_.raw_url << " " << utility::lexical_cast<std::string>(adaptor_.remote_endpoint()) << " " << close_connection_ << " " << duration.count() <<" ns ";
             #endif
-
             res.is_alive_helper_ = nullptr;
+
             if (need_to_call_after_handlers_)
             {
                 need_to_call_after_handlers_ = false;
@@ -332,6 +347,7 @@ namespace crow
               {status::FORBIDDEN, "HTTP/1.1 403 Forbidden\r\n"},
               {status::NOT_FOUND, "HTTP/1.1 404 Not Found\r\n"},
               {status::METHOD_NOT_ALLOWED, "HTTP/1.1 405 Method Not Allowed\r\n"},
+              {status::NOT_ACCEPTABLE, "HTTP/1.1 406 Not Acceptable\r\n"},
               {status::PROXY_AUTHENTICATION_REQUIRED, "HTTP/1.1 407 Proxy Authentication Required\r\n"},
               {status::CONFLICT, "HTTP/1.1 409 Conflict\r\n"},
               {status::GONE, "HTTP/1.1 410 Gone\r\n"},
@@ -493,7 +509,7 @@ namespace crow
             auto self = this->shared_from_this();
             adaptor_.socket().async_read_some(
               asio::buffer(buffer_),
-              [self](const boost::system::error_code& ec, std::size_t bytes_transferred) {
+              [self](const error_code& ec, std::size_t bytes_transferred) {
                   bool error_while_reading = true;
                   if (!ec)
                   {
@@ -536,7 +552,7 @@ namespace crow
             auto self = this->shared_from_this();
             asio::async_write(
               adaptor_.socket(), buffers_,
-              [self](const boost::system::error_code& ec, std::size_t /*bytes_transferred*/) {
+              [self](const error_code& ec, std::size_t /*bytes_transferred*/) {
                   self->res.clear();
                   self->res_body_copy_.clear();                  
                   if (!self->continue_requested)
@@ -567,7 +583,7 @@ namespace crow
         inline void do_write_sync(std::vector<asio::const_buffer>& buffers)
         {
 
-            asio::write(adaptor_.socket(), buffers, [&](boost::system::error_code ec, std::size_t) {
+            asio::write(adaptor_.socket(), buffers, [&](error_code ec, std::size_t) {
                 if (!ec)
                 {
                     return false;

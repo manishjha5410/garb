@@ -1,16 +1,24 @@
 #pragma once
 
+#ifdef CROW_USE_BOOST
+#include <boost/asio.hpp>
+#else
 #ifndef ASIO_STANDALONE
 #define ASIO_STANDALONE
 #endif
-#include <boost/asio.hpp>
+#include <asio.hpp>
+#endif
 
 #include "crow/common.h"
 #include "crow/ci_map.h"
 #include "crow/query_string.h"
 
-namespace crow
+namespace crow // NOTE: Already documented in "crow/app.h"
 {
+#ifdef CROW_USE_BOOST
+    namespace asio = boost::asio;
+#endif
+
     /// Find and return the value associated with the key. (returns an empty string if nothing is found)
     template<typename T>
     inline const std::string& get_header_value(const T& headers, const std::string& key)
@@ -32,7 +40,6 @@ namespace crow
         query_string url_params; ///< The parameters associated with the request. (everything after the `?` in the URL)
         ci_map headers;
         std::string body;
-        short unsigned int port;        ///< The Port from which the request was sent.
         std::string remote_ip_address; ///< The IP address from which the request was sent.
         unsigned char http_ver_major, http_ver_minor;
         bool keep_alive,    ///< Whether or not the server should send a `connection: Keep-Alive` header to the client.

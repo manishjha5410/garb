@@ -10,7 +10,6 @@
 #include "crow/returnable.h"
 #include "crow/utility.h"
 
-
 namespace crow
 {
     namespace mustache
@@ -653,7 +652,6 @@ namespace crow
             std::string path = detail::get_template_base_directory_ref();
             std::filesystem::path pt = std::filesystem::path(std::string(CURRENT_FUNCTION_LIST_DIR)) / std::filesystem::path(std::string(PROJECT_PATH)) / std::filesystem::path(path);
             std::ifstream inf(utility::join_path(pt.string(), filename));
-
             if (!inf)
             {
                 CROW_LOG_WARNING << "Template \"" << filename << "\" not found.";

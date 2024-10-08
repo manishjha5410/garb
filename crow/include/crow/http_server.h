@@ -1,26 +1,41 @@
 #pragma once
 
-#include <chrono>
-#ifndef ASIO_STANDALONE
-#define ASIO_STANDALONE
-#endif
+#ifdef CROW_USE_BOOST
 #include <boost/asio.hpp>
 #ifdef CROW_ENABLE_SSL
 #include <boost/asio/ssl.hpp>
 #endif
-#include <cstdint>
+#else
+#ifndef ASIO_STANDALONE
+#define ASIO_STANDALONE
+#endif
+#include <asio.hpp>
+#ifdef CROW_ENABLE_SSL
+#include <asio/ssl.hpp>
+#endif
+#endif
+
 #include <atomic>
+#include <chrono>
+#include <cstdint>
 #include <future>
-#include <vector>
 #include <memory>
+#include <vector>
 
 #include "crow/version.h"
 #include "crow/http_connection.h"
 #include "crow/logging.h"
 #include "crow/task_timer.h"
 
-namespace crow
+
+namespace crow // NOTE: Already documented in "crow/app.h"
 {
+#ifdef CROW_USE_BOOST
+    namespace asio = boost::asio;
+    using error_code = boost::system::error_code;
+#else
+    using error_code = asio::error_code;
+#endif
     using tcp = asio::ip::tcp;
 
     template<typename Handler, typename Adaptor = SocketAdaptor, typename... Middlewares>
@@ -52,7 +67,7 @@ namespace crow
         {
             tick_function_();
             tick_timer_.expires_after(std::chrono::milliseconds(tick_interval_.count()));
-            tick_timer_.async_wait([this](const boost::system::error_code& ec) {
+            tick_timer_.async_wait([this](const error_code& ec) {
                 if (ec)
                     return;
                 on_tick();
@@ -119,7 +134,11 @@ namespace crow
                             }
                             catch (std::exception& e)
                             {
-                                CROW_LOG_ERROR << "Worker Crash: An uncaught exception occurred: " << e.what();
+                                #ifdef CROW_FANCY_LOG
+                                    CROW_LOG_ERROR << RED << "Worker Crash: An uncaught exception occurred: " << DRED << BOLD << e.what();
+                                #else
+                                    CROW_LOG_ERROR << "Worker Crash: An uncaught exception occurred: " << e.what();
+                                #endif
                             }
                         }
                     }));
@@ -128,7 +147,7 @@ namespace crow
             {
                 tick_timer_.expires_after(std::chrono::milliseconds(tick_interval_.count()));
                 tick_timer_.async_wait(
-                  [this](const boost::system::error_code& ec) {
+                  [this](const error_code& ec) {
                       if (ec)
                           return;
                       on_tick();
@@ -142,7 +161,7 @@ namespace crow
             CROW_LOG_INFO << server_name_ << " server is running at " << (handler_->ssl_used() ? "https://" : "http://") << bindaddr_ << ":" << acceptor_.local_endpoint().port() << " using " << concurrency_ << " threads";
 
             signals_.async_wait(
-              [&](const boost::system::error_code& /*error*/, int /*signal_number*/) {
+              [&](const error_code& /*error*/, int /*signal_number*/) {
                   stop();
               });
 
@@ -152,15 +171,15 @@ namespace crow
             do_accept();
 
             std::thread(
-                [this] {
-                    notify_start();
-                    io_service_.run();
-                    #ifdef CROW_FANCY_LOG
+              [this] {
+                  notify_start();
+                  io_service_.run();
+                     #ifdef CROW_FANCY_LOG
                         CROW_LOG_CRITICAL<<BOLD<<DRED << "Exiting"<<RESET;
                     #else
                         CROW_LOG_CRITICAL << "Exiting.";
                     #endif
-              })
+                })
               .join();
         }
 
@@ -179,6 +198,7 @@ namespace crow
                     io_service->stop(); // Close all io_services (and HTTP connections)
                 }
             }
+
             #ifdef CROW_FANCY_LOG
                 CROW_LOG_CRITICAL <<BOLD<<BROWN<< "Closing main IO service " <<CYAN"(" << &io_service_ << ')'<<RESET;
             #else
@@ -237,7 +257,7 @@ namespace crow
 
                 acceptor_.async_accept(
                   p->socket(),
-                  [this, p, &is, service_idx](boost::system::error_code ec) {
+                  [this, p, &is, service_idx](error_code ec) {
                       if (!ec)
                       {
                           is.post(

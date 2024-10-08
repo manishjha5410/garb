@@ -84,9 +84,9 @@ namespace crow
                     break;
             }
             #ifdef CROW_FANCY_LOG
-            std::cerr << BOLD << Highlight << prefix << std::string(" ") << RESET << message << std::endl;
+                std::cerr << BOLD << Highlight << prefix << std::string(" ") << RESET << message << std::endl;
             #else
-            std::cerr << prefix << std::string(" ") << message << std::endl;
+                std::cerr << prefix << std::string(" ") << message << std::endl;
             #endif
         }
 

@@ -19,7 +19,7 @@
                 "/usr/local/include/bsoncxx/v_noabi/bsoncxx/third_party/mnmlstc",
                 "/usr/local/include/bsoncxx/v_noabi/bsoncxx/third_party/mnmlstc/**"
             ],
-            "defines": ["-DCROW_USE_LOCALTIMEZONE","-DCROW_FANCY_LOG"],
+            "defines": ["-DCROW_USE_LOCALTIMEZONE","-DCROW_FANCY_LOG","-DCROW_USE_BOOST"],
             "compilerPath": "/usr/bin/gcc",
             "cStandard": "c17",
             "cppStandard": "gnu++17",
