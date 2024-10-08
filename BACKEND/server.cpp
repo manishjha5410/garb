@@ -144,7 +144,7 @@ g++ --std=c++11 combined/server.cpp -I/usr/local/include/mongocxx/v_noabi -I/usr
 
 /*
 
-Access Token: sl.B-b_-yVM9TO0HqvMPpBEXja4lwkinJ6Mm6uEnUw5BVdjLw5MFRcYB4eS-xuRfrxjbPcrQcUTjGlhqqLfIXG5EM7zon_1dlhuahyqueWONeduiR88w0Qknpgpmr3JvuVZqOiVW1SYlF5-SxNSJMobMCo
+Access Token: 
 
 Generate from https://www.dropbox.com/developers/apps/info/kruymhmb3hgubyi#settings
 
