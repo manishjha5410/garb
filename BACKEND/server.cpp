@@ -118,12 +118,21 @@ int main() {
     CROW_ROUTE(app, "/favicon.ico")
     .methods(crow::HTTPMethod::GET)
     ([db]() {
-        crow::response res;
-        std::string static_dir_ = "static/ico/light.ico";
+        std::string static_dir_ = "Static/ico/light.ico";
         std::filesystem::path pt = std::filesystem::path(std::string(CURRENT_FUNCTION_LIST_DIR)) / std::filesystem::path(std::string(PROJECT_PATH)) / std::filesystem::path(static_dir_);
         static_dir_ = pt.string();
 
-        res.set_static_file_info(static_dir_);
+        std::ifstream ifs(static_dir_, std::ios::binary);
+
+        if (!ifs) {
+            return crow::response(404, "Favicon not found");
+        }
+
+        std::string faviconContent((std::istreambuf_iterator<char>(ifs)), std::istreambuf_iterator<char>());
+
+        crow::response res(faviconContent);
+        res.set_header("Content-Type", "image/x-icon");
+
         return res;
     });
 
