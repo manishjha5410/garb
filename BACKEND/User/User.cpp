@@ -10,6 +10,7 @@ User::User()
     bp = new crow::Blueprint("user");
     s->app->register_blueprint(*bp);
     db = s->db;
+    resolver = s->resolver;
 }
 
 crow::json::wvalue wUserSchema = {
@@ -46,6 +47,7 @@ void User::createRoutes()
     UserSignUp();
     UserViewOne();
     UserView();
+    UserAddPhoto();
 
     Admin a;
     a.createRoutes();
@@ -123,7 +125,39 @@ void User::UserSignUp()
             } });
 }
 
+void User::UserAddPhoto()
+{
+    mongocxx::database &db_ref = *db;
+    auto &app = s->app;
 
+    CROW_BP_ROUTE((*bp), "/upload_photo/<int>")
+    .CROW_MIDDLEWARES((*s->app), VerifyUserMiddleware)
+    .methods(crow::HTTPMethod::Post)
+    ([db_ref,app](const crow::request& req, const int &id) {
+        try{
+
+            std::string content_type = req.get_header_value("Content-Type");
+
+            if(content_type != "application/octet-stream") return crow::response(crow::status::BAD_REQUEST, "Add a binary file");
+
+            if(req.body.empty()) return crow::response(crow::status::BAD_REQUEST, "Add a binary file");
+
+            std::string photo_url = "https://content.dropboxapi.com/2/files/upload";
+
+            std::string secret = "sl.B-pXXagz-i1CNDWICGx5zdgClKl5UfCLIuF-ecOAEg84qtsfz4X1ki2uozvxZTcrgRso-rShu6VwaMgEvJH4Rr6RRVO_vjmGDoF2YOsJ0KEqni_HJTlRTLC1mPA3s22fPVMaC8CJaXGOBhglpo5BGbI";
+
+
+
+            std::cout<<req.body.data()<<std::endl;
+
+
+            return crow::response(crow::status::INTERNAL_SERVER_ERROR);
+        }
+        catch (const std::exception& e) {
+            return crow::response(crow::status::INTERNAL_SERVER_ERROR, e.what());
+        }
+    });
+}
 
 void User::UserView()
 {

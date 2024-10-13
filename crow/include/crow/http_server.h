@@ -157,8 +157,11 @@ namespace crow // NOTE: Already documented in "crow/app.h"
             port_ = acceptor_.local_endpoint().port();
             handler_->port(port_);
 
-
-            CROW_LOG_INFO << server_name_ << " server is running at " << (handler_->ssl_used() ? "https://" : "http://") << bindaddr_ << ":" << acceptor_.local_endpoint().port() << " using " << concurrency_ << " threads";
+            #ifdef CROW_FANCY_LOG
+                CROW_LOG_INFO << BOLD << YELLOW << server_name_ << " " << BLUE << (handler_->ssl_used() ? "https://" : "http://") << bindaddr_ << ":" << acceptor_.local_endpoint().port() << " " << DRED << concurrency_ << RESET;
+            #else
+                CROW_LOG_INFO  << server_name_ << " " << (handler_->ssl_used() ? "https://" : "http://") << bindaddr_ << ":" << acceptor_.local_endpoint().port() << " " << concurrency_;
+            #endif
 
             signals_.async_wait(
               [&](const error_code& /*error*/, int /*signal_number*/) {

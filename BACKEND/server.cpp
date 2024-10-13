@@ -26,22 +26,6 @@
 #include "User/User.h"
 #include "server.h"
 
-struct Request {
-    std::string request_id;
-    std::string name;
-    std::string project_owner;
-    std::string assigned_manager;
-    std::string status;
-    std::string item_id;
-
-    int quantity;
-    int expense;
-
-    std::string convertString() {
-        std::string alpha = "{'request_id': '" + request_id + "', 'name': '" + name + "', 'project_owner': '" + project_owner + "', 'assigned_manager': '" + assigned_manager + "', 'status': '" + status + "', 'item_id': '" + item_id + ", 'quantity': " + std::to_string(int(quantity)) + ", 'expense': " + std::to_string(int(expense)) + "}|";
-        return alpha;
-    }
-};
 
 // void LiveHandlerModule(crow::App<crow::CORSHandler,UserMiddleware> *server, mongocxx::database *db_loc, std::unordered_set<crow::websocket::connection *> *request_list_users, std::unordered_set<crow::websocket::connection *> *inventory_list_users) {
 //     crow::App<crow::CORSHandler,UserMiddleware> &app = *server;
@@ -139,6 +123,8 @@ int main() {
     createRoutes();
 
     // LiveHandlerModule(&app, &db, &request_list_users, &inventory_list_users);
+
+    app.server_name("IMS");
 
     app.bindaddr("127.0.0.1")
     .port(5000)

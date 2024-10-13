@@ -83,6 +83,14 @@ namespace crow
                 return crow::get_header_value(headers, key);
             }
 
+            std::vector<std::string> get_part_names(){
+                std::vector<std::string> keys(part_map.size());
+                int curr = 0;
+                for(auto &[x,y]: part_map)
+                    keys[curr++] = x;
+                return keys;
+            }
+
             part get_part_by_name(const std::string& name)
             {
                 mp_map::iterator result = part_map.find(name);

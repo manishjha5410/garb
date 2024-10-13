@@ -24,6 +24,7 @@ class User {
         crow::Blueprint *bp;
         mongocxx::database *db;
         Server* s;
+        boost::asio::ip::tcp::resolver* resolver;
 
         User();
         void createRoutes();
@@ -32,6 +33,7 @@ class User {
         void UserView();
         void UserViewOne();
         void UserSignin();
+        void UserAddPhoto();
 };
 
 #endif

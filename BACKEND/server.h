@@ -16,6 +16,9 @@
 #include <mongocxx/client.hpp>
 #include <mongocxx/uri.hpp>
 
+#include <boost/asio.hpp>
+#include <boost/beast.hpp>
+
 //Middleware
 #include "User/Middleware.h"
 
@@ -98,6 +101,9 @@ class Server {
 public:
     crow::App<crow::CORSHandler,VerifyUserMiddleware,LoginMiddleware> *app;
     mongocxx::database *db;
+    boost::asio::io_context ioc;
+    boost::asio::ip::tcp::resolver* resolver;
+
 
     void startServer()
     {
@@ -110,6 +116,7 @@ public:
     }
 
     void setServerData(crow::App<crow::CORSHandler,VerifyUserMiddleware,LoginMiddleware> *server, mongocxx::database *db_loc) {
+        resolver = new boost::asio::ip::tcp::resolver{ioc};
         app = server;
         db = db_loc;
     }
